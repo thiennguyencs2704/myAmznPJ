@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .span {
+    @apply bg-gradient-to-b from-amazon_button-light to-amazon_button rounded-md focus:outline-none focus:bg-yellow-600;
+  }
+
+  .button {
+    @apply w-full p-2 text-xs md:text-sm h-9 hover:bg-yellow-400 active:bg-yellow-500 focus:outline-none rounded-md;
+  }
+
+  .input {
+    @apply border border-gray-400 rounded-sm p-2 h-8 focus:outline-none focus:border focus:border-red-400 shadow-sm;
+  }
+
+  .link {
+    @apply hover:border p-1 border-white cursor-pointer;
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "with-tailwindcss",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@heroicons/react": "^1.0.1",
+    "@reduxjs/toolkit": "^1.6.0",
+    "@tailwindcss/line-clamp": "^0.2.1",
+    "firebase": "^8.6.8",
+    "next": "latest",
+    "react": "^17.0.1",
+    "react-currency-formatter": "^1.1.0",
+    "react-dom": "^17.0.1",
+    "react-redux": "^7.2.4",
+    "react-responsive-carousel": "^3.2.18",
+    "redux": "^4.1.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.0.4",
+    "postcss": "^8.1.10",
+    "postcss-import": "^14.0.2",
+    "tailwindcss": "^2.1.1"
+  }
+}
