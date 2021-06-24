@@ -106,14 +106,27 @@ const Signin = () => {
           </p>
         </div>
 
-        <div className="mt-4">
+        <div className="mt-4 mb-5 ">
           <Link href="/auth/signup">
-            <button className="bg-amazon_gray-light hover:bg-gray-400 active:bg-gray-500 border border-gray-400 w-full text-xs rounded-sm py-1">
+            <button className="bg-amazon_gray-light hover:bg-gray-400 active:bg-gray-500 border border-gray-400 w-full text-xs rounded-sm py-1 h-7 focus:outline-none">
               Create your Amazon account
             </button>
           </Link>
         </div>
       </div>
+
+      <footer className="relative flex flex-col items-center border-t border-gray-100 w-full text-xs mt-10">
+        <div className="absolute w-full h-full bg-gradient-to-b from-gray-100 to-transparent top-0" />
+        {/* <div className="absolute w-10/12 h-8 bg-gradient-to-b from-gray-50 to-transparent top-0  rounded-b-full" />
+        <div className="absolute w-1/2 h-9 bg-gradient-to-b from-gray-50 to-transparent top-0  rounded-b-full" />
+        <div className="absolute w-5/12 h-9 bg-gradient-to-b from-gray-50 to-transparent top-0  rounded-b-full" /> */}
+        <div className="flex flex-col sm:flex-row max-w-xs justify-center text-blue-700 w-1/2 mt-8 z-10 sm:space-x-3">
+          <p className="text-center">Conditions of User</p>
+          <p className="text-center">Privacy Notice</p>
+          <p className="text-center">Help</p>
+        </div>
+        <p className="mt-3">© 1996-2021, Amazon.com, Inc. or its affiliates</p>
+      </footer>
     </div>
   );
 };
