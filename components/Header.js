@@ -53,7 +53,7 @@ const Header = () => {
               onChange={handlerSearchChange}
               value={search}
               type="text"
-              className="flex-grow h-full p-3  text-black"
+              className="flex-grow h-full p-3  text-black appearance-none"
             />
             <SearchIcon className="h-10 w-10 p-2 hover:cursor-pointer" />
           </div>
@@ -114,7 +114,7 @@ const Header = () => {
               onChange={handlerSearchChange}
               value={search}
               type="text"
-              className="flex-grow h-full p-3  text-black"
+              className="flex-grow h-full p-3  text-black appearance-none"
             />
             <SearchIcon className="h-10 w-10 p-2 hover:cursor-pointer" />
           </div>
