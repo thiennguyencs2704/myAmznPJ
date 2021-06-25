@@ -6,7 +6,7 @@ import { ShoppingCartIcon } from "@heroicons/react/outline";
 const Checkout = () => {
   const { totalQty, totalAmt } = useSelector((state) => state.cart);
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4  min-h-screen pb-10 bg-gray-100 px-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4  min-h-screen bg-gray-100 px-4 pb-10">
       <div className="md:col-span-2 md:mr-3 lg:col-span-3 lg:mr-4 flex flex-col bg-white mt-6 p-4">
         <div className="relative border-b border-gray-200 pb-5">
           <h1 className="text-xl sm:text-2xl font-medium">Shopping Cart</h1>
@@ -62,7 +62,6 @@ const Checkout = () => {
           </button>
         </span>
       </div>
-      {/* </div> */}
     </div>
   );
 };

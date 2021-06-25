@@ -30,76 +30,94 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50">
-      <div className="justify-between pr-3 flex flex-grow bg-amazon_blue h-16 items-center text-white w-full">
-        <Link href="/">
-          <a>
-            <div className="mt-3 ml-1">
-              <Image
-                src="/amazonlogo.png"
-                width={130}
-                height={35}
-                objectFit="contain"
-              />
-            </div>
-          </a>
-        </Link>
+      <div className="flex flex-col bg-amazon_blue">
+        <div className="justify-between pr-3 flex flex-grow h-16 items-center text-white w-full">
+          <Link href="/">
+            <a>
+              <div className="mt-3 ml-1">
+                <Image
+                  src="/amazonlogo.png"
+                  width={130}
+                  height={35}
+                  objectFit="contain"
+                />
+              </div>
+            </a>
+          </Link>
 
-        <div className="hidden sm:flex flex-grow items-center h-10 bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 rounded-md">
-          <select className="h-full items-center pl-2 rounded-l-md text-gray-500 text-sm bg-gray-300 hover:cursor-pointer">
-            <option>All</option>
-          </select>
-          <input
-            onChange={handlerSearchChange}
-            value={search}
-            type="text"
-            className="flex-grow h-full p-3  text-black"
-          />
+          <div className="hidden md:flex flex-grow items-center h-10 bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 rounded-md">
+            <select className="h-full items-center pl-2 rounded-l-md text-gray-500 text-sm bg-gray-300 hover:cursor-pointer">
+              <option>All</option>
+            </select>
+            <input
+              onChange={handlerSearchChange}
+              value={search}
+              type="text"
+              className="flex-grow h-full p-3  text-black"
+            />
+            <SearchIcon className="h-10 w-10 p-2 hover:cursor-pointer" />
+          </div>
 
-          <SearchIcon className="h-10 w-10 p-2 hover:cursor-pointer" />
-        </div>
+          <div className="flex space-x-1 mx-3 items-center text-xs">
+            {user ? (
+              <div onClick={handlerSignout} className="link">
+                <p>Hello, {user.email}</p>
+                <p className="text-sm font-semibold whitespace-nowrap">
+                  Sign Out
+                </p>
+              </div>
+            ) : (
+              <Link href="/auth/signin">
+                <a>
+                  <div className="link">
+                    <p>Hello, Sign in</p>
+                    <p className="text-sm font-semibold whitespace-nowrap">
+                      Account & Lists
+                    </p>
+                  </div>
+                </a>
+              </Link>
+            )}
 
-        <div className="flex space-x-1 mx-3 items-center text-xs">
-          {user ? (
-            <div onClick={handlerSignout} className="link">
-              <p>Hello, {user.email}</p>
+            <div className="link">
+              <p>Returns</p>
               <p className="text-sm font-semibold whitespace-nowrap">
-                Sign Out
+                & Orders
               </p>
             </div>
-          ) : (
-            <Link href="/auth/signin">
+
+            <Link href="/checkout">
               <a>
-                <div className="link">
-                  <p>Hello, Sign in</p>
-                  <p className="text-sm font-semibold whitespace-nowrap">
-                    Account & Lists
+                <div className="relative flex w-18 justify-between items-center link">
+                  <ShoppingCartIcon className="h-9 w-9" />
+                  <div className="absolute -top-1 -right-2 sm:right-5">
+                    <p className="bg-yellow-500 rounded-full px-2 p-1 items-center justify-center text-xs font-medium">
+                      {cart.totalQty}
+                    </p>
+                  </div>
+
+                  <p className="hidden sm:inline text-base font-semibold mt-4">
+                    Cart
                   </p>
                 </div>
               </a>
             </Link>
-          )}
-
-          <div className="link">
-            <p>Returns</p>
-            <p className="text-sm font-semibold whitespace-nowrap">& Orders</p>
           </div>
+        </div>
 
-          <Link href="/checkout">
-            <a>
-              <div className="relative flex w-18 justify-between items-center link">
-                <ShoppingCartIcon className="h-9 w-9" />
-                <div className="absolute -top-1 -right-2 sm:right-5">
-                  <p className="bg-yellow-500 rounded-full px-2 p-1 items-center justify-center text-xs font-medium">
-                    {cart.totalQty}
-                  </p>
-                </div>
-
-                <p className="hidden sm:inline text-base font-semibold mt-4">
-                  Cart
-                </p>
-              </div>
-            </a>
-          </Link>
+        <div className="mx-3">
+          <div className="flex md:hidden flex-grow items-center h-10 bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 rounded-md">
+            <select className="h-full items-center pl-2 rounded-l-md text-gray-500 text-sm bg-gray-300 hover:cursor-pointer">
+              <option>All</option>
+            </select>
+            <input
+              onChange={handlerSearchChange}
+              value={search}
+              type="text"
+              className="flex-grow h-full p-3  text-black"
+            />
+            <SearchIcon className="h-10 w-10 p-2 hover:cursor-pointer" />
+          </div>
         </div>
       </div>
 

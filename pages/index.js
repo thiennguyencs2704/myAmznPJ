@@ -40,7 +40,7 @@ export default function Home({ products }) {
     });
   });
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className="bg-gray-100 min-h-screen pb-10">
       <Head>
         <title>Amazon | Home</title>
         <link rel="icon" href="/8364-amazon_102478.png" />

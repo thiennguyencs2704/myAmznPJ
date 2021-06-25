@@ -32,7 +32,7 @@ const Signin = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center z-10">
+    <div className="min-h-screen bg-white flex flex-col items-center z-10 justify-between">
       <Link href="/">
         <a className="my-2">
           <Image
@@ -44,14 +44,14 @@ const Signin = () => {
         </a>
       </Link>
 
-      <div className="flex flex-col border border-gray-300 p-5 w-80 h-80 pt-3 sm:h-96">
+      <div className="flex flex-col border border-gray-300 p-5 w-80 pt-3 sm:h-full">
         <p className="text-2xl sm:text-3xl sm:mt-2 font-semibold mb-3">
           Sign-In
         </p>
 
         <form
           onSubmit={handlerSignin}
-          className="flex flex-col text-xs sm:text-sm font-medium  mb-4 sm:mb-5"
+          className="flex flex-col text-xs font-medium  mb-4 sm:mb-5"
         >
           <div className="flex flex-col space-y-1">
             <label htmlFor="email">Email or mobile phone number</label>
@@ -71,25 +71,27 @@ const Signin = () => {
             />
           </div>
 
-          <span className="span mt-3 h-8">
-            <button className="button sm:text-sm h-full">Sign-in</button>
+          <span className="span mt-3 h-7 rounded-sm">
+            <button className="flex items-center justify-center button h-full">
+              Sign-in
+            </button>
           </span>
 
-          <Link href="/">
-            <a className="text-xs">Forgot password</a>
-          </Link>
+          {/* <Link href="/"> */}
+          <p className="text-xs flex justify-end">Forgot password</p>
+          {/* </Link> */}
         </form>
 
-        <div className="flex flex-col justify-between text-xs ">
+        <div className="flex flex-col justify-between text-xs pb-2">
           <p>
             By Continuing, you agree to Amazon's{" "}
             <span className="text-blue-700">Conditions of Use</span> and{" "}
             <span className="text-blue-700">Privacy Notice</span>{" "}
           </p>
 
-          <Link href="/">
-            <a className="text-blue-700 mt-3 sm:mt-5">Need help?</a>
-          </Link>
+          {/* <Link href="/"> */}
+          <p className="text-blue-700 mt-3 sm:mt-5">Need help?</p>
+          {/* </Link> */}
         </div>
       </div>
 
@@ -115,17 +117,17 @@ const Signin = () => {
         </div>
       </div>
 
-      <footer className="relative flex flex-col items-center border-t border-gray-100 w-full text-xs mt-10">
-        <div className="absolute w-full h-full bg-gradient-to-b from-gray-100 to-transparent top-0" />
-        {/* <div className="absolute w-10/12 h-8 bg-gradient-to-b from-gray-50 to-transparent top-0  rounded-b-full" />
-        <div className="absolute w-1/2 h-9 bg-gradient-to-b from-gray-50 to-transparent top-0  rounded-b-full" />
-        <div className="absolute w-5/12 h-9 bg-gradient-to-b from-gray-50 to-transparent top-0  rounded-b-full" /> */}
-        <div className="flex flex-col sm:flex-row max-w-xs justify-center text-blue-700 w-1/2 mt-8 z-10 sm:space-x-3">
+      <footer className="relative flex flex-col items-center border-t border-gray-100 w-full text-xs mt-10 pb-10">
+        <div className="absolute w-full h-full bg-gradient-to-b from-gray-100 to-white top-0" />
+
+        <div className="flex flex-col space-y-1 sm:space-y-0 sm:flex-row max-w-xs justify-center text-blue-700 w-1/2 mt-8 z-10 sm:space-x-3">
           <p className="text-center">Conditions of User</p>
           <p className="text-center">Privacy Notice</p>
           <p className="text-center">Help</p>
         </div>
-        <p className="mt-3">© 1996-2021, Amazon.com, Inc. or its affiliates</p>
+        <p className="mt-3 z-50">
+          © 1996-2021, Amazon.com, Inc. or its affiliates
+        </p>
       </footer>
     </div>
   );
