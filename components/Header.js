@@ -143,7 +143,7 @@ const Header = () => {
               />
 
               {searchSuggestion && (
-                <div className="absolute bg-white text-black text-sm w-full rounded-b-sm shadow-md border-b border-l border-r border-gray-200">
+                <div className="absolute bg-white text-black text-sm w-full rounded-b-sm shadow-md border-b border-l border-r border-gray-200 z-50">
                   {productSuggestion
                     .map((product) => (
                       <p className="line-clamp-1 py-1 px-3 hover:bg-gray-100 ">
