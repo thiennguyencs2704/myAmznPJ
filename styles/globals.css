@@ -18,4 +18,8 @@
   .link {
     @apply hover:border p-1 border-white cursor-pointer;
   }
+
+  .removeInputWebkit {
+    @apply appearance-none rounded-none;
+  }
 }

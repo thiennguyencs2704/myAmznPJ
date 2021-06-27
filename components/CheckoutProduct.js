@@ -12,17 +12,13 @@ const CheckoutProduct = ({ product }) => {
   const dispatch = useDispatch();
 
   const handlerAddCart = () => {
-    dispatch(
-      addCart({
-        cart: { ...product },
-      })
-    );
+    dispatch(addCart({ ...product }));
   };
 
   const handlerRemoveCart = () => {
     dispatch(
       removeCart({
-        cart: { ...product },
+        ...product,
       })
     );
   };
@@ -30,7 +26,8 @@ const CheckoutProduct = ({ product }) => {
   const handlerChangeItemQty = (e) => {
     dispatch(
       changeItemQty({
-        cart: { ...product, itemQty: Number(e.target.value) },
+        ...product,
+        itemQty: Number(e.target.value),
       })
     );
   };
@@ -38,7 +35,8 @@ const CheckoutProduct = ({ product }) => {
   const handlerChangeCart = (e) => {
     dispatch(
       changeCart({
-        cart: { ...product, itemQty: Number(e.target.value) },
+        ...product,
+        itemQty: Number(e.target.value),
       })
     );
   };
@@ -72,7 +70,7 @@ const CheckoutProduct = ({ product }) => {
               -
             </button>
             <input
-              className="w-8 text-center border border-gray-200"
+              className="w-8 text-center border border-gray-200 removeInputWebkit"
               type="text"
               inputMode="numeric"
               value={`${itemQty}`}

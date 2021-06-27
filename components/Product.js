@@ -17,9 +17,7 @@ const Product = ({ product }) => {
   const handlerAddCart = () => {
     dispatch(
       addCart({
-        cart: {
-          ...product,
-        },
+        ...product,
       })
     );
   };

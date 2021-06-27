@@ -15,4 +15,5 @@ const firebaseApp = !firebase.apps.length
 const auth = firebase.auth();
 const db = firebaseApp.firestore();
 const provider = new firebase.auth.GoogleAuthProvider();
-export { db, auth, provider };
+const realtimeDB = firebase.database();
+export { db, auth, provider, realtimeDB };

@@ -3,20 +3,25 @@ import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { signout } from "../store/userSlice";
 import { auth } from "../firebase";
+import { searchProducts } from "../store/productSlice";
+import { useState } from "react";
 
 import {
   ShoppingCartIcon,
   SearchIcon,
   MenuIcon,
 } from "@heroicons/react/outline";
-import { useState } from "react";
 
 const Header = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
   const cart = useSelector((state) => state.cart);
+  const productSuggestion = useSelector(
+    (state) => state.products.productSuggestion
+  );
 
   const [search, setSearch] = useState("");
+  const [searchSuggestion, setSearchSuggestion] = useState(false);
 
   const handlerSignout = () => {
     auth.signOut();
@@ -25,7 +30,7 @@ const Header = () => {
 
   const handlerSearchChange = (e) => {
     setSearch(e.target.value);
-    console.log("Value Search", search);
+    dispatch(searchProducts(e.target.value));
   };
 
   return (
@@ -45,17 +50,33 @@ const Header = () => {
             </a>
           </Link>
 
-          <div className="hidden md:flex flex-grow items-center h-10 bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 rounded-md">
-            <select className="h-full items-center pl-2 rounded-l-md text-gray-500 text-sm bg-gray-300 hover:cursor-pointer">
+          <div className="hidden md:flex flex-grow items-center h-10 bg-yellow-500 rounded-md">
+            <select className="h-full items-center pl-2 rounded-l-md text-gray-500 text-sm bg-gray-300 hover:cursor-pointer rounded-r-none">
               <option>All</option>
             </select>
-            <input
-              onChange={handlerSearchChange}
-              value={search}
-              type="text"
-              className="flex-grow h-full p-3  text-black appearance-none rounded-none"
-            />
-            <SearchIcon className="h-10 w-10 p-2 hover:cursor-pointer" />
+
+            <div className="relative flex-grow h-full">
+              <input
+                onChange={handlerSearchChange}
+                value={search}
+                type="text"
+                className="w-full p-3 h-full text-black removeInputWebkit outline-none"
+                onBlur={() => setSearchSuggestion(false)}
+                onClick={() => setSearchSuggestion(true)}
+              />
+
+              {searchSuggestion && (
+                <div className="absolute bg-white text-black text-sm w-full rounded-b-sm shadow-md border-b border-l border-r border-gray-200">
+                  {productSuggestion.map((product) => (
+                    <p className="line-clamp-1 py-1 px-3 hover:bg-gray-100 ">
+                      {product.title}
+                    </p>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <SearchIcon className="h-10 w-10 p-2 hover:cursor-pointer hover:bg-yellow-600 active:bg-yellow-700 rounded-r-md" />
           </div>
 
           <div className="flex space-x-1 mx-3 items-center text-xs">
@@ -107,15 +128,33 @@ const Header = () => {
 
         <div className="mx-3">
           <div className="flex md:hidden flex-grow items-center h-10 bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 rounded-md">
-            <select className="h-full items-center pl-2 rounded-l-md text-gray-500 text-sm bg-gray-300 hover:cursor-pointer">
+            <select className="h-full items-center pl-2 rounded-l-md text-gray-500 text-sm bg-gray-300 hover:cursor-pointer rounded-r-none">
               <option>All</option>
             </select>
-            <input
-              onChange={handlerSearchChange}
-              value={search}
-              type="text"
-              className="flex-grow h-full p-3  text-black appearance-none rounded-none"
-            />
+
+            <div className="relative flex-grow h-full">
+              <input
+                onChange={handlerSearchChange}
+                value={search}
+                type="text"
+                className="h-full w-full p-3 text-black removeInputWebkit outline-none"
+                onBlur={() => setSearchSuggestion(false)}
+                onClick={() => setSearchSuggestion(true)}
+              />
+
+              {searchSuggestion && (
+                <div className="absolute bg-white text-black text-sm w-full rounded-b-sm shadow-md border-b border-l border-r border-gray-200">
+                  {productSuggestion
+                    .map((product) => (
+                      <p className="line-clamp-1 py-1 px-3 hover:bg-gray-100 ">
+                        {product.title}
+                      </p>
+                    ))
+                    .slice(0, 3)}
+                </div>
+              )}
+            </div>
+
             <SearchIcon className="h-10 w-10 p-2 hover:cursor-pointer" />
           </div>
         </div>
