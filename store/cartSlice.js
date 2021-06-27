@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { fetchUserProfile } from "./cartActions";
 
 const initialState = {
-  cart: null,
+  cart: [],
   totalQty: 0,
   totalAmt: 0,
   updatedCart: false,
