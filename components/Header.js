@@ -51,7 +51,7 @@ const Header = () => {
           </Link>
 
           <div className="hidden md:flex flex-grow items-center h-10 bg-yellow-500 rounded-md">
-            <select className="h-full items-center pl-2 rounded-l-md text-gray-500 text-sm bg-gray-300 hover:cursor-pointer rounded-r-none">
+            <select className="h-full items-center pl-2 rounded-l-md text-gray-500 text-sm bg-gray-300 hover:cursor-pointer rounded-r-none border-none">
               <option>All</option>
             </select>
 
@@ -60,7 +60,7 @@ const Header = () => {
                 onChange={handlerSearchChange}
                 value={search}
                 type="text"
-                className="w-full p-3 h-full text-black removeInputWebkit outline-none"
+                className="w-full p-3 h-full text-black removeInputWebkit"
                 onBlur={() => setSearchSuggestion(false)}
                 onClick={() => setSearchSuggestion(true)}
               />
@@ -75,8 +75,9 @@ const Header = () => {
                 </div>
               )}
             </div>
-
-            <SearchIcon className="h-10 w-10 p-2 hover:cursor-pointer hover:bg-yellow-600 active:bg-yellow-700 rounded-r-md" />
+            <div className="">
+              <SearchIcon className="h-10 w-10 p-2 hover:cursor-pointer hover:bg-yellow-600 active:bg-yellow-700 rounded-r-md" />
+            </div>
           </div>
 
           <div className="flex space-x-1 mx-3 items-center text-xs">
@@ -128,7 +129,7 @@ const Header = () => {
 
         <div className="mx-3">
           <div className="flex md:hidden flex-grow items-center h-10 bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 rounded-md">
-            <select className="h-full items-center pl-2 rounded-l-md text-gray-500 text-sm bg-gray-300 hover:cursor-pointer rounded-r-none">
+            <select className="h-full items-center pl-2 rounded-l-md text-gray-500 text-sm bg-gray-300 hover:cursor-pointer rounded-r-none border-none">
               <option>All</option>
             </select>
 
@@ -155,7 +156,9 @@ const Header = () => {
               )}
             </div>
 
-            <SearchIcon className="h-10 w-10 p-2 hover:cursor-pointer hover:bg-yellow-600 active:bg-yellow-700 rounded-r-md" />
+            <div className="">
+              <SearchIcon className="h-10 w-10 p-2 hover:cursor-pointer hover:bg-yellow-600 active:bg-yellow-700 rounded-r-md" />
+            </div>
           </div>
         </div>
       </div>
