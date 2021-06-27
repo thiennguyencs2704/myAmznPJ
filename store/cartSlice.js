@@ -40,8 +40,6 @@ const cartSlice = createSlice({
       state.totalAmt = state.cart
         .reduce((acc, item) => acc + item.itemQty * item.price, 0)
         .toFixed(2);
-
-      state.updatedCart = true;
     },
 
     addCart: (state, action) => {
@@ -59,8 +57,6 @@ const cartSlice = createSlice({
       state.totalAmt = state.cart
         .reduce((acc, item) => acc + item.itemQty * item.price, 0)
         .toFixed(2);
-
-      state.updatedCart = true;
     },
 
     removeCart: (state, action) => {
@@ -80,8 +76,6 @@ const cartSlice = createSlice({
       state.totalAmt = state.cart
         .reduce((acc, item) => acc + item.itemQty * item.price, 0)
         .toFixed(2);
-
-      state.updatedCart = true;
     },
   },
 
