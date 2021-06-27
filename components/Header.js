@@ -127,7 +127,7 @@ const Header = () => {
         </div>
 
         <div className="mx-3">
-          <div className="hidden md:flex flex-grow items-center h-10 bg-yellow-500 rounded-md">
+          <div className="flex md:hidden flex-grow items-center h-10 bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 rounded-md">
             <select className="h-full items-center pl-2 rounded-l-md text-gray-500 text-sm bg-gray-300 hover:cursor-pointer rounded-r-none">
               <option>All</option>
             </select>
@@ -137,7 +137,7 @@ const Header = () => {
                 onChange={handlerSearchChange}
                 value={search}
                 type="text"
-                className="w-full p-3 h-full text-black removeInputWebkit outline-none"
+                className="h-full w-full p-3 text-black removeInputWebkit outline-none"
                 onBlur={() => setSearchSuggestion(false)}
                 onClick={() => setSearchSuggestion(true)}
               />
