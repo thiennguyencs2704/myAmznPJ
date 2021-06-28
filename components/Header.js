@@ -33,7 +33,7 @@ const Header = () => {
 
   const handlerSearchChange = (e) => {
     setSearch(e.target.value);
-    dispatch(searchProducts(e.target.value));
+    dispatch(searchProducts(e.target.value.toLowerCase()));
   };
 
   useEffect(() => {

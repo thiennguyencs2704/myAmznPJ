@@ -36,11 +36,10 @@ const ProductDetail = ({ productDetail }) => {
   return (
     <HeadLayout title={`Amazon | ${title}`}>
       <div className="grid grid-cols-1 md:grid-cols-2 justify-center my-5 space-x-6 md:space-x-10 min-h-screen">
-        <div className="md:col-span-1 mx-auto mt-5 md:mr-20">
+        <div className="md:col-span-1 mx-5 md:mx-auto mt-5 md:mr-20">
           <Image src={detailImg} width={400} height={400} objectFit="contain" />
         </div>
-
-        <div className="flex flex-col text-sm md:text-base md:w-2/3 mx-auto">
+        <div className="flex flex-col text-sm md:text-base md:w-2/3 mx-auto pr-5">
           <h1 className="text-xl font-medium mb-3 mt-8">{title}</h1>
           <p className="text-blue-700 font-medium">Visit the Store</p>
           <div className="flex flex-col md:flex-row md:items-center">

@@ -13,6 +13,7 @@ const productSlice = createSlice({
 
     searchProducts: (state, action) => {
       const searchKey = action.payload.trim();
+      console.log(searchKey);
 
       state.productSuggestion =
         searchKey.length > 0
