@@ -21,8 +21,13 @@ const productSlice = createSlice({
             )
           : [];
     },
+
+    clearProductSuggestion: (state) => {
+      state.productSuggestion = [];
+    },
   },
 });
 
-export const { getProducts, searchProducts } = productSlice.actions;
+export const { getProducts, searchProducts, clearProductSuggestion } =
+  productSlice.actions;
 export default productSlice.reducer;

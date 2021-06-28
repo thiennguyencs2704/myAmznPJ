@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { signout } from "../store/userSlice";
 import { auth } from "../firebase";
-import { searchProducts } from "../store/productSlice";
+import { clearProductSuggestion, searchProducts } from "../store/productSlice";
 import { useEffect, useState } from "react";
 
 import {
@@ -37,19 +37,15 @@ const Header = () => {
   };
 
   useEffect(() => {
-    if (router.pathname === "/") {
-      // setSearch("");
-      handlerClearInput();
-    }
+    setSearch("");
+    dispatch(clearProductSuggestion());
+    console.log("Current Router", router.pathname);
   }, [router.pathname]);
 
   const handlerBlurInput = () => {
     document.getElementById("searchInput").blur();
   };
 
-  const handlerClearInput = () => {
-    document.getElementById("searchInput").value = "";
-  };
   return (
     <header className="sticky top-0 z-50">
       <div className="flex flex-col bg-amazon_blue">
@@ -78,9 +74,10 @@ const Header = () => {
                 value={search}
                 type="text"
                 className="w-full p-3 h-full text-black removeInputWebkit"
-                onClick={() => setSearchSuggestion(true)}
                 onBlur={() => setSearchSuggestion(false)}
+                onClick={() => setSearchSuggestion(true)}
                 id="searchInput"
+                autoComplete="off"
               />
 
               {searchSuggestion && (
@@ -182,7 +179,7 @@ const Header = () => {
         </div>
 
         <div className="mx-3">
-          <div className="flex md:hidden flex-grow items-center h-10 bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 rounded-md">
+          <div className="flex md:hidden flex-grow items-center h-10 bg-yellow-500 rounded-md">
             <select className="h-full items-center pl-2 rounded-l-md text-gray-500 text-sm bg-gray-300 hover:cursor-pointer rounded-r-none border-none">
               <option className="border-none">All</option>
             </select>
@@ -192,29 +189,61 @@ const Header = () => {
                 onChange={handlerSearchChange}
                 value={search}
                 type="text"
-                className="h-full w-full p-3 text-black removeInputWebkit outline-none"
+                className="w-full p-3 h-full text-black removeInputWebkit"
                 onBlur={() => setSearchSuggestion(false)}
                 onClick={() => setSearchSuggestion(true)}
+                id="searchInput"
               />
 
               {searchSuggestion && (
-                <div className="absolute bg-white text-black text-sm w-full rounded-b-sm shadow-md border-b border-l border-r border-gray-200 z-50">
+                <div className="absolute bg-white text-black text-sm w-full rounded-b-sm shadow-md border-b border-l border-r border-gray-200">
                   {productSuggestion
                     .map((product) => (
-                      <p
+                      <Link
                         key={product.id}
-                        className="line-clamp-1 py-1 px-3 hover:bg-gray-100 "
+                        href={{
+                          pathname: "/productdetail/[id]",
+                          query: {
+                            id: product.id,
+                            productData: JSON.stringify(product),
+                          },
+                        }}
                       >
-                        {product.title}
-                      </p>
+                        <a>
+                          <p
+                            onMouseDown={(e) => e.preventDefault()}
+                            onClick={() => {
+                              setSearchSuggestion(false);
+                              handlerBlurInput();
+                            }}
+                            key={product.id}
+                            className="line-clamp-1 py-1 px-3 hover:bg-gray-100"
+                          >
+                            {product.title}
+                          </p>
+                        </a>
+                      </Link>
                     ))
-                    .slice(0, 3)}
+                    .slice(0, 5)}
                 </div>
               )}
             </div>
 
             <div className="">
-              <SearchIcon className="h-10 w-10 p-2 hover:cursor-pointer hover:bg-yellow-600 active:bg-yellow-700 rounded-r-md" />
+              <Link
+                href={{
+                  pathname:
+                    // search.length !== 0 ?
+                    "/searchresults/[search]",
+                  // : "/"
+                  query: {
+                    search: search,
+                    filteredProducts: JSON.stringify(productSuggestion),
+                  },
+                }}
+              >
+                <SearchIcon className="h-10 w-10 p-2 hover:cursor-pointer hover:bg-yellow-600 active:bg-yellow-700 rounded-r-md" />
+              </Link>
             </div>
           </div>
         </div>
