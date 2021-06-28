@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const ProductList = ({ amaProducts }) => {
   return (
-    <div className="grid grid-flow-row md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mx-auto">
+    <div className="grid grid-flow-row md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4   -mt-16 lg:-mt-40 mx-auto">
       {amaProducts.map((item) => (
         <Link
           key={item.id}
@@ -18,6 +18,7 @@ const ProductList = ({ amaProducts }) => {
               star: item.star,
               image: item.image,
               category: item.category,
+              detailImg: item.detailImg,
             },
           }}
         >

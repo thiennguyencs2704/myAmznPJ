@@ -11,10 +11,9 @@ export const getServerSideProps = async (context) => {
 };
 
 const ProductDetail = ({ productDetail }) => {
-  const { id, title, category, description, image, price, star } =
+  const { id, title, category, description, price, star, detailImg } =
     productDetail;
 
-  console.log("productDetail", productDetail);
   const review = (max, min) => {
     return Math.floor(Math.random() * (max - min) + min).toLocaleString(
       "de-DE"
@@ -23,12 +22,12 @@ const ProductDetail = ({ productDetail }) => {
   console.log(review(3000, 10000));
   return (
     <HeadLayout title={`Amazon | ${title}`}>
-      <div className="flex justify-center my-5 space-x-6 md:space-x-16">
-        <div className="">
-          <Image src={image} width={200} height={200} objectFit="contain" />
+      <div className="flex justify-center my-5 space-x-6 md:space-x-10 min-h-screen">
+        <div className="mt-8">
+          <Image src={detailImg} width={500} height={500} objectFit="contain" />
         </div>
         <div className="flex flex-col text-sm md:text-base w-1/2 mx-auto">
-          <h1 className="text-xl font-medium mb-3">{title}</h1>
+          <h1 className="text-xl font-medium mb-3 mt-8">{title}</h1>
           <p className="text-blue-700 font-medium">Visit the Store</p>
           <div className="flex flex-col md:flex-row md:items-center">
             <div className="flex">
