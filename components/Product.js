@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Image from "next/image";
 import Currency from "react-currency-formatter";
 import { StarIcon } from "@heroicons/react/solid";
@@ -7,14 +6,11 @@ import { useDispatch } from "react-redux";
 
 const Product = ({ product }) => {
   const dispatch = useDispatch();
-  const { id, category, image, title, description, price, itemQty } = product;
+  const { id, category, image, title, description, price, itemQty, star } =
+    product;
 
-  const starScore = (min, max) => {
-    return Math.floor(Math.random() * (max - min) + min);
-  };
-  const [star] = useState(starScore(1, 6));
-
-  const handlerAddCart = () => {
+  const handlerAddCart = (e) => {
+    e.preventDefault();
     dispatch(
       addCart({
         ...product,
@@ -23,8 +19,8 @@ const Product = ({ product }) => {
   };
 
   return (
-    <div className="relative flex flex-col bg-white m-5 p-10 rounded-lg text-base z-30">
-      <div className="space-y-3 mb-3">
+    <div className="relative flex flex-col bg-white m-5 p-10 rounded-lg text-base z-30 h-full">
+      <div className="space-y-3 mb-3 ">
         <p className="absolute text-sm top-2 right-2 italic text-gray-400">
           {category}
         </p>

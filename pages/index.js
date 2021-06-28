@@ -15,7 +15,11 @@ export const getServerSideProps = async () => {
   const data = await res.json();
 
   const productData = data.map((item) => {
-    return { ...item, itemQty: 1 };
+    const starScore = (min, max) => {
+      return Math.floor(Math.random() * (max - min) + min);
+    };
+    const star = starScore(2, 6);
+    return { ...item, itemQty: 1, star };
   });
 
   return {
@@ -30,6 +34,7 @@ export default function Home({ myProducts }) {
 
   useEffect(() => {
     dispatch(getProducts(myProducts));
+    console.log(myProducts);
   });
 
   useEffect(() => {
@@ -45,7 +50,7 @@ export default function Home({ myProducts }) {
 
   return (
     <HeadLayout title="Amazon | Home">
-      <div className="bg-gray-100 min-h-screen pb-10">
+      <div className="flex flex-col bg-gray-100 min-h-screen pb-10 mx-auto items-center">
         <main className="max-w-screen-2xl mx-auto md:mx-10">
           <Banner />
           <ProductList amaProducts={myProducts} />
