@@ -3,30 +3,44 @@ import Image from "next/image";
 import { StarIcon } from "@heroicons/react/solid";
 
 export const getServerSideProps = async (context) => {
-  return {
-    props: {
-      productDetail: context.query,
-    },
-  };
-};
+  // console.log("Object testing", context.query);
 
-const ProductDetail = ({ productDetail }) => {
-  const { id, title, category, description, price, star, detailImg } =
-    productDetail;
-
+  const productObj = JSON.parse(context.query.productData);
+  // console.log("Data looks like", JSON.parse(data));
   const review = (max, min) => {
     return Math.floor(Math.random() * (max - min) + min).toLocaleString(
       "de-DE"
     );
   };
-  console.log(review(3000, 10000));
+  const reviewNumber = review(3000, 10000);
+  return {
+    props: {
+      productDetail: { ...productObj, reviewNumber },
+    },
+  };
+};
+
+const ProductDetail = ({ productDetail }) => {
+  const {
+    id,
+    title,
+    category,
+    description,
+    price,
+    star,
+    detailImg,
+    reviewNumber,
+  } = productDetail;
+  // console.log("Teting", productDetail);
+
   return (
     <HeadLayout title={`Amazon | ${title}`}>
-      <div className="flex justify-center my-5 space-x-6 md:space-x-10 min-h-screen">
-        <div className="mt-8">
-          <Image src={detailImg} width={500} height={500} objectFit="contain" />
+      <div className="grid grid-cols-1 md:grid-cols-2 justify-center my-5 space-x-6 md:space-x-10 min-h-screen">
+        <div className="md:col-span-1 mx-auto mt-5 mr-20">
+          <Image src={detailImg} width={400} height={400} objectFit="contain" />
         </div>
-        <div className="flex flex-col text-sm md:text-base w-1/2 mx-auto">
+
+        <div className="flex flex-col text-sm md:text-base md:w-2/3 mx-auto">
           <h1 className="text-xl font-medium mb-3 mt-8">{title}</h1>
           <p className="text-blue-700 font-medium">Visit the Store</p>
           <div className="flex flex-col md:flex-row md:items-center">
@@ -36,7 +50,7 @@ const ProductDetail = ({ productDetail }) => {
               ))}
             </div>
             <p className="md:ml-2 text-blue-700 font-normal">
-              {review(3000, 10000)} ratings
+              {reviewNumber} ratings
             </p>
           </div>
           <p>

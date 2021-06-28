@@ -3,8 +3,9 @@ import Currency from "react-currency-formatter";
 import { StarIcon } from "@heroicons/react/solid";
 import { addCart } from "../store/cartSlice";
 import { useDispatch } from "react-redux";
+import React from "react";
 
-const Product = ({ product }) => {
+const Product = React.forwardRef(({ product }, ref) => {
   const dispatch = useDispatch();
   const { id, category, image, title, description, price, itemQty, star } =
     product;
@@ -55,6 +56,6 @@ const Product = ({ product }) => {
       </span>
     </div>
   );
-};
+});
 
 export default Product;

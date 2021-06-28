@@ -13,7 +13,6 @@ const productSlice = createSlice({
 
     searchProducts: (state, action) => {
       const searchKey = action.payload.trim();
-      console.log("Keyword", searchKey, searchKey.length);
 
       state.productSuggestion =
         searchKey.length > 0
@@ -21,8 +20,6 @@ const productSlice = createSlice({
               product.title.toLowerCase().includes(searchKey)
             )
           : [];
-      // .slice(0, 5);
-      console.log("suggrestproducs", state.productSuggestion);
     },
   },
 });

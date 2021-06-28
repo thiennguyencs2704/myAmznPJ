@@ -34,7 +34,7 @@ export default function Home({ myProducts }) {
 
   useEffect(() => {
     dispatch(getProducts(myProducts));
-    console.log(myProducts);
+    // console.log(myProducts);
   });
 
   useEffect(() => {

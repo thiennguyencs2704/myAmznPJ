@@ -9,17 +9,7 @@ const ProductList = ({ amaProducts }) => {
           key={item.id}
           href={{
             pathname: "/productdetail/[id]",
-            // query: { id: item.id, productData: JSON.stringify(item) },
-            query: {
-              id: item.id,
-              title: item.title,
-              description: item.description,
-              price: item.price,
-              star: item.star,
-              image: item.image,
-              category: item.category,
-              detailImg: item.detailImg,
-            },
+            query: { id: item.id, productData: JSON.stringify(item) },
           }}
         >
           <a className=" mb-14">
