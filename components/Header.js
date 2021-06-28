@@ -39,11 +39,14 @@ const Header = () => {
   useEffect(() => {
     setSearch("");
     dispatch(clearProductSuggestion());
-    console.log("Current Router", router.pathname);
   }, [router.pathname]);
 
   const handlerBlurInput = () => {
     document.getElementById("searchInput").blur();
+  };
+
+  const handlerBlurInputMobile = () => {
+    document.getElementById("searchMobile").blur();
   };
 
   return (
@@ -116,10 +119,7 @@ const Header = () => {
             <div className="">
               <Link
                 href={{
-                  pathname:
-                    // search.length !== 0 ?
-                    "/searchresults/[search]",
-                  // : "/"
+                  pathname: "/searchresults/[search]",
                   query: {
                     search: search,
                     filteredProducts: JSON.stringify(productSuggestion),
@@ -192,7 +192,7 @@ const Header = () => {
                 className="w-full p-3 h-full text-black removeInputWebkit"
                 onBlur={() => setSearchSuggestion(false)}
                 onClick={() => setSearchSuggestion(true)}
-                id="searchInput"
+                id="searchMobile"
                 autoComplete="off"
               />
 
@@ -215,7 +215,7 @@ const Header = () => {
                             onMouseDown={(e) => e.preventDefault()}
                             onClick={() => {
                               setSearchSuggestion(false);
-                              handlerBlurInput();
+                              handlerBlurInputMobile();
                             }}
                             key={product.id}
                             className="line-clamp-1 py-1 px-3 hover:bg-gray-100"
@@ -233,10 +233,7 @@ const Header = () => {
             <div className="">
               <Link
                 href={{
-                  pathname:
-                    // search.length !== 0 ?
-                    "/searchresults/[search]",
-                  // : "/"
+                  pathname: "/searchresults/[search]",
                   query: {
                     search: search,
                     filteredProducts: JSON.stringify(productSuggestion),
