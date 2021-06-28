@@ -8,7 +8,7 @@ import { getProducts } from "../store/productSlice";
 import HeadLayout from "../components/HeadLayout";
 import { fetchUserProfile } from "../store/cartActions";
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const res = await fetch(
     "https://my-amzn-web-default-rtdb.firebaseio.com/products.json"
   );
