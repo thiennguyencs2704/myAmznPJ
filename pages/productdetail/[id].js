@@ -36,7 +36,7 @@ const ProductDetail = ({ productDetail }) => {
   return (
     <HeadLayout title={`Amazon | ${title}`}>
       <div className="grid grid-cols-1 md:grid-cols-2 justify-center my-5 space-x-6 md:space-x-10 min-h-screen">
-        <div className="md:col-span-1 mx-auto mt-5 mr-20">
+        <div className="md:col-span-1 mx-auto mt-5 md:mr-20">
           <Image src={detailImg} width={400} height={400} objectFit="contain" />
         </div>
 
