@@ -193,6 +193,7 @@ const Header = () => {
                 onBlur={() => setSearchSuggestion(false)}
                 onClick={() => setSearchSuggestion(true)}
                 id="searchInput"
+                autoComplete="off"
               />
 
               {searchSuggestion && (
