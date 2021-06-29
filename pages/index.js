@@ -2,11 +2,10 @@ import Banner from "../components/Banner";
 import ProductList from "../components/ProductList";
 import { useEffect } from "react";
 import { auth } from "../firebase";
-import { useDispatch } from "react-redux";
-import { signout } from "../store/userSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../store/productSlice";
 import HeadLayout from "../components/HeadLayout";
-import { fetchUserProfile } from "../store/cartActions";
+import { fetchUserProfile, fetchProducts } from "../store/cartActions";
 
 export const getServerSideProps = async () => {
   const res = await fetch(
@@ -28,22 +27,17 @@ export const getServerSideProps = async () => {
     },
   };
 };
-
 export default function Home({ myProducts }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getProducts(myProducts));
-    // console.log(myProducts);
   });
 
   useEffect(() => {
     auth.onAuthStateChanged((userAuth) => {
       if (userAuth) {
         dispatch(fetchUserProfile(userAuth.uid));
-        // console.log("check UID", userAuth);
-      } else {
-        dispatch(signout());
       }
     });
   });

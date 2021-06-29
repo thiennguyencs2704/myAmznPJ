@@ -18,17 +18,7 @@ const SearchResults = ({ filteredResults, searchKeyword }) => {
     <HeadLayout title={`Amazon | ${searchKeyword}`}>
       <div className="min-h-screen">
         {filteredResults.map((product) => (
-          <Link
-            key={product.id}
-            href={{
-              pathname: "/productdetail/[id]",
-              query: { id: product.id, productData: JSON.stringify(product) },
-            }}
-          >
-            <a>
-              <FilteredProduct key={product.id} filteredProduct={product} />
-            </a>
-          </Link>
+          <FilteredProduct key={product.id} filteredProduct={product} />
         ))}
       </div>
     </HeadLayout>

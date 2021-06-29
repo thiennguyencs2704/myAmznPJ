@@ -79,21 +79,22 @@ const cartSlice = createSlice({
     },
   },
 
-  // extraReducers: {
-  //   [fetchUserProfile.pending]: (state, action) => {
-  //     state.loading = true;
-  //     state.err = null;
+  //   extraReducers: {
+  //     [fetchUserProfile.pending]: (state, action) => {
+  //       state.loading = true;
+  //       state.err = null;
+  //     },
+  //     [fetchUserProfile.fulfilled]: (state, action) => {
+  //       const getCart = action.payload.cart;
+  //       state.cart = getCart ? getCart : [];
+  //       state.loading = false;
+  //     },
+  //     [fetchUserProfile.rejected]: (state, action) => {
+  //       state.err = action.error.message;
+  //       state.loading = false;
+  //     },
+
   //   },
-  //   [fetchUserProfile.fulfilled]: (state, action) => {
-  //     const getCart = action.payload.cart;
-  //     state.cart = getCart ? getCart : [];
-  //     state.loading = false;
-  //   },
-  //   [fetchUserProfile.rejected]: (state, action) => {
-  //     state.err = action.error.message;
-  //     state.loading = false;
-  //   },
-  // },
 });
 
 export const { addCart, removeCart, changeCart, changeItemQty } =

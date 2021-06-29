@@ -125,6 +125,7 @@ const Header = () => {
                     filteredProducts: JSON.stringify(productSuggestion),
                   },
                 }}
+                as={`/search?keyword=${search}`}
               >
                 <SearchIcon className="h-10 w-10 p-2 hover:cursor-pointer hover:bg-yellow-600 active:bg-yellow-700 rounded-r-md" />
               </Link>

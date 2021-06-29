@@ -139,7 +139,7 @@ const SignUp = () => {
           </div>
         </div>
 
-        <footer className="relative flex flex-col items-center border-t border-gray-100 w-full text-xs mt-10 pb-10">
+        <footer className="relative flex flex-col items-center border-t border-gray-100 w-full text-xs mt-auto pb-10">
           <div className="absolute w-full h-full bg-gradient-to-b from-gray-100 to-white top-0" />
 
           <div className="flex flex-col sm:flex-row space-y-1 sm:space-y-0 max-w-xs justify-center text-blue-700 w-1/2 mt-8 z-10 sm:space-x-3">

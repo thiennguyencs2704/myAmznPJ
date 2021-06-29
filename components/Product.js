@@ -4,14 +4,14 @@ import { StarIcon } from "@heroicons/react/solid";
 import { addCart } from "../store/cartSlice";
 import { useDispatch } from "react-redux";
 import React from "react";
+import Link from "next/link";
 
 const Product = React.forwardRef(({ product }, ref) => {
   const dispatch = useDispatch();
   const { id, category, image, title, description, price, itemQty, star } =
     product;
 
-  const handlerAddCart = (e) => {
-    e.preventDefault();
+  const handlerAddCart = () => {
     dispatch(
       addCart({
         ...product,
@@ -25,11 +25,25 @@ const Product = React.forwardRef(({ product }, ref) => {
         <p className="absolute text-sm top-2 right-2 italic text-gray-400">
           {category}
         </p>
-        <div className="text-center">
-          <Image src={image} width={150} height={150} objectFit="contain" />
-        </div>
 
-        <h4 className="mt-2 pt-2 line-clamp-3">{title}</h4>
+        <Link
+          key={id}
+          href={{
+            pathname: "/productdetail/[id]",
+            query: { id: id, productData: JSON.stringify(product) },
+          }}
+          as={`/productdetail/${title.replace(/ /g, "-")}`}
+        >
+          <a>
+            <div className="text-center">
+              <Image src={image} width={150} height={150} objectFit="contain" />
+            </div>
+
+            <h4 className="mt-2 pt-2 line-clamp-3 hover:text-blue-700">
+              {title}
+            </h4>
+          </a>
+        </Link>
         <div className="flex">
           {[...Array(star)].map((_, i) => (
             <StarIcon key={i} className="w-5 h-5 text-yellow-500" />
