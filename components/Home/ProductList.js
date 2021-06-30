@@ -1,5 +1,4 @@
 import Product from "./Product";
-import Link from "next/link";
 
 const ProductList = ({ amaProducts }) => {
   return (

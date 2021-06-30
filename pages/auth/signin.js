@@ -1,11 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useDispatch } from "react-redux";
-import { auth, provider } from "../../firebase";
+import { auth } from "../../firebase";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import HeadLayout from "../../components/Layout/HeadLayout";
-import { realtimeDB } from "../../firebase";
 import { fetchUserProfile } from "../../store/cartActions";
 
 const Signin = () => {
