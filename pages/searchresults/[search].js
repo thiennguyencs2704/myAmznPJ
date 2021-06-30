@@ -1,5 +1,5 @@
-import HeadLayout from "../../components/HeadLayout";
-import FilteredProduct from "../../components/FilteredProduct";
+import HeadLayout from "../../components/Layout/HeadLayout";
+import FilteredProduct from "../../components/Header/FilteredProduct";
 import { useSelector } from "react-redux";
 
 export const getServerSideProps = async (context) => {

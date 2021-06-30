@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
-import CheckoutProductList from "../components/CheckoutProductList";
+import CheckoutProductList from "../components/Checkout/CheckoutProductList";
 import Link from "next/link";
 import { ShoppingCartIcon } from "@heroicons/react/outline";
-import HeadLayout from "../components/HeadLayout";
+import HeadLayout from "../components/Layout/HeadLayout";
 
 const Checkout = () => {
   const { totalQty, totalAmt } = useSelector((state) => state.cart);

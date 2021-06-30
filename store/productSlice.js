@@ -14,15 +14,14 @@ const productSlice = createSlice({
 
     searchProducts: (state, action) => {
       const searchKey = action.payload.trim();
-      console.log(searchKey);
 
       state.productSuggestion = state.amznProducts.filter((product) =>
         product.title.toLowerCase().includes(searchKey)
       );
+    },
 
-      state.productResult = state.amznProducts.filter((product) =>
-        product.title.toLowerCase().includes(searchKey)
-      );
+    getProductResult: (state) => {
+      state.productResult = [...state.productSuggestion];
     },
 
     clearProductSuggestion: (state) => {
@@ -31,6 +30,10 @@ const productSlice = createSlice({
   },
 });
 
-export const { getProducts, searchProducts, clearProductSuggestion } =
-  productSlice.actions;
+export const {
+  getProducts,
+  searchProducts,
+  getProductResult,
+  clearProductSuggestion,
+} = productSlice.actions;
 export default productSlice.reducer;

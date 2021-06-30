@@ -1,4 +1,4 @@
-import HeadLayout from "../../../components/HeadLayout";
+import HeadLayout from "../../../components/Layout/HeadLayout";
 import Image from "next/image";
 import { StarIcon } from "@heroicons/react/solid";
 
@@ -23,8 +23,9 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async (context) => {
+  const productId = Number(context.params.id) - 1;
   const res = await fetch(
-    `https://my-amzn-web-default-rtdb.firebaseio.com/products/${context.params.id}.json`
+    `https://my-amzn-web-default-rtdb.firebaseio.com/products/${productId}.json`
   );
   const productObj = await res.json();
 

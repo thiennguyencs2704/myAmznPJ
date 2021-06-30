@@ -1,11 +1,11 @@
-import Banner from "../components/Banner";
-import ProductList from "../components/ProductList";
+import Banner from "../components/Home/Banner";
+import ProductList from "../components/Home/ProductList";
 import { useEffect } from "react";
 import { auth } from "../firebase";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getProducts } from "../store/productSlice";
-import HeadLayout from "../components/HeadLayout";
-import { fetchUserProfile, fetchProducts } from "../store/cartActions";
+import HeadLayout from "../components/Layout/HeadLayout";
+import { fetchUserProfile } from "../store/cartActions";
 
 export const getServerSideProps = async () => {
   const res = await fetch(

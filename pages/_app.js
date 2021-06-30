@@ -3,7 +3,7 @@ import "../styles/globals.css";
 import { Provider } from "react-redux";
 
 import { store } from "../store/index";
-import Layout from "../components/Layout";
+import Layout from "../components/Layout/Layout";
 
 const MyApp = ({ Component, pageProps }) => {
   return (

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Currency from "react-currency-formatter";
 import { StarIcon } from "@heroicons/react/solid";
-import { addCart } from "../store/cartSlice";
+import { addCart } from "../../store/cartSlice";
 import { useDispatch } from "react-redux";
 import React from "react";
 import Link from "next/link";

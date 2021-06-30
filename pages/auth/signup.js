@@ -3,7 +3,7 @@ import Image from "next/image";
 import { auth } from "../../firebase";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import HeadLayout from "../../components/HeadLayout";
+import HeadLayout from "../../components/Layout/HeadLayout";
 import { realtimeDB } from "../../firebase";
 
 const SignUp = () => {

@@ -4,7 +4,7 @@ import {
   removeCart,
   changeCart,
   changeItemQty,
-} from "../store/cartSlice";
+} from "../../store/cartSlice";
 import { useDispatch } from "react-redux";
 
 const CheckoutProduct = ({ product }) => {
