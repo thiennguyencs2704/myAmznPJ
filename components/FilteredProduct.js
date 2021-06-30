@@ -3,7 +3,7 @@ import { StarIcon } from "@heroicons/react/solid";
 import React from "react";
 import Link from "next/link";
 
-const FilteredProduct = React.forwardRef(({ filteredProduct }, ref) => {
+const FilteredProduct = ({ filteredProduct }) => {
   const { id, image, title, price, star } = filteredProduct;
 
   return (
@@ -15,7 +15,7 @@ const FilteredProduct = React.forwardRef(({ filteredProduct }, ref) => {
             pathname: "/productdetail/[id]",
             query: { id: id, productData: JSON.stringify(filteredProduct) },
           }}
-          as={`/productdetail/${title.replace(/ /g, "-")}`}
+          // as={`/productdetail/${title.replace(/ /g, "-")}`}
         >
           <a>
             <div className="flex-shrink-0 mr-5">
@@ -31,7 +31,7 @@ const FilteredProduct = React.forwardRef(({ filteredProduct }, ref) => {
               pathname: "/productdetail/[id]",
               query: { id: id, productData: JSON.stringify(filteredProduct) },
             }}
-            as={`/productdetail/${title.replace(/ /g, "-")}`}
+            // as={`/productdetail/${title.replace(/ /g, "-")}`}
           >
             <a className="text-base font-medium line-clamp-3 sm:text-lg mb-2 hover:text-blue-700">
               {title}
@@ -60,6 +60,6 @@ const FilteredProduct = React.forwardRef(({ filteredProduct }, ref) => {
       </div>
     </div>
   );
-});
+};
 
 export default FilteredProduct;

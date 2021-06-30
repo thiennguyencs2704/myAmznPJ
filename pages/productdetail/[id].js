@@ -4,6 +4,7 @@ import { StarIcon } from "@heroicons/react/solid";
 
 export const getServerSideProps = async (context) => {
   const productObj = JSON.parse(context.query.productData);
+  console.log("OBJ", productObj);
 
   const review = (max, min) => {
     return Math.floor(Math.random() * (max - min) + min).toLocaleString(
@@ -29,7 +30,7 @@ const ProductDetail = ({ productDetail }) => {
     detailImg,
     reviewNumber,
   } = productDetail;
-
+  // console.log(object);
   return (
     <HeadLayout title={`Amazon | ${title}`}>
       <div className="grid grid-cols-1 md:grid-cols-2 justify-center my-5 space-x-6 md:space-x-10 min-h-screen">

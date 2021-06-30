@@ -6,12 +6,13 @@ import { useDispatch } from "react-redux";
 import React from "react";
 import Link from "next/link";
 
-const Product = React.forwardRef(({ product }, ref) => {
+const Product = ({ product }) => {
   const dispatch = useDispatch();
   const { id, category, image, title, description, price, itemQty, star } =
     product;
 
   const handlerAddCart = () => {
+    console.log(product, "Product data");
     dispatch(
       addCart({
         ...product,
@@ -29,10 +30,10 @@ const Product = React.forwardRef(({ product }, ref) => {
         <Link
           key={id}
           href={{
-            pathname: "/productdetail/[id]",
+            pathname: `/productdetail/[id]`,
             query: { id: id, productData: JSON.stringify(product) },
           }}
-          as={`/productdetail/${title.replace(/ /g, "-")}`}
+          // as={`/productdetail/${title.replace(/ /g, "-")}`}
         >
           <a>
             <div className="text-center">
@@ -70,6 +71,6 @@ const Product = React.forwardRef(({ product }, ref) => {
       </span>
     </div>
   );
-});
+};
 
 export default Product;
