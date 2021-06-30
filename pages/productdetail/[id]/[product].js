@@ -1,10 +1,32 @@
-import HeadLayout from "../../components/HeadLayout";
+import HeadLayout from "../../../components/HeadLayout";
 import Image from "next/image";
 import { StarIcon } from "@heroicons/react/solid";
 
-export const getServerSideProps = async (context) => {
-  const productObj = JSON.parse(context.query.productData);
-  console.log("OBJ", productObj);
+export const getStaticPaths = async () => {
+  const res = await fetch(
+    `https://my-amzn-web-default-rtdb.firebaseio.com/products.json`
+  );
+  const data = await res.json();
+  const paths = data.map((product) => {
+    return {
+      params: {
+        id: product.id.toString(),
+        product: product.title.replace(/ /g, "-"),
+      },
+    };
+  });
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export const getStaticProps = async (context) => {
+  const res = await fetch(
+    `https://my-amzn-web-default-rtdb.firebaseio.com/products/${context.params.id}.json`
+  );
+  const productObj = await res.json();
 
   const review = (max, min) => {
     return Math.floor(Math.random() * (max - min) + min).toLocaleString(

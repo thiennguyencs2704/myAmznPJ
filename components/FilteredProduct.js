@@ -11,27 +11,19 @@ const FilteredProduct = ({ filteredProduct }) => {
       <div className="flex w-9/12">
         <Link
           key={id}
-          href={{
-            pathname: "/productdetail/[id]",
-            query: { id: id, productData: JSON.stringify(filteredProduct) },
-          }}
-          // as={`/productdetail/${title.replace(/ /g, "-")}`}
+          href="/productdetail/[id]/[product]"
+          as={`/productdetail/${id}/${title.replace(/ /g, "-")}`}
         >
-          <a>
-            <div className="flex-shrink-0 mr-5">
-              <Image src={image} width={200} height={200} objectFit="contain" />
-            </div>
+          <a className="flex-shrink-0 mr-5">
+            <Image src={image} width={200} height={200} objectFit="contain" />
           </a>
         </Link>
 
         <div className="ml-2 w-max text-xs sm:text-sm pt-3">
           <Link
             key={id}
-            href={{
-              pathname: "/productdetail/[id]",
-              query: { id: id, productData: JSON.stringify(filteredProduct) },
-            }}
-            // as={`/productdetail/${title.replace(/ /g, "-")}`}
+            href="/productdetail/[id]/[product]"
+            as={`/productdetail/${id}/${title.replace(/ /g, "-")}`}
           >
             <a className="text-base font-medium line-clamp-3 sm:text-lg mb-2 hover:text-blue-700">
               {title}

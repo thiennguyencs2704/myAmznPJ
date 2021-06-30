@@ -89,26 +89,21 @@ const Header = () => {
                     .map((product) => (
                       <Link
                         key={product.id}
-                        href={{
-                          pathname: "/productdetail/[id]",
-                          query: {
-                            id: product.id,
-                            productData: JSON.stringify(product),
-                          },
-                        }}
+                        href="/productdetail/[id]/[product]"
+                        as={`/productdetail/${
+                          product.id
+                        }/${product.title.replace(/ /g, "-")}`}
                       >
-                        <a>
-                          <p
-                            onMouseDown={(e) => e.preventDefault()}
-                            onClick={() => {
-                              setSearchSuggestion(false);
-                              handlerBlurInput();
-                            }}
-                            key={product.id}
-                            className="line-clamp-1 py-1 px-3 hover:bg-gray-100"
-                          >
-                            {product.title}
-                          </p>
+                        <a
+                          onMouseDown={(e) => e.preventDefault()}
+                          onClick={() => {
+                            setSearchSuggestion(false);
+                            handlerBlurInput();
+                          }}
+                          key={product.id}
+                          className="line-clamp-1 py-1 px-3 hover:bg-gray-100"
+                        >
+                          {product.title}
                         </a>
                       </Link>
                     ))
@@ -122,7 +117,6 @@ const Header = () => {
                   pathname: "/searchresults/[search]",
                   query: {
                     search: search,
-                    filteredProducts: JSON.stringify(productSuggestion),
                   },
                 }}
                 as={`/search?keyword=${search}`}

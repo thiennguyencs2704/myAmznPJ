@@ -32,7 +32,7 @@ export default function Home({ myProducts }) {
 
   useEffect(() => {
     dispatch(getProducts(myProducts));
-  });
+  }, []);
 
   useEffect(() => {
     auth.onAuthStateChanged((userAuth) => {
@@ -40,7 +40,7 @@ export default function Home({ myProducts }) {
         dispatch(fetchUserProfile(userAuth.uid));
       }
     });
-  });
+  }, []);
 
   return (
     <HeadLayout title="Amazon | Home">

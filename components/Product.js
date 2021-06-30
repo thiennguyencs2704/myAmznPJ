@@ -29,11 +29,8 @@ const Product = ({ product }) => {
 
         <Link
           key={id}
-          href={{
-            pathname: `/productdetail/[id]`,
-            query: { id: id, productData: JSON.stringify(product) },
-          }}
-          // as={`/productdetail/${title.replace(/ /g, "-")}`}
+          href="/productdetail/[id]/[product]"
+          as={`/productdetail/${id}/${title.replace(/ /g, "-")}`}
         >
           <a>
             <div className="text-center">
