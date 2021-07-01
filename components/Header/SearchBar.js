@@ -4,7 +4,7 @@ import {
   clearProductSuggestion,
 } from "../../store/productSlice";
 import { SearchIcon } from "@heroicons/react/outline";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -19,9 +19,10 @@ const SearchBar = ({ mobileMode }) => {
 
   const [search, setSearch] = useState("");
   const [searchSuggestion, setSearchSuggestion] = useState(false);
+  const searchInput = useRef();
 
   const handlerBlurInput = () => {
-    document.getElementById("searchInput").blur();
+    searchInput.current.blur();
   };
 
   const handlerSearchChange = (e) => {
@@ -34,8 +35,10 @@ const SearchBar = ({ mobileMode }) => {
   };
 
   useEffect(() => {
-    setSearch("");
-    dispatch(clearProductSuggestion());
+    if (router.pathname !== "/searchresults/[search]") {
+      setSearch("");
+      dispatch(clearProductSuggestion());
+    }
   }, [router.pathname]);
 
   return (
@@ -52,6 +55,7 @@ const SearchBar = ({ mobileMode }) => {
         <input
           onChange={handlerSearchChange}
           value={search}
+          ref={searchInput}
           type="text"
           className="w-full p-3 h-full text-black removeInputWebkit"
           onBlur={() => setSearchSuggestion(false)}
@@ -97,7 +101,7 @@ const SearchBar = ({ mobileMode }) => {
               search: search,
             },
           }}
-          as={`/search?keyword=${search}`}
+          as={`/searchresults/search?keyword=${search}`}
         >
           <SearchIcon
             onClick={handlerGetProductResult}

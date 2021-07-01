@@ -15,9 +15,12 @@ const productSlice = createSlice({
     searchProducts: (state, action) => {
       const searchKey = action.payload.trim();
 
-      state.productSuggestion = state.amznProducts.filter((product) =>
-        product.title.toLowerCase().includes(searchKey)
-      );
+      state.productSuggestion =
+        searchKey.length > 0
+          ? state.amznProducts.filter((product) =>
+              product.title.toLowerCase().includes(searchKey)
+            )
+          : [];
     },
 
     getProductResult: (state) => {
