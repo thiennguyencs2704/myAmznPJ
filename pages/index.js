@@ -5,7 +5,7 @@ import { auth } from "../firebase";
 import { useDispatch } from "react-redux";
 import { getProducts } from "../store/productSlice";
 import HeadLayout from "../components/Layout/HeadLayout";
-import { fetchUserProfile } from "../store/cartActions";
+import { fetchUserProfile } from "../store/userActions";
 
 export const getServerSideProps = async () => {
   const res = await fetch(

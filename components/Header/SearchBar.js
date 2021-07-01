@@ -10,12 +10,12 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 
 const SearchBar = ({ mobileMode }) => {
+  const dispatch = useDispatch();
   const productSuggestion = useSelector(
     (state) => state.products.productSuggestion
   );
 
   const router = useRouter();
-  const dispatch = useDispatch();
 
   const [search, setSearch] = useState("");
   const [searchSuggestion, setSearchSuggestion] = useState(false);

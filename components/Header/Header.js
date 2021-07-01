@@ -2,11 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { signout } from "../../store/userSlice";
+import { useEffect } from "react";
 import { auth } from "../../firebase";
-
 import { ShoppingCartIcon, MenuIcon } from "@heroicons/react/outline";
-
 import SearchBar from "./SearchBar";
+import { getLastCart } from "../../store/cartSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -17,6 +17,19 @@ const Header = () => {
     auth.signOut();
     dispatch(signout());
   };
+
+  useEffect(() => {
+    const lastCart = localStorage.getItem("cart");
+    if (lastCart) {
+      dispatch(getLastCart(JSON.parse(lastCart)));
+    }
+  }, []);
+
+  useEffect(() => {
+    cart.totalQty
+      ? localStorage.setItem("cart", JSON.stringify(cart))
+      : localStorage.removeItem("cart");
+  }, [cart.totalQty]);
 
   return (
     <header className="sticky top-0 z-50">

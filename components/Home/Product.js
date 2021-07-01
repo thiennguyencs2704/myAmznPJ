@@ -12,7 +12,6 @@ const Product = ({ product }) => {
     product;
 
   const handlerAddCart = () => {
-    console.log(product, "Product data");
     dispatch(
       addCart({
         ...product,

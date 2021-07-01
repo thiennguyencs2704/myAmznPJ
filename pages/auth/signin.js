@@ -5,7 +5,7 @@ import { auth } from "../../firebase";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import HeadLayout from "../../components/Layout/HeadLayout";
-import { fetchUserProfile } from "../../store/cartActions";
+import { fetchUserProfile } from "../../store/userActions";
 
 const Signin = () => {
   const [email, setEmail] = useState("");

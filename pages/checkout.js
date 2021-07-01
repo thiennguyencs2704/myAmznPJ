@@ -6,6 +6,7 @@ import HeadLayout from "../components/Layout/HeadLayout";
 
 const Checkout = () => {
   const { totalQty, totalAmt } = useSelector((state) => state.cart);
+
   return (
     <HeadLayout title="Amazon | Checkout">
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4  min-h-screen bg-gray-100 px-4 pb-10">
