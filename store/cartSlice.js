@@ -1,19 +1,33 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import { fetchUserProfile } from "./cartActions";
 
 const initialState = {
   cart: [],
   totalQty: 0,
   totalAmt: 0,
-  updatedCart: false,
   loading: false,
   err: null,
+};
+
+const testing = () => {
+  console.log(testing);
 };
 
 const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
+    getLastCart: (state, action) => {
+      state.cart = [...action.payload.cart];
+
+      state.totalQty = state.cart.reduce((acc, item) => acc + item.itemQty, 0);
+
+      state.totalAmt = Number(
+        state.cart
+          .reduce((acc, item) => acc + item.itemQty * item.price, 0)
+          .toFixed(2)
+      );
+    },
+
     changeItemQty: (state, action) => {
       const selectedItem = action.payload;
       const existingItem = state.cart.find(
@@ -37,9 +51,11 @@ const cartSlice = createSlice({
 
       state.totalQty = state.cart.reduce((acc, item) => acc + item.itemQty, 0);
 
-      state.totalAmt = state.cart
-        .reduce((acc, item) => acc + item.itemQty * item.price, 0)
-        .toFixed(2);
+      state.totalAmt = Number(
+        state.cart
+          .reduce((acc, item) => acc + item.itemQty * item.price, 0)
+          .toFixed(2)
+      );
     },
 
     addCart: (state, action) => {
@@ -54,9 +70,11 @@ const cartSlice = createSlice({
 
       state.totalQty = state.cart.reduce((acc, item) => acc + item.itemQty, 0);
 
-      state.totalAmt = state.cart
-        .reduce((acc, item) => acc + item.itemQty * item.price, 0)
-        .toFixed(2);
+      state.totalAmt = Number(
+        state.cart
+          .reduce((acc, item) => acc + item.itemQty * item.price, 0)
+          .toFixed(2)
+      );
     },
 
     removeCart: (state, action) => {
@@ -73,31 +91,16 @@ const cartSlice = createSlice({
 
       state.totalQty = state.cart.reduce((acc, item) => acc + item.itemQty, 0);
 
-      state.totalAmt = state.cart
-        .reduce((acc, item) => acc + item.itemQty * item.price, 0)
-        .toFixed(2);
+      state.totalAmt = Number(
+        state.cart
+          .reduce((acc, item) => acc + item.itemQty * item.price, 0)
+          .toFixed(2)
+      );
     },
   },
-
-  //   extraReducers: {
-  //     [fetchUserProfile.pending]: (state, action) => {
-  //       state.loading = true;
-  //       state.err = null;
-  //     },
-  //     [fetchUserProfile.fulfilled]: (state, action) => {
-  //       const getCart = action.payload.cart;
-  //       state.cart = getCart ? getCart : [];
-  //       state.loading = false;
-  //     },
-  //     [fetchUserProfile.rejected]: (state, action) => {
-  //       state.err = action.error.message;
-  //       state.loading = false;
-  //     },
-
-  //   },
 });
 
-export const { addCart, removeCart, changeCart, changeItemQty } =
+export const { addCart, removeCart, changeCart, changeItemQty, getLastCart } =
   cartSlice.actions;
 export const selectCart = (state) => {
   console.log(state.cart);

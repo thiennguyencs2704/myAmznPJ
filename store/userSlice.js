@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchUserProfile } from "./cartActions";
+import { fetchUserProfile } from "./userActions";
 
 const initialState = {
   user: null,
