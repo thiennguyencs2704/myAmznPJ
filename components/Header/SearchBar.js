@@ -11,16 +11,16 @@ import Link from "next/link";
 
 const SearchBar = ({ mobileMode }) => {
   const dispatch = useDispatch();
+  const router = useRouter();
+
   const productSuggestion = useSelector(
     (state) => state.products.productSuggestion
   );
 
-  const router = useRouter();
-
   const [search, setSearch] = useState("");
   const [searchSuggestion, setSearchSuggestion] = useState(false);
-  const searchInput = useRef();
 
+  const searchInput = useRef();
   const handlerBlurInput = () => {
     searchInput.current.blur();
   };
@@ -30,9 +30,10 @@ const SearchBar = ({ mobileMode }) => {
     dispatch(searchProducts(e.target.value.toLowerCase()));
   };
 
-  const handlerGetProductResult = () => {
-    dispatch(getProductResult());
-  };
+  // const handlerGetProductResult = () => {
+  //   dispatch(getProductResult());
+  //   localStorage.setItem("searchResults", JSON.stringify(productSuggestion));
+  // };
 
   useEffect(() => {
     if (router.pathname !== "/searchresults/[search]") {
@@ -41,11 +42,13 @@ const SearchBar = ({ mobileMode }) => {
     }
   }, [router.pathname]);
 
+  const displayMobileMode = mobileMode
+    ? "hidden md:flex flex-grow"
+    : "md:hidden flex flex-grow";
+
   return (
     <div
-      className={`${
-        mobileMode ? "hidden md:flex flex-grow" : "md:hidden flex flex-grow"
-      } items-center h-10 bg-yellow-500 rounded-md`}
+      className={`${displayMobileMode} items-center h-10 bg-yellow-500 rounded-md`}
     >
       <select className="h-full items-center pl-2 rounded-l-md text-gray-500 text-sm bg-gray-300 hover:cursor-pointer rounded-r-none border-none">
         <option className="border-none">All</option>
@@ -95,16 +98,11 @@ const SearchBar = ({ mobileMode }) => {
       </div>
       <div className="">
         <Link
-          href={{
-            pathname: "/searchresults/[search]",
-            query: {
-              search: search,
-            },
-          }}
-          as={`/searchresults/search?keyword=${search}`}
+          href="/searchresults/[...slug]"
+          as={`/searchresults/keyword/${search}`}
         >
           <SearchIcon
-            onClick={handlerGetProductResult}
+            // onClick={handlerGetProductResult}
             className="h-10 w-10 p-2 hover:cursor-pointer hover:bg-yellow-600 active:bg-yellow-700 rounded-r-md"
           />
         </Link>

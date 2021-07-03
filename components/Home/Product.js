@@ -28,7 +28,7 @@ const Product = ({ product }) => {
 
         <Link
           key={id}
-          href="/productdetail/[id]/[product]"
+          href="/productdetail/[...slug]"
           as={`/productdetail/${id}/${title.replace(/ /g, "-")}`}
         >
           <a>

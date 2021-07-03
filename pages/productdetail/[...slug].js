@@ -1,6 +1,7 @@
-import HeadLayout from "../../../components/Layout/HeadLayout";
+import HeadLayout from "../../components/Layout/HeadLayout";
 import Image from "next/image";
 import { StarIcon } from "@heroicons/react/solid";
+import { useRouter } from "next/router";
 
 export const getStaticPaths = async () => {
   const res = await fetch(
@@ -10,20 +11,20 @@ export const getStaticPaths = async () => {
   const paths = data.map((product) => {
     return {
       params: {
-        id: product.id.toString(),
-        product: product.title.replace(/ /g, "-"),
+        slug: [product.id.toString(), product.title.replace(/ /g, "-")],
       },
     };
   });
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 };
 
 export const getStaticProps = async (context) => {
-  const productId = Number(context.params.id) - 1;
+  // console.log("Props", context.params.slug[0]);
+  const productId = Number(context.params.slug[0]) - 1;
   const res = await fetch(
     `https://my-amzn-web-default-rtdb.firebaseio.com/products/${productId}.json`
   );
@@ -53,7 +54,12 @@ const ProductDetail = ({ productDetail }) => {
     detailImg,
     reviewNumber,
   } = productDetail;
-  // console.log(object);
+
+  const router = useRouter();
+  if (router.isFallback) {
+    return <div>Loading product ... Wait for a second!</div>;
+  }
+
   return (
     <HeadLayout title={`Amazon | ${title}`}>
       <div className="grid grid-cols-1 md:grid-cols-2 justify-center my-5 space-x-6 md:space-x-10 min-h-screen">
@@ -65,8 +71,8 @@ const ProductDetail = ({ productDetail }) => {
           <p className="text-blue-700 font-medium">Visit the Store</p>
           <div className="flex flex-col md:flex-row md:items-center">
             <div className="flex">
-              {[...Array(star)].map((_, i) => (
-                <StarIcon key={i} className="w-5 h-5 text-yellow-500" />
+              {[...Array(star)].map((_) => (
+                <StarIcon key={id} className="w-5 h-5 text-yellow-500" />
               ))}
             </div>
             <p className="md:ml-2 text-blue-700 text-xs font-normal">

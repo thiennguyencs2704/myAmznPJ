@@ -8,8 +8,18 @@ const initialState = {
   err: null,
 };
 
-const testing = () => {
-  console.log(testing);
+const handlerToTalQty = (cart) => {
+  return cart.reduce((acc, item) => acc + item.itemQty, 0);
+};
+
+const handlerTotalAmt = (cart) => {
+  return Number(
+    cart.reduce((acc, item) => acc + item.itemQty * item.price, 0).toFixed(2)
+  );
+};
+
+const handlerExistingItem = (selectedItem, cart) => {
+  return cart.find((item) => item.id === selectedItem.id);
 };
 
 const cartSlice = createSlice({
@@ -18,30 +28,20 @@ const cartSlice = createSlice({
   reducers: {
     getLastCart: (state, action) => {
       state.cart = [...action.payload.cart];
-
-      state.totalQty = state.cart.reduce((acc, item) => acc + item.itemQty, 0);
-
-      state.totalAmt = Number(
-        state.cart
-          .reduce((acc, item) => acc + item.itemQty * item.price, 0)
-          .toFixed(2)
-      );
+      state.totalQty = handlerToTalQty(state.cart);
+      state.totalAmt = handlerTotalAmt(state.cart);
     },
 
     changeItemQty: (state, action) => {
       const selectedItem = action.payload;
-      const existingItem = state.cart.find(
-        (item) => item.id === selectedItem.id
-      );
+      const existingItem = handlerExistingItem(selectedItem, state.cart);
 
       existingItem.itemQty = selectedItem.itemQty;
     },
 
     changeCart: (state, action) => {
       const selectedItem = action.payload;
-      const existingItem = state.cart.find(
-        (item) => item.id === selectedItem.id
-      );
+      const existingItem = handlerExistingItem(selectedItem, state.cart);
 
       selectedItem.itemQty < 1
         ? (state.cart = state.cart.filter(
@@ -49,39 +49,25 @@ const cartSlice = createSlice({
           ))
         : (existingItem.itemQty = selectedItem.itemQty);
 
-      state.totalQty = state.cart.reduce((acc, item) => acc + item.itemQty, 0);
-
-      state.totalAmt = Number(
-        state.cart
-          .reduce((acc, item) => acc + item.itemQty * item.price, 0)
-          .toFixed(2)
-      );
+      state.totalQty = handlerToTalQty(state.cart);
+      state.totalAmt = handlerTotalAmt(state.cart);
     },
 
     addCart: (state, action) => {
       const selectedItem = action.payload;
-      const existingItem = state.cart.find(
-        (item) => item.id === selectedItem.id
-      );
+      const existingItem = handlerExistingItem(selectedItem, state.cart);
 
       existingItem
         ? existingItem.itemQty++
         : (state.cart = [selectedItem, ...state.cart]);
 
-      state.totalQty = state.cart.reduce((acc, item) => acc + item.itemQty, 0);
-
-      state.totalAmt = Number(
-        state.cart
-          .reduce((acc, item) => acc + item.itemQty * item.price, 0)
-          .toFixed(2)
-      );
+      state.totalQty = handlerToTalQty(state.cart);
+      state.totalAmt = handlerTotalAmt(state.cart);
     },
 
     removeCart: (state, action) => {
       const selectedItem = action.payload;
-      const existingItem = state.cart.find(
-        (item) => item.id === selectedItem.id
-      );
+      const existingItem = handlerExistingItem(selectedItem, state.cart);
 
       existingItem.itemQty < 2
         ? (state.cart = state.cart.filter(
@@ -89,13 +75,8 @@ const cartSlice = createSlice({
           ))
         : existingItem.itemQty--;
 
-      state.totalQty = state.cart.reduce((acc, item) => acc + item.itemQty, 0);
-
-      state.totalAmt = Number(
-        state.cart
-          .reduce((acc, item) => acc + item.itemQty * item.price, 0)
-          .toFixed(2)
-      );
+      state.totalQty = handlerToTalQty(state.cart);
+      state.totalAmt = handlerTotalAmt(state.cart);
     },
   },
 });

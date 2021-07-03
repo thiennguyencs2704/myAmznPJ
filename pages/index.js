@@ -7,7 +7,7 @@ import { getProducts } from "../store/productSlice";
 import HeadLayout from "../components/Layout/HeadLayout";
 import { fetchUserProfile } from "../store/userActions";
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const res = await fetch(
     "https://my-amzn-web-default-rtdb.firebaseio.com/products.json"
   );
@@ -25,8 +25,10 @@ export const getServerSideProps = async () => {
     props: {
       myProducts: productData,
     },
+    revalidate: 5,
   };
 };
+
 export default function Home({ myProducts }) {
   const dispatch = useDispatch();
 
