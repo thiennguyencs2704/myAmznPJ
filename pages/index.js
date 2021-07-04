@@ -3,7 +3,7 @@ import ProductList from "../components/Home/ProductList";
 import { useEffect } from "react";
 import { auth } from "../firebase";
 import { useDispatch } from "react-redux";
-import { getProducts } from "../store/productSlice";
+import { getInitialProducts } from "../store/productSlice";
 import HeadLayout from "../components/Layout/HeadLayout";
 import { fetchUserProfile } from "../store/userActions";
 
@@ -33,7 +33,7 @@ export default function Home({ myProducts }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getProducts(myProducts));
+    dispatch(getInitialProducts(myProducts));
   }, []);
 
   useEffect(() => {

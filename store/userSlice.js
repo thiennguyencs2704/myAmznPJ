@@ -3,8 +3,7 @@ import { fetchUserProfile } from "./userActions";
 
 const initialState = {
   user: null,
-  loading: false,
-  err: null,
+  status: null,
 };
 
 const userSlice = createSlice({
@@ -13,20 +12,20 @@ const userSlice = createSlice({
   reducers: {
     signout: (state) => {
       state.user = null;
+      state.status = null;
     },
   },
 
   extraReducers: {
     [fetchUserProfile.pending]: (state) => {
-      state.loading = true;
+      state.status = "Loading";
     },
     [fetchUserProfile.fulfilled]: (state, action) => {
       state.user = action.payload;
-      state.loading = false;
+      state.status = "Success";
     },
     [fetchUserProfile.rejected]: (state, action) => {
-      state.loading = false;
-      state.err = action.error.message;
+      state.status = "Failed";
     },
   },
 });

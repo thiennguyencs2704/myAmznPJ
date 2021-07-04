@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getProductResult,
   searchProducts,
-  getProducts,
+  getInitialProducts,
 } from "../../store/productSlice";
 import { useEffect } from "react";
 
@@ -35,13 +35,17 @@ export const getServerSideProps = async (context) => {
 
 const SearchResults = ({ searchKeyword, myProducts }) => {
   const dispatch = useDispatch();
+  const productSlice = useSelector((state) => state.products);
+
   useEffect(() => {
-    dispatch(getProducts(myProducts));
-    dispatch(searchProducts(searchKeyword));
+    if (productSlice.amznProducts.length === 0) {
+      dispatch(getInitialProducts(myProducts));
+      dispatch(searchProducts(searchKeyword));
+    }
     dispatch(getProductResult());
   }, [searchKeyword]);
 
-  const productResult = useSelector((state) => state.products.productResult);
+  const productResult = productSlice.productResult;
 
   return (
     <HeadLayout title={`Amazon | ${searchKeyword}`}>

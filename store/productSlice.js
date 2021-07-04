@@ -7,18 +7,15 @@ const productSlice = createSlice({
     amznProducts: [],
     productSuggestion: [],
     productResult: [],
-    loading: false,
-    err: false,
+    status: null,
   },
   reducers: {
-    getProducts: (state, action) => {
+    getInitialProducts: (state, action) => {
       state.amznProducts = action.payload;
-      console.log("Dispatch Called");
     },
 
     searchProducts: (state, action) => {
       const searchKey = action.payload.trim();
-      console.log("Search dispatch called");
 
       state.productSuggestion =
         searchKey.length > 0
@@ -39,21 +36,20 @@ const productSlice = createSlice({
 
   extraReducers: {
     [fetchInitialProducts.pending]: (state) => {
-      state.loading = true;
+      state.status = "Loading";
     },
     [fetchInitialProducts.fulfilled]: (state, action) => {
       state.amznProducts = action.payload;
-      state.loading = false;
+      state.status = "Success";
     },
     [fetchInitialProducts.rejected]: (state, action) => {
-      state.loading = false;
-      state.err = action.error.message;
+      state.status = "Failed";
     },
   },
 });
 
 export const {
-  getProducts,
+  getInitialProducts,
   searchProducts,
   getProductResult,
   clearProductSuggestion,

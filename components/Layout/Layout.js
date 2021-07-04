@@ -1,19 +1,22 @@
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchInitialProducts } from "../../store/productActions";
 
 const Layout = ({ children }) => {
   const router = useRouter();
+  const dispatch = useDispatch();
 
-  // const dispatch = useDispatch();
+  const initialProduct = useSelector((state) => state.products.amznProducts);
 
-  // useEffect(() => {
-  //   dispatch(fetchInitialProducts());
-  //   console.log("Fetch pridcut first load");
-  // }, []);
+  useEffect(() => {
+    if (initialProduct.length === 0) {
+      dispatch(fetchInitialProducts());
+    }
+    // console.log("Fetch pridcut first load");
+  }, []);
 
   return (
     <>

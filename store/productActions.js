@@ -1,8 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-// import { getProducts, searchProducts } from "./productSlice";
 
 export const fetchInitialProducts = createAsyncThunk(
-  "cart/fetchUser",
+  "cart/fetchInitialProducts",
   async () => {
     try {
       const res = await fetch(
@@ -17,12 +16,3 @@ export const fetchInitialProducts = createAsyncThunk(
     }
   }
 );
-
-// export const filterSearchProducts = () => {
-//   console.log("Func triggered");
-//   return (dispatch, myProducts, searchKeyword) => {
-//     console.log("Check myProducts", myProducts);
-//     dispatch(getProducts(myProducts));
-//     dispatch(searchProducts(searchKeyword));
-//   };
-// };
