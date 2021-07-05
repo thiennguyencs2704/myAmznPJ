@@ -1,5 +1,4 @@
 import {
-  getProductResult,
   searchProducts,
   clearProductSuggestion,
 } from "../../store/productSlice";
@@ -11,11 +10,11 @@ import Link from "next/link";
 
 const SearchBar = ({ mobileMode }) => {
   const dispatch = useDispatch();
+  const router = useRouter();
+
   const productSuggestion = useSelector(
     (state) => state.products.productSuggestion
   );
-
-  const router = useRouter();
 
   const [search, setSearch] = useState("");
   const [searchSuggestion, setSearchSuggestion] = useState(false);
@@ -25,27 +24,34 @@ const SearchBar = ({ mobileMode }) => {
     searchInput.current.blur();
   };
 
-  const handlerSearchChange = (e) => {
-    setSearch(e.target.value);
-    dispatch(searchProducts(e.target.value.toLowerCase()));
-  };
-
-  const handlerGetProductResult = () => {
-    dispatch(getProductResult());
-  };
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (search.length !== 0 && search === searchInput.current.value) {
+        dispatch(searchProducts(searchInput.current.value.toLowerCase()));
+      }
+    }, 300);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [search]);
 
   useEffect(() => {
-    if (router.pathname !== "/searchresults/[search]") {
+    if (
+      productSuggestion.length !== 0 &&
+      router.pathname !== "/searchresults/[...slug]"
+    ) {
       setSearch("");
       dispatch(clearProductSuggestion());
     }
   }, [router.pathname]);
 
+  const displayMobileMode = mobileMode
+    ? "hidden md:flex flex-grow"
+    : "md:hidden flex flex-grow";
+
   return (
     <div
-      className={`${
-        mobileMode ? "hidden md:flex flex-grow" : "md:hidden flex flex-grow"
-      } items-center h-10 bg-yellow-500 rounded-md`}
+      className={`${displayMobileMode} items-center h-10 bg-yellow-500 rounded-md`}
     >
       <select className="h-full items-center pl-2 rounded-l-md text-gray-500 text-sm bg-gray-300 hover:cursor-pointer rounded-r-none border-none">
         <option className="border-none">All</option>
@@ -53,14 +59,14 @@ const SearchBar = ({ mobileMode }) => {
 
       <div className="relative flex-grow h-full">
         <input
-          onChange={handlerSearchChange}
+          onChange={(e) => setSearch(e.target.value)}
           value={search}
           ref={searchInput}
           type="text"
           className="w-full p-3 h-full text-black removeInputWebkit"
           onBlur={() => setSearchSuggestion(false)}
-          onClick={() => setSearchSuggestion(true)}
-          id="searchInput"
+          onMouseDown={() => setSearchSuggestion(true)}
+          id={mobileMode ? "searchInputMobile" : "searchInput"}
           autoComplete="off"
         />
 
@@ -95,18 +101,10 @@ const SearchBar = ({ mobileMode }) => {
       </div>
       <div className="">
         <Link
-          href={{
-            pathname: "/searchresults/[search]",
-            query: {
-              search: search,
-            },
-          }}
-          as={`/searchresults/search?keyword=${search}`}
+          href="/searchresults/[...slug]"
+          as={`/searchresults/keyword/${search}`}
         >
-          <SearchIcon
-            onClick={handlerGetProductResult}
-            className="h-10 w-10 p-2 hover:cursor-pointer hover:bg-yellow-600 active:bg-yellow-700 rounded-r-md"
-          />
+          <SearchIcon className="h-10 w-10 p-2 hover:cursor-pointer hover:bg-yellow-600 active:bg-yellow-700 rounded-r-md" />
         </Link>
       </div>
     </div>

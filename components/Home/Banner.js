@@ -15,13 +15,39 @@ const Banner = () => {
         showIndicators={false}
       >
         <div>
-          <img loading="lazy" src="https://links.papareact.com/gi1" alt="" />
+          <img
+            loading="lazy"
+            src="https://m.media-amazon.com/images/I/61jovjd+f9L._SX1500_.jpg"
+            alt=""
+          />
         </div>
         <div>
-          <img loading="lazy" src="https://links.papareact.com/6ff" alt="" />
+          <img
+            loading="lazy"
+            src="https://m.media-amazon.com/images/I/61TD5JLGhIL._SX1500_.jpg"
+            alt=""
+          />
         </div>
         <div>
-          <img loading="lazy" src="https://links.papareact.com/7ma" alt="" />
+          <img
+            loading="lazy"
+            src="https://m.media-amazon.com/images/I/711Y9Al9RNL._SX1500_.jpg"
+            alt=""
+          />
+        </div>
+        <div>
+          <img
+            loading="lazy"
+            src="https://m.media-amazon.com/images/I/71qid7QFWJL._SX1500_.jpg"
+            alt=""
+          />
+        </div>
+        <div>
+          <img
+            loading="lazy"
+            src="https://images-fe.ssl-images-amazon.com/images/G/65/SG-hq/2021/img/Associates_Mass_/XCM_Manual_1328012_1684437_SG_sg_associates_gwhero_2_3833239_1500x600_en_SG._CB669113358_.jpg"
+            alt=""
+          />
         </div>
       </Carousel>
     </div>

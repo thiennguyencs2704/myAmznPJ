@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { fetchInitialProducts } from "./productActions";
 
 const productSlice = createSlice({
   name: "products",
@@ -6,9 +7,10 @@ const productSlice = createSlice({
     amznProducts: [],
     productSuggestion: [],
     productResult: [],
+    status: null,
   },
   reducers: {
-    getProducts: (state, action) => {
+    getInitialProducts: (state, action) => {
       state.amznProducts = action.payload;
     },
 
@@ -31,10 +33,23 @@ const productSlice = createSlice({
       state.productSuggestion = [];
     },
   },
+
+  extraReducers: {
+    [fetchInitialProducts.pending]: (state) => {
+      state.status = "Loading";
+    },
+    [fetchInitialProducts.fulfilled]: (state, action) => {
+      state.amznProducts = action.payload;
+      state.status = "Success";
+    },
+    [fetchInitialProducts.rejected]: (state, action) => {
+      state.status = "Failed";
+    },
+  },
 });
 
 export const {
-  getProducts,
+  getInitialProducts,
   searchProducts,
   getProductResult,
   clearProductSuggestion,

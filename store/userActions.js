@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchUserProfile = createAsyncThunk(
-  "cart/fetchUser",
+  "cart/fetchUserProfile",
   async (uid) => {
     try {
       const res = await fetch(
@@ -9,7 +9,8 @@ export const fetchUserProfile = createAsyncThunk(
       );
 
       const data = await res.json();
-
+      console.log("Get user called");
+      console.log("Profile", data);
       return data;
     } catch (err) {
       throw Error(err);

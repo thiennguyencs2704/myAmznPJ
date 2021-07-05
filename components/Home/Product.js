@@ -20,7 +20,7 @@ const Product = ({ product }) => {
   };
 
   return (
-    <div className="relative flex flex-col bg-white m-5 p-10 rounded-lg text-base z-30 h-full">
+    <div className="relative flex flex-col bg-white m-5 p-10 rounded-lg text-base h-full">
       <div className="space-y-3 mb-3">
         <p className="absolute text-sm top-2 right-2 italic text-gray-400">
           {category}
@@ -28,7 +28,7 @@ const Product = ({ product }) => {
 
         <Link
           key={id}
-          href="/productdetail/[id]/[product]"
+          href="/productdetail/[...slug]"
           as={`/productdetail/${id}/${title.replace(/ /g, "-")}`}
         >
           <a>

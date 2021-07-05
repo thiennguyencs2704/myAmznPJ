@@ -133,35 +133,3 @@ const Signin = () => {
 };
 
 export default Signin;
-
-// dispatch(
-//   signin({
-//     email: userAuth.user.email,
-//     uid: userAuth.user.uid,
-//   })
-// );
-
-// const getProfile = (uid) => {
-//   const userProfile = realtimeDB
-//     .ref()
-//     .child("userprofiles")
-//     .child(uid)
-//     .get()
-//     .then((snapshot) => {
-//       if (snapshot.exists()) {
-//         const getUser = snapshot.val();
-//         const currentUser = !getUser.cart
-//           ? { ...getUser, cart: [] }
-//           : { ...getUser };
-
-//         console.log(currentUser, "Testing");
-//       } else {
-//         console.log("No data available");
-//       }
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-
-//   console.log("User profile", userProfile);
-// };
