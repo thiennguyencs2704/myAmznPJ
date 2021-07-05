@@ -2,16 +2,25 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { signout } from "../../store/userSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { auth } from "../../firebase";
 import { ShoppingCartIcon, MenuIcon } from "@heroicons/react/outline";
 import SearchBar from "./SearchBar";
 import { getLastCart } from "../../store/cartSlice";
+import Menu from "../Home/Menu";
 
 const Header = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
   const cart = useSelector((state) => state.cart);
+
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
+
+  const handlerCloseMenu = () => {
+    setIsOpenMenu(false);
+    document.documentElement.style.overflow = "auto";
+    document.body.scroll = "yes";
+  };
 
   const handlerSignout = () => {
     auth.signOut();
@@ -32,7 +41,10 @@ const Header = () => {
   }, [cart.totalQty]);
 
   return (
-    <header className="sticky top-0 z-50">
+    <header className="sticky top-0 z-30">
+      {isOpenMenu && (
+        <Menu isOpenMenu={isOpenMenu} handlerCloseMenu={handlerCloseMenu} />
+      )}
       <div className="flex flex-col bg-amazon_blue">
         <div className="justify-between pr-3 flex flex-grow h-16 items-center text-white w-full">
           <Link href="/">
@@ -103,12 +115,15 @@ const Header = () => {
       </div>
 
       <nav className="flex items-center h-9 bg-amazon_blue-light">
-        <div className="ml-4">
-          <MenuIcon className="text-white w-6 h-6" />
+        <div
+          onClick={() => setIsOpenMenu(true)}
+          className="link flex ml-4 text-white"
+        >
+          <MenuIcon className="e w-6 h-6 mr-1" />
+          <p>All</p>
         </div>
 
         <div className="flex items-center space-x-3 text-xs sm:text-sm text-white font-medium m-2 mr-3 ">
-          <p>All</p>
           <p>Today's Deals</p>
           <p>Customer Service</p>
           <p>Gift Cards</p>
