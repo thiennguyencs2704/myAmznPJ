@@ -1,11 +1,19 @@
 import Image from "next/image";
 
-const CategoryDetail = ({ title, img }) => {
+const CategoryDetail = ({ categoryDetail }) => {
+  const { title, img } = categoryDetail;
+
   return (
-    <div className="flex flex-col bg-white p-5">
-      <h1 className="text-xl font-bold">{title}</h1>
-      <Image src={img} width={300} height={320} objectFit="contain" />
-      <p className="text-xs text-blue-700">Shop now</p>
+    <div className="sm:m-3 mx-auto">
+      <div className="flex flex-col bg-white mx-auto p-5 h-full lg:pt-7">
+        <h1 className="flex text-xl sm-text-base md:text-lg lg:text-xl font-bold white h-14">
+          {title}
+        </h1>
+        <div className="pt-2">
+          <Image src={img} width={380} height={320} objectFit="cover" />
+        </div>
+        <p className="text-xs text-blue-700 mt-3">Shop now</p>
+      </div>
     </div>
   );
 };

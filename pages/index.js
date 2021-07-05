@@ -6,14 +6,20 @@ import { useDispatch } from "react-redux";
 import { getInitialProducts } from "../store/productSlice";
 import HeadLayout from "../components/Layout/HeadLayout";
 import { fetchUserProfile } from "../store/userActions";
+import CategoryList from "../components/Home/CategoryList";
 
 export const getStaticProps = async () => {
-  const res = await fetch(
-    "https://my-amzn-web-default-rtdb.firebaseio.com/products.json"
-  );
-  const data = await res.json();
+  const res = await Promise.all([
+    fetch("https://my-amzn-web-default-rtdb.firebaseio.com/products.json"),
+    fetch("https://my-amzn-web-default-rtdb.firebaseio.com/categories.json"),
+    fetch("https://my-amzn-web-default-rtdb.firebaseio.com/browse.json"),
+  ]);
 
-  const productData = data.map((item) => {
+  const productData = await res[0].json();
+  const categoryData = await res[1].json();
+  const browseData = await res[2].json();
+
+  const products = productData.map((item) => {
     const starScore = (min, max) => {
       return Math.floor(Math.random() * (max - min) + min);
     };
@@ -23,13 +29,15 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      myProducts: productData,
+      myProducts: products,
+      categories: categoryData,
+      browse: browseData,
     },
     revalidate: 5,
   };
 };
 
-export default function Home({ myProducts }) {
+export default function Home({ myProducts, categories, browse }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -49,6 +57,7 @@ export default function Home({ myProducts }) {
       <div className="flex flex-col bg-gray-100 min-h-screen pb-10 mx-auto items-center">
         <main className="max-w-screen-2xl mx-auto md:mx-10">
           <Banner />
+          <CategoryList categoryData={categories} browseData={browse} />
           <ProductList amaProducts={myProducts} />
         </main>
       </div>
