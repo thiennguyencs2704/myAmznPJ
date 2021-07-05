@@ -3,6 +3,7 @@ import "react-multi-carousel/lib/styles.css";
 import Image from "next/image";
 
 const Browse = ({ browseData }) => {
+  const showMax = false;
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -26,20 +27,25 @@ const Browse = ({ browseData }) => {
       items: 2,
     },
     mobilePlus: {
-      breakpoint: { max: 640, min: 500 },
+      breakpoint: { max: 640, min: 450 },
       items: 4,
     },
     mobile: {
-      breakpoint: { max: 500, min: 300 },
+      breakpoint: { max: 450, min: 300 },
       items: 3,
     },
   };
 
+  const mobileMode = showMax;
   return (
     <div className="flex flex-col bg-white p-5">
       <h1 className="text-xl font-semibold mb-2">Browse by category</h1>
       <div className="flex">
-        <Carousel className="w-full mx-auto" responsive={responsive}>
+        <Carousel
+          className={`
+          w-96 sm:w-full mx-auto`}
+          responsive={responsive}
+        >
           {/* max-w-md sm:max-w-full / max-w-md sm:max-w-max */}
           {browseData.map((item, i) => (
             <div key={i}>
