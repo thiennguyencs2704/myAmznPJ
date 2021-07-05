@@ -20,8 +20,8 @@ const Product = ({ product }) => {
   };
 
   return (
-    <div className="relative flex flex-col bg-white m-5 p-10 rounded-lg text-base h-full">
-      <div className="space-y-3 mb-3">
+    <div className="relative flex flex-col bg-white mx-5 p-10 rounded-lg text-base max-h-full">
+      <div className="space-y-3 mb-5">
         <p className="absolute text-sm top-2 right-2 italic text-gray-400">
           {category}
         </p>

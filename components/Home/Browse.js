@@ -10,7 +10,7 @@ const Browse = ({ browseData }) => {
     },
     xl: {
       breakpoint: { max: 3000, min: 1280 },
-      items: 7,
+      items: 8,
     },
     lg: {
       breakpoint: { max: 1280, min: 1024 },
@@ -26,7 +26,7 @@ const Browse = ({ browseData }) => {
     },
     mobilePlus: {
       breakpoint: { max: 640, min: 450 },
-      items: 4,
+      items: 3,
     },
     mobile: {
       breakpoint: { max: 450, min: 300 },
@@ -38,12 +38,15 @@ const Browse = ({ browseData }) => {
     <div className="flex flex-col bg-white p-5 px-8 sm:px-5">
       <h1 className="text-xl font-semibold mb-2">Browse by category</h1>
       <div className="flex">
-        <Carousel className="w-64 sm:w-full mx-auto" responsive={responsive}>
+        <Carousel
+          className="w-64 sm:w-full mx-auto z-0"
+          responsive={responsive}
+        >
           {browseData.map((item, i) => (
             <div key={i}>
               <Image
-                width={200}
-                height={200}
+                width={160}
+                height={160}
                 loading="lazy"
                 objectFit="contain"
                 src={item.img}

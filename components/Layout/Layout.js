@@ -12,10 +12,13 @@ const Layout = ({ children }) => {
   const initialProduct = useSelector((state) => state.products.amznProducts);
 
   useEffect(() => {
-    if (initialProduct.length === 0) {
+    if (
+      initialProduct.length === 0 &&
+      router.pathname !== "/" &&
+      router.pathname !== "/searchresults/[...slug]"
+    ) {
       dispatch(fetchInitialProducts());
     }
-    // console.log("Fetch pridcut first load");
   }, []);
 
   return (

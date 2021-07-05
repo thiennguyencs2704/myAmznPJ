@@ -17,22 +17,22 @@ const CategoryList = ({ categoryData, browseData }) => {
         </div>
       </div>
 
-      <div className="hidden md:flex flex-col sm:m-3 mx-auto h-full">
+      <div className="hidden md:flex flex-col sm:m-3 mx-auto">
         <div className="flex flex-col bg-white mx-auto md:pt-5 pt-3 px-5 w-full h-36 text-xl 2xl:pb-7 pb-6">
-          <h1 className="md:text-lg text-sm font-bold pb-4 text-center">
+          <h1 className="md:text-sm lg:text-base text-sm font-bold mt-2 pb-4 text-center">
             Sign in for the best experience
           </h1>
-          <span className="flex span justify-center items-center">
-            <button className="button w-2/3 h-9 text-xs">
+          <span className="flex span items-center w-4/5 mx-auto">
+            <button className="button w-full h-9 text-xs ">
               Sign in securely
             </button>
           </span>
         </div>
 
-        <div className="flex justify-center h-1/2 mt-7">
+        <div className="flex justify-center mt-auto">
           <Image
             src={belowSigninImg}
-            width={300}
+            width={250}
             height={250}
             objectFit="contain"
             className="flex-shrink"
