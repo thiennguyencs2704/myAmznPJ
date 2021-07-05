@@ -9,23 +9,27 @@ const CategoryList = ({ categoryData, browseData }) => {
         <CategoryDetail key={index} categoryDetail={cate} />
       ))}
 
-      <div className="xl:col-span-full my-5 lg:col-span-2">
+      <div className="flex flex-col sm:col-span-1 md:col-span-2 xl:col-span-full max-w-full lg:mx-3 sm:m-3 h-full">
         <img src={belowCategoryImg} />
 
-        <Browse browseData={browseData} />
+        <div className="sm:mx-0 mx-auto mt-6">
+          <Browse browseData={browseData} />
+        </div>
       </div>
 
-      <div className="flex flex-col sm:m-3 mx-auto h-full">
-        <div className="flex flex-col bg-white mx-auto pt-5 px-5 w-full h-1/3 text-xl 2xl:pb-7 pb-4">
-          <h1 className="text-base font-bold mb-4 text-center">
+      <div className="hidden md:flex flex-col sm:m-3 mx-auto h-full">
+        <div className="flex flex-col bg-white mx-auto md:pt-5 pt-3 px-5 w-full h-36 text-xl 2xl:pb-7 pb-6">
+          <h1 className="md:text-lg text-sm font-bold pb-4 text-center">
             Sign in for the best experience
           </h1>
           <span className="flex span justify-center items-center">
-            <button className="button w-2/3 h-9">Sign in securely</button>
+            <button className="button w-2/3 h-9 text-xs">
+              Sign in securely
+            </button>
           </span>
         </div>
 
-        <div className="flex justify-center h-1/2 mt-10">
+        <div className="flex justify-center h-1/2 mt-7">
           <Image
             src={belowSigninImg}
             width={300}
