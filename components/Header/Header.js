@@ -42,9 +42,8 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-30">
-      {isOpenMenu && (
-        <Menu isOpenMenu={isOpenMenu} handlerCloseMenu={handlerCloseMenu} />
-      )}
+      <Menu isOpenMenu={isOpenMenu} handlerCloseMenu={handlerCloseMenu} />
+
       <div className="flex flex-col bg-amazon_blue">
         <div className="justify-between pr-3 flex flex-grow h-16 items-center text-white w-full">
           <Link href="/">
