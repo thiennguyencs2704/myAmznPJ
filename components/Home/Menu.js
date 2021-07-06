@@ -45,7 +45,7 @@ export default function Menu({ isOpenMenu, handlerCloseMenu }) {
   return (
     <AnimatePresence>
       {isOpenMenu && (
-        <div className="min-h-full overflow-hidden z-50">
+        <div className="min-h-screen overflow-hidden z-50">
           <motion.div
             variants={modalVariants}
             initial="hidden"
@@ -73,7 +73,7 @@ export default function Menu({ isOpenMenu, handlerCloseMenu }) {
 
             <div className="flex flex-col pl-10 border-b border-gray-200 h-1/4">
               <h1 className="text-lg font-bold my-4">Trending</h1>
-              <ul className="space-y-5 flex-1 text-black text-opacity-70 font-medium">
+              <ul className="space-y-3 sm:space-y-5 flex-1 text-black text-opacity-70 font-medium">
                 <li>Best Sellers</li>
                 <li>New Releases</li>
                 <li>Movers and Shakers</li>
@@ -82,7 +82,7 @@ export default function Menu({ isOpenMenu, handlerCloseMenu }) {
 
             <div className="pl-10 border-b border-gray-200 h-2/5">
               <h1 className="text-lg font-bold my-4">Shop By Category</h1>
-              <ul className="space-y-5 flex-1 text-black text-opacity-70 font-medium">
+              <ul className="space-y-3 sm:space-y-5 flex-1 text-black text-opacity-70 font-medium">
                 {shopByCetegory.map((item) => (
                   <li className="flex justify-between items-center">
                     {item}{" "}
@@ -122,7 +122,7 @@ export default function Menu({ isOpenMenu, handlerCloseMenu }) {
 
             <div className="pl-10 h-1/4">
               <h1 className="text-lg font-bold my-4">Help & Settings</h1>
-              <ul className="space-y-5 flex-1 text-black text-opacity-70 font-medium">
+              <ul className="space-y-3 sm:space-y-5 flex-1 text-black text-opacity-70 font-medium">
                 <li>Your Account</li>
                 <li>Help</li>
                 <li>Sign In</li>
