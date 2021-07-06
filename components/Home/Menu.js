@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   UserIcon,
   XIcon,
   ChevronDownIcon,
+  ChevronUpIcon,
   ChevronRightIcon,
 } from "@heroicons/react/solid";
 import { motion, AnimatePresence } from "framer-motion";
@@ -33,6 +34,8 @@ const modalVariants = {
 };
 
 export default function Menu({ isOpenMenu, handlerCloseMenu }) {
+  const [seeAll, setSeeAll] = useState(false);
+
   useEffect(() => {
     isOpenMenu &&
       ((document.documentElement.style.overflow = "hidden"), // firefox, chrome
@@ -42,7 +45,7 @@ export default function Menu({ isOpenMenu, handlerCloseMenu }) {
   return (
     <AnimatePresence>
       {isOpenMenu && (
-        <div className="h-full overflow-hidden z-50">
+        <div className="min-h-full overflow-hidden z-50">
           <motion.div
             variants={modalVariants}
             initial="hidden"
@@ -89,12 +92,31 @@ export default function Menu({ isOpenMenu, handlerCloseMenu }) {
                   </li>
                 ))}
 
-                <li className="flex items-center">
-                  See All{" "}
-                  <span>
-                    <ChevronDownIcon className="h-7 w-7 text-gray-400 font-thin" />
-                  </span>{" "}
-                </li>
+                {seeAll === false ? (
+                  <li
+                    onClick={() => {
+                      setSeeAll(true);
+                    }}
+                    className="flex items-center hover:cursor-pointer"
+                  >
+                    See All{" "}
+                    <span>
+                      <ChevronDownIcon className="h-7 w-7 text-gray-400 font-thin" />
+                    </span>
+                  </li>
+                ) : (
+                  <li
+                    onClick={() => {
+                      setSeeAll(false);
+                    }}
+                    className="flex items-center hover:cursor-pointer"
+                  >
+                    See Less{" "}
+                    <span>
+                      <ChevronUpIcon className="h-7 w-7 text-gray-400 font-thin" />
+                    </span>
+                  </li>
+                )}
               </ul>
             </div>
 
