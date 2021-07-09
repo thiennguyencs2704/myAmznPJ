@@ -7,6 +7,7 @@ export const getStaticPaths = async () => {
     `https://my-amzn-web-default-rtdb.firebaseio.com/products.json`
   );
   const data = await res.json();
+
   const paths = data.map((product) => {
     return {
       params: {
@@ -28,6 +29,9 @@ export const getStaticProps = async (context) => {
     `https://my-amzn-web-default-rtdb.firebaseio.com/products/${productId}.json`
   );
   const productObj = await res.json();
+  if (!productObj) {
+    return { notFound: true };
+  }
 
   const review = (max, min) => {
     return Math.floor(Math.random() * (max - min) + min).toLocaleString(

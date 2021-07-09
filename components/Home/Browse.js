@@ -38,10 +38,7 @@ const Browse = ({ browseData }) => {
     <div className="flex flex-col bg-white p-5 px-8 sm:px-5">
       <h1 className="text-xl font-semibold mb-2">Browse by category</h1>
       <div className="flex">
-        <Carousel
-          className="w-64 sm:w-full mx-auto z-0"
-          responsive={responsive}
-        >
+        <Carousel className="container mx-auto z-0" responsive={responsive}>
           {browseData.map((item, i) => (
             <div key={i}>
               <Image
