@@ -7,7 +7,7 @@ import { auth } from "../../firebase";
 import { ShoppingCartIcon, MenuIcon } from "@heroicons/react/outline";
 import SearchBar from "./SearchBar";
 import { getLastCart } from "../../store/cartSlice";
-import Menu from "../Home/Menu";
+import Menu from "../Modals/Menu";
 
 const Header = () => {
   const dispatch = useDispatch();

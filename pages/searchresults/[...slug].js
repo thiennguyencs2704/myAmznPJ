@@ -17,6 +17,12 @@ export const getServerSideProps = async (context) => {
   );
   const data = await res.json();
 
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
+
   const productData = data.map((item) => {
     const starScore = (min, max) => {
       return Math.floor(Math.random() * (max - min) + min);
