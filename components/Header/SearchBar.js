@@ -53,7 +53,7 @@ const SearchBar = ({ mobileMode }) => {
     <div
       className={`${displayMobileMode} items-center h-10 bg-yellow-500 rounded-md`}
     >
-      <select className="h-full items-center pl-2 rounded-l-md text-gray-500 text-sm bg-gray-300 hover:cursor-pointer rounded-r-none border-amazon_blue">
+      <select className="h-full items-center pl-2 rounded-l-md text-gray-500 text-sm bg-gray-300 hover:cursor-pointer rounded-r-none border-0">
         <option className="">All</option>
       </select>
 
