@@ -15,8 +15,12 @@
     @apply border border-gray-400 rounded-sm p-2 h-8 focus:outline-none focus:border focus:border-red-400 shadow-sm;
   }
 
-  .link {
-    @apply hover:border p-1 border-white cursor-pointer;
+  .link-search {
+    @apply p-1 border border-amazon_blue hover:border-white cursor-pointer;
+  }
+
+  .link-nav {
+    @apply p-1 border border-amazon_blue-light hover:border-white cursor-pointer;
   }
 
   .removeInputWebkit {

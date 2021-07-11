@@ -1,3 +1,5 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
   mode: "jit",
   purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
@@ -5,7 +7,10 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        xs: "300px",
+        xxs: "320px",
+        xs: "375px",
+        semism: "480px",
+        ...defaultTheme.screens,
       },
       boxShadow: {
         blue: "0 2px 2px 0 rgba(19, 51, 81, 0.39)",

@@ -63,7 +63,7 @@ const Header = () => {
 
           <div className="flex space-x-1 mx-3 items-center text-xs">
             {user ? (
-              <div onClick={handlerSignout} className="link">
+              <div onClick={handlerSignout} className="link-search">
                 <p>Hello, {user.email}</p>
                 <p className="text-sm font-semibold whitespace-nowrap">
                   Sign Out
@@ -72,7 +72,7 @@ const Header = () => {
             ) : (
               <Link href="/auth/signin">
                 <a>
-                  <div className="link">
+                  <div className="link-search">
                     <p>Hello, Sign in</p>
                     <p className="text-sm font-semibold whitespace-nowrap">
                       Account & Lists
@@ -82,7 +82,7 @@ const Header = () => {
               </Link>
             )}
 
-            <div className="link">
+            <div className="link-search">
               <p>Returns</p>
               <p className="text-sm font-semibold whitespace-nowrap">
                 & Orders
@@ -91,7 +91,7 @@ const Header = () => {
 
             <Link href="/checkout">
               <a>
-                <div className="relative flex w-18 justify-between items-center link">
+                <div className="link-search relative flex h-[46px] w-18 justify-between items-center">
                   <ShoppingCartIcon className="h-9 w-9" />
                   <div className="absolute -top-1 -right-2 sm:right-5">
                     <p className="bg-yellow-500 rounded-full px-2 p-1 items-center justify-center text-xs font-medium">
@@ -116,16 +116,17 @@ const Header = () => {
       <nav className="flex items-center h-9 bg-amazon_blue-light">
         <div
           onClick={() => setIsOpenMenu(true)}
-          className="link flex ml-4 text-white"
+          className="link-nav flex ml-4 text-white font-medium"
         >
-          <MenuIcon className="e w-6 h-6 mr-1" />
+          <MenuIcon className="w-6 h-6 mr-1" />
           <p>All</p>
         </div>
 
-        <div className="flex items-center space-x-3 text-xs sm:text-sm text-white font-medium m-2 mr-3 ">
-          <p>Today's Deals</p>
+        <div className="flex items-center space-x-3 text-xs sm:text-sm text-white font-medium m-2">
+          <p className="">Best Sellers</p>
+          <p>Apple</p>
           <p>Customer Service</p>
-          <p>Gift Cards</p>
+          <p className="hidden sm:inline">RegisGift Cardstry</p>
           <p className="hidden sm:inline">Registry</p>
           <p className="hidden sm:inline">Sell</p>
           <p className="hidden sm:inline">Health & Personal Care</p>
