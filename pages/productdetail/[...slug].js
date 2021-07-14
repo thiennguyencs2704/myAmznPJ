@@ -11,7 +11,13 @@ export const getStaticPaths = async () => {
   const paths = data.map((product) => {
     return {
       params: {
-        slug: [product.id.toString(), product.title.replace(/ /g, "-")],
+        slug: [
+          product.id.toString(),
+          product.title
+            .replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, "")
+            .replace(/  /g, "-")
+            .replace(/ /g, "-"),
+        ],
       },
     };
   });

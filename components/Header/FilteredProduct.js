@@ -12,7 +12,10 @@ const FilteredProduct = ({ filteredProduct }) => {
         <Link
           key={id}
           href="/productdetail/[id]/[product]"
-          as={`/productdetail/${id}/${title.replace(/ /g, "-")}`}
+          as={`/productdetail/${id}/${title
+            .replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, "")
+            .replace(/  /g, "-")
+            .replace(/ /g, "-")}`}
         >
           <a className="flex-shrink-0 mr-5">
             <Image src={image} width={200} height={200} objectFit="contain" />
@@ -23,7 +26,10 @@ const FilteredProduct = ({ filteredProduct }) => {
           <Link
             key={id}
             href="/productdetail/[id]/[product]"
-            as={`/productdetail/${id}/${title.replace(/ /g, "-")}`}
+            as={`/productdetail/${id}/${title
+              .replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, "")
+              .replace(/  /g, "-")
+              .replace(/ /g, "-")}`}
           >
             <a className="text-base font-medium line-clamp-3 sm:text-lg mb-2 hover:text-blue-700">
               {title}

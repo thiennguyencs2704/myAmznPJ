@@ -6,6 +6,11 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      width: {
+        "1/7": "14.2857143%",
+        "1/8": "12.5%",
+        "1/10": "10%",
+      },
       screens: {
         xxs: "320px",
         xs: "375px",
@@ -26,8 +31,16 @@ module.exports = {
           DEFAULT: "#f0c14b",
         },
         amazon_gray: {
-          light: "rgb(231, 233, 236)",
-          DEFAULT: "adb1b8",
+          light: "#e7eaf0",
+          DEFAULT: "#d9dce1",
+        },
+        amazon_blue_banner: {
+          light: "#0A99AF",
+          DEFAULT: "#057586",
+        },
+        amazon_orange: {
+          light: "rgb(231, 118, 0)",
+          DEFAULT: "rgb(196, 85, 0)",
         },
       },
     },

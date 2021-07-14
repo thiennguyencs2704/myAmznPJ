@@ -116,20 +116,24 @@ const Header = () => {
       <nav className="flex items-center h-9 bg-amazon_blue-light">
         <div
           onClick={() => setIsOpenMenu(true)}
-          className="link-nav flex ml-4 text-white font-medium"
+          className="link-nav items-center flex ml-4 text-white font-medium h-[30px]"
         >
           <MenuIcon className="w-6 h-6 mr-1" />
           <p>All</p>
         </div>
 
-        <div className="flex items-center space-x-3 text-xs sm:text-sm text-white font-medium m-2">
-          <p className="">Best Sellers</p>
-          <p>Apple</p>
-          <p>Customer Service</p>
-          <p className="hidden sm:inline">RegisGift Cardstry</p>
-          <p className="hidden sm:inline">Registry</p>
-          <p className="hidden sm:inline">Sell</p>
-          <p className="hidden sm:inline">Health & Personal Care</p>
+        <div className="flex items-center text-xs sm:text-sm text-white font-medium">
+          <Link href="/nav/bestsellers">
+            <a className="link-nav">Best Sellers</a>
+          </Link>
+          <p className="link-disable">Apple</p>
+          <p className="link-disable">Customer Service</p>
+          <p className="hidden sm:inline link-disable">Gift Cards</p>
+          <p className="hidden md:inline link-disable">Registry</p>
+          <p className="hidden md:inline link-disable">Sell</p>
+          <p className="hidden lg:inline link-disable">
+            Health & Personal Care
+          </p>
         </div>
       </nav>
     </header>
