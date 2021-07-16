@@ -39,7 +39,7 @@ const Browse = ({ browseData }) => {
   };
 
   return (
-    <div className="flex flex-col bg-white py-3 semism:px-8 sm:p-5">
+    <div className="flex flex-col bg-white py-2 px-0 sm:px-5 sm:p-5">
       <h1 className="text-xl font-semibold mb-2 pl-3 sm:pl-0">
         Browse by category
       </h1>

@@ -46,8 +46,8 @@ const SearchBar = ({ mobileMode }) => {
   }, [router.pathname]);
 
   const displayMobileMode = mobileMode
-    ? "hidden md:flex flex-grow"
-    : "md:hidden flex flex-grow";
+    ? "md:hidden flex flex-grow"
+    : "hidden md:flex flex-grow";
 
   return (
     <div

@@ -59,7 +59,7 @@ const Header = () => {
             </a>
           </Link>
 
-          <SearchBar mobileMode={true} />
+          <SearchBar mobileMode={false} />
 
           <div className="flex space-x-1 mx-3 items-center text-xs">
             {user ? (
@@ -109,7 +109,7 @@ const Header = () => {
         </div>
 
         <div className="mx-3">
-          <SearchBar mobileMode={false} />
+          <SearchBar mobileMode={true} />
         </div>
       </div>
 

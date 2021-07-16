@@ -8,14 +8,13 @@ import {
   getInitialProducts,
 } from "../../store/productSlice";
 import { useEffect } from "react";
+import axios from "axios";
 
 export const getServerSideProps = async (context) => {
   const searchKeyword = context.query.slug[1];
 
-  const res = await fetch(
-    "https://my-amzn-web-default-rtdb.firebaseio.com/products.json"
-  );
-  const data = await res.json();
+  const res = await axios("/products.json");
+  const data = res.data;
 
   if (!data) {
     return {

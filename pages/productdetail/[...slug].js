@@ -1,12 +1,11 @@
 import HeadLayout from "../../components/Layout/HeadLayout";
 import { useRouter } from "next/router";
 import ProductDetail from "../../components/Products/ProductDetail";
+import axios from "axios";
 
 export const getStaticPaths = async () => {
-  const res = await fetch(
-    `https://my-amzn-web-default-rtdb.firebaseio.com/products.json`
-  );
-  const data = await res.json();
+  const res = await axios(`/products.json`);
+  const data = res.data;
 
   const paths = data.map((product) => {
     return {
@@ -31,10 +30,8 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   // console.log("Props", context.params.slug[0]);
   const productId = Number(context.params.slug[0]) - 1;
-  const res = await fetch(
-    `https://my-amzn-web-default-rtdb.firebaseio.com/products/${productId}.json`
-  );
-  const productObj = await res.json();
+  const res = await axios(`/products/${productId}.json`);
+  const productObj = res.data;
   if (!productObj) {
     return { notFound: true };
   }

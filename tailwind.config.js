@@ -6,6 +6,7 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      backgroundImage: ["hover", "focus"],
       width: {
         "1/7": "14.2857143%",
         "1/8": "12.5%",
@@ -14,7 +15,7 @@ module.exports = {
       screens: {
         xxs: "320px",
         xs: "375px",
-        semism: "480px",
+        semism: "580px",
         ...defaultTheme.screens,
       },
       boxShadow: {

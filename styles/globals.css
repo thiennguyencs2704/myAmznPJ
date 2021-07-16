@@ -32,7 +32,7 @@
   }
 
   .paginationBtn {
-    @apply h-9 rounded-sm border border-gray-300 bg-gradient-to-b from-gray-50 to-gray-300 focus:outline-none font-medium;
+    @apply h-9 rounded-sm border border-gray-300 bg-gradient-to-b from-gray-50 to-gray-200 focus:outline-none font-medium hover:from-gray-200 hover:to-gray-200;
   }
 
   .disabledPaginationBtn {
