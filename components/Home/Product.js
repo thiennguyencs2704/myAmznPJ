@@ -8,8 +8,7 @@ import Link from "next/link";
 
 const Product = ({ product }) => {
   const dispatch = useDispatch();
-  const { id, category, image, title, description, price, itemQty, star } =
-    product;
+  const { id, category, image, title, description, price, star } = product;
 
   const handlerAddCart = () => {
     dispatch(

@@ -29,6 +29,9 @@ const Pagination = ({
     }
   }, [currentPage]);
 
+  const currentPageBtn =
+    "h-9 bg-white border border-amazon_orange text-amazon_orange rounded-sm font-extrabold focus:outline-none";
+
   const startNum =
     currentPage > totalPage - 1
       ? currentPage - 3
@@ -37,11 +40,22 @@ const Pagination = ({
       : 0;
   const endNum = currentPage >= 2 ? currentPage + 1 : 3;
 
-  const currentPageBtn =
-    "h-9 bg-white border border-amazon_orange text-amazon_orange rounded-sm font-extrabold focus:outline-none";
+  const middleBtns = pageIndex
+    .slice(startNum, endNum)
+    .filter((item) => item !== 1 && item !== totalPage)
+    .map((i) => (
+      <button
+        className={`
+    ${i === currentPage ? currentPageBtn : "paginationBtn"} 
+    w-9 mx-[2px] `}
+        onClick={() => setCurrentPage(i)}
+      >
+        {i}
+      </button>
+    ));
 
   return (
-    <div className="flex justify-center items-center my-5 text-xs text-gray-700">
+    <div className="hidden sm:flex justify-center items-center my-5 text-xs text-gray-700">
       <button
         className={`${
           firstPage ? "disabledPaginationBtn" : "paginationBtn"
@@ -61,25 +75,17 @@ const Pagination = ({
       </button>
 
       {currentPage > 3 ? (
-        <button className="paginationBtn w-9 mx-[2px]">...</button>
+        <button className="paginationBtn pointer-events-none w-9 mx-[2px]">
+          ...
+        </button>
       ) : null}
 
-      {pageIndex
-        .slice(startNum, endNum)
-        .filter((item) => item !== 1 && item !== totalPage)
-        .map((i) => (
-          <button
-            className={`
-          ${i === currentPage ? currentPageBtn : "paginationBtn"} 
-          w-9 mx-[2px] `}
-            onClick={() => setCurrentPage(i)}
-          >
-            {i}
-          </button>
-        ))}
+      {middleBtns}
 
       {currentPage < totalPage - 2 ? (
-        <button className="paginationBtn w-9 mx-[2px]">...</button>
+        <button className="paginationBtn pointer-events-none w-9 mx-[2px]">
+          ...
+        </button>
       ) : null}
 
       <button

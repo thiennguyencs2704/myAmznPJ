@@ -7,18 +7,15 @@ import { getInitialProducts } from "../store/productSlice";
 import HeadLayout from "../components/Layout/HeadLayout";
 import { fetchUserProfile } from "../store/userActions";
 import CategoryList from "../components/Home/CategoryList";
+import axios from "axios";
 
 export const getStaticProps = async () => {
-  const URLs = [
-    "https://my-amzn-web-default-rtdb.firebaseio.com/products.json",
-    "https://my-amzn-web-default-rtdb.firebaseio.com/categories.json",
-    "https://my-amzn-web-default-rtdb.firebaseio.com/browse.json",
-  ];
+  const URLs = ["/products.json", "/categories.json", "/browse.json"];
 
   const data = [];
   for (const url of URLs) {
-    const res = await fetch(url);
-    const subData = await res.json();
+    const res = await axios.get(url);
+    const subData = res.data;
 
     //For handling catch error
     if (!subData) {
@@ -29,6 +26,7 @@ export const getStaticProps = async () => {
 
     data.push(subData);
   }
+
   const [productData, categoryData, browseData] = data;
 
   const products = productData.map((item) => {

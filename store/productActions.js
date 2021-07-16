@@ -1,14 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 export const fetchInitialProducts = createAsyncThunk(
   "cart/fetchInitialProducts",
   async () => {
     try {
-      const res = await fetch(
-        `https://my-amzn-web-default-rtdb.firebaseio.com/products.json`
-      );
+      const res = await axios(`/products.json`);
 
-      const data = await res.json();
+      const data = res.data;
 
       return data;
     } catch (err) {

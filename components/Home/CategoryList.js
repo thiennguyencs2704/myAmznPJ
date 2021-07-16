@@ -1,6 +1,7 @@
 import CategoryDetail from "./CategoryDetail";
 import Image from "next/image";
 import Browse from "./Browse";
+import Link from "next/link";
 
 const CategoryList = ({ categoryData, browseData }) => {
   return (
@@ -19,9 +20,11 @@ const CategoryList = ({ categoryData, browseData }) => {
 
       <div className="hidden md:flex flex-col sm:m-3 mx-auto">
         <div className="flex flex-col bg-white mx-auto md:pt-5 pt-3 px-5 w-full h-36 text-xl 2xl:pb-7 pb-6">
-          <h1 className="md:text-sm lg:text-base text-sm font-bold mt-2 pb-4 text-center">
-            Sign in for the best experience
-          </h1>
+          <Link href="/auth/signin">
+            <a className="md:text-sm lg:text-base text-sm font-bold mt-2 pb-4 text-center">
+              Sign in for the best experience
+            </a>
+          </Link>
           <span className="flex span items-center w-4/5 mx-auto">
             <button className="button w-full h-9 text-xs ">
               Sign in securely

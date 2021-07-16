@@ -1,14 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 export const fetchUserProfile = createAsyncThunk(
   "cart/fetchUserProfile",
   async (uid) => {
     try {
-      const res = await fetch(
-        `https://my-amzn-web-default-rtdb.firebaseio.com/userprofiles/${uid}.json`
-      );
+      const res = await axios(`/userprofiles/${uid}.json`);
 
-      const data = await res.json();
+      const data = res.data;
       console.log("Get user called");
       console.log("Profile", data);
       return data;

@@ -5,13 +5,6 @@ import Pagination from "../../components/Pagination/Pagination";
 import BestSellerList from "../../components/Products/BestSellerList";
 import ShortCategoryList from "../../components/Sidecategory/ShortCategoryList";
 
-const fetcher = async (url) => {
-  const res = await fetch(url);
-  const data = await res.json();
-
-  return data;
-};
-
 const BestSellers = () => {
   const [mounted, setMounted] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -21,21 +14,21 @@ const BestSellers = () => {
     setMounted(true);
   }, []);
 
-  const url = "https://my-amzn-web-default-rtdb.firebaseio.com/products.json";
-  const { data, error } = useSWR(mounted ? url : null, fetcher);
+  const url = "/products.json";
+  const { data, error } = useSWR(mounted ? url : null);
 
   if (error) return <div>Fail to fetch</div>;
-  if (!data) return <div>Loading...!</div>;
+  // if (!data) return <div>Loading...!</div>;
 
   const indexOfLastProduct = currentPage * productPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productPerPage;
   const productsCurrentPage = data
-    .sort(function (a, b) {
+    ?.sort(function (a, b) {
       return a.rank - b.rank;
     })
     .slice(indexOfFirstProduct, indexOfLastProduct);
 
-  const categories = [...new Set(data.map((prod) => prod.category))];
+  const categories = [...new Set(data?.map((prod) => prod.category))];
 
   return (
     <HeadLayout title="Amazon | Best Sellers">
@@ -55,7 +48,7 @@ const BestSellers = () => {
           <BestSellerList productsCurrentPage={productsCurrentPage} />
 
           <Pagination
-            totalProduct={data.length}
+            totalProduct={data?.length}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
             productPerPage={productPerPage}
