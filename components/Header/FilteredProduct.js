@@ -11,7 +11,7 @@ const FilteredProduct = ({ filteredProduct }) => {
       <div className="flex w-9/12">
         <Link
           key={id}
-          href="/productdetail/[id]/[product]"
+          href="/productdetail/[...slug]"
           as={`/productdetail/${id}/${title
             .replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, "")
             .replace(/  /g, "-")
@@ -25,7 +25,7 @@ const FilteredProduct = ({ filteredProduct }) => {
         <div className="ml-2 w-max text-xs sm:text-sm pt-3">
           <Link
             key={id}
-            href="/productdetail/[id]/[product]"
+            href="/productdetail/[...slug]"
             as={`/productdetail/${id}/${title
               .replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, "")
               .replace(/  /g, "-")
