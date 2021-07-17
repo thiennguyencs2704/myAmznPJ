@@ -28,7 +28,10 @@ const Product = ({ product }) => {
         <Link
           key={id}
           href="/productdetail/[...slug]"
-          as={`/productdetail/${id}/${title.replace(/ /g, "-")}`}
+          as={`/productdetail/${id}/${title
+            .replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, "")
+            .replace(/  /g, "-")
+            .replace(/ /g, "-")}`}
         >
           <a>
             <div className="text-center">

@@ -80,6 +80,7 @@ const Pagination = ({
         </button>
       ) : null}
 
+      {/* middle buttons */}
       {middleBtns}
 
       {currentPage < totalPage - 2 ? (
