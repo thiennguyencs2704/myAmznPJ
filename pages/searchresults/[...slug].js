@@ -9,6 +9,7 @@ import {
 } from "../../store/productSlice";
 import { useEffect } from "react";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 export const getServerSideProps = async (context) => {
   const searchKeyword = context.query.slug[1];
@@ -39,6 +40,8 @@ export const getServerSideProps = async (context) => {
 };
 
 const SearchResults = ({ searchKeyword, myProducts }) => {
+  const router = useRouter();
+
   const dispatch = useDispatch();
   const productSlice = useSelector((state) => state.products);
 
@@ -47,6 +50,16 @@ const SearchResults = ({ searchKeyword, myProducts }) => {
       dispatch(getInitialProducts(myProducts));
       dispatch(searchProducts(searchKeyword));
     }
+
+    router.beforePopState(({ url, as }) => {
+      if (url === "/searchresults/[...slug]") {
+        dispatch(searchProducts(searchKeyword));
+        window.location.href = as;
+      }
+
+      window.location.href = as;
+    });
+
     dispatch(getProductResult());
   }, [searchKeyword]);
 

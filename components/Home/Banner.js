@@ -23,8 +23,8 @@ const Banner = () => {
         showStatus={false}
         showIndicators={false}
       >
-        {bannerURLs.map((url) => (
-          <div>
+        {bannerURLs.map((url, i) => (
+          <div key={i}>
             <Image
               // loading="lazy"
               width={1500}
