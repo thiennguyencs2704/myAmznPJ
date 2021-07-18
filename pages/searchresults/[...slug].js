@@ -40,6 +40,7 @@ export const getServerSideProps = async (context) => {
 };
 
 const SearchResults = ({ searchKeyword, myProducts }) => {
+  // console.log("search", searchKeyword);
   const router = useRouter();
 
   const dispatch = useDispatch();
@@ -50,15 +51,6 @@ const SearchResults = ({ searchKeyword, myProducts }) => {
       dispatch(getInitialProducts(myProducts));
       dispatch(searchProducts(searchKeyword));
     }
-
-    router.beforePopState(({ url, as }) => {
-      if (url === "/searchresults/[...slug]") {
-        dispatch(searchProducts(searchKeyword));
-        window.location.href = as;
-      }
-
-      window.location.href = as;
-    });
 
     dispatch(getProductResult());
   }, [searchKeyword]);

@@ -3,30 +3,41 @@ import {
   clearProductSuggestion,
 } from "../../store/productSlice";
 import { SearchIcon } from "@heroicons/react/outline";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
 const SearchBar = ({ mobileMode }) => {
-  const dispatch = useDispatch();
   const router = useRouter();
+  //For changing search state if going back/forward
+  const keyword = router.query?.slug?.length > 0 ? router.query.slug[1] : "";
 
-  const productSuggestion = useSelector(
-    (state) => state.products.productSuggestion
-  );
+  const dispatch = useDispatch();
+  const productSlice = useSelector((state) => state.products);
+  const productSuggestion = productSlice.productSuggestion;
 
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(keyword);
   const [searchSuggestion, setSearchSuggestion] = useState(false);
   const searchInput = useRef();
 
-  const handlerBlurInput = () => {
-    searchInput.current.blur();
-  };
+  //Change searchInput if go back/forward Note: it happens twice because there are 2 inputBar(1 for Mobile)
+  useEffect(() => {
+    console.log("Check mobileMode");
+    if (search !== keyword) {
+      setSearch(keyword);
+      dispatch(searchProducts(keyword));
+    }
+  }, [keyword]);
 
+  // Search and show suggestion Note: it happens twice because there are 2 inputBar(1 for Mobile)
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (search.length !== 0 && search === searchInput.current.value) {
+      if (
+        search.length !== 0 &&
+        search === searchInput.current.value &&
+        searchSuggestion //Only trigger if typing on searchBar
+      ) {
         dispatch(searchProducts(searchInput.current.value.toLowerCase()));
       }
     }, 300);
@@ -35,6 +46,7 @@ const SearchBar = ({ mobileMode }) => {
     };
   }, [search]);
 
+  //Clear suggestion if go to page which is not searchPage
   useEffect(() => {
     if (
       productSuggestion.length !== 0 &&
@@ -45,13 +57,17 @@ const SearchBar = ({ mobileMode }) => {
     }
   }, [router.pathname]);
 
+  const handlerBlurInput = () => {
+    searchInput.current.blur();
+  };
+
   const displayMobileMode = mobileMode
     ? "md:hidden flex flex-grow"
     : "hidden md:flex flex-grow";
 
   return (
     <div
-      className={`${displayMobileMode} items-center h-10 bg-yellow-500 rounded-md`}
+      className={`flex flex-grow items-center h-10 bg-yellow-500 rounded-md`}
     >
       <select className="h-full items-center pl-2 rounded-l-md text-gray-500 text-sm bg-gray-300 hover:cursor-pointer rounded-r-none">
         <option>All</option>
@@ -59,7 +75,9 @@ const SearchBar = ({ mobileMode }) => {
 
       <div className="relative flex-grow h-full">
         <input
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => {
+            setSearch(e.target.value);
+          }}
           value={search}
           ref={searchInput}
           type="text"
