@@ -7,19 +7,15 @@ import { fetchInitialProducts } from "../../store/productActions";
 
 const Layout = ({ children }) => {
   const router = useRouter();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const initialProduct = useSelector((state) => state.products.amznProducts);
+  // const initialProduct = useSelector((state) => state.products.amznProducts);
 
-  useEffect(() => {
-    if (
-      initialProduct.length === 0 &&
-      router.pathname !== "/" &&
-      router.pathname !== "/searchresults/[...slug]"
-    ) {
-      dispatch(fetchInitialProducts());
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (initialProduct.length === 0 && router.pathname !== "/") {
+  //     dispatch(fetchInitialProducts());
+  //   }
+  // }, []);
 
   return (
     <>

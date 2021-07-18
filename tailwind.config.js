@@ -1,4 +1,5 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
+const plugin = require("tailwindcss/plugin");
 
 module.exports = {
   mode: "jit",
@@ -49,6 +50,15 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [require("@tailwindcss/line-clamp")],
+  plugins: [
+    require("@tailwindcss/line-clamp"),
+    plugin(function ({ addVariant, e }) {
+      addVariant("disabled", ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          return `.${e(`disabled${separator}${className}`)}:disabled`;
+        });
+      });
+    }),
+  ],
   // important: true,
 };

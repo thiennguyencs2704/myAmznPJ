@@ -8,8 +8,10 @@ import { ShoppingCartIcon, MenuIcon } from "@heroicons/react/outline";
 import SearchBar from "./SearchBar";
 import { getLastCart } from "../../store/cartSlice";
 import Menu from "../Modals/Menu";
+import useWindowWidth from "../../hooks/useWindowWidth";
 
 const Header = () => {
+  const currentWidth = useWindowWidth();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
   const cart = useSelector((state) => state.cart);
@@ -59,7 +61,7 @@ const Header = () => {
             </a>
           </Link>
 
-          <SearchBar mobileMode={false} />
+          {currentWidth >= 640 && <SearchBar mobileMode={false} />}
 
           <div className="flex space-x-1 mx-3 items-center text-xs">
             {user ? (
@@ -108,9 +110,11 @@ const Header = () => {
           </div>
         </div>
 
-        <div className="mx-3">
-          <SearchBar mobileMode={true} />
-        </div>
+        {currentWidth < 640 && (
+          <div className="mx-3">
+            <SearchBar mobileMode={true} />
+          </div>
+        )}
       </div>
 
       <nav className="flex items-center h-9 bg-amazon_blue-light">
@@ -126,6 +130,10 @@ const Header = () => {
           <Link href="/nav/bestsellers">
             <a className="link-nav">Best Sellers</a>
           </Link>
+
+          {/* <Link href="/nav/combination">
+            <a className="link-nav">Combination</a>
+          </Link> */}
           <p className="link-disable">Apple</p>
           <p className="link-disable">Customer Service</p>
           <p className="hidden sm:inline link-disable">Gift Cards</p>
