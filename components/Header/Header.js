@@ -61,7 +61,7 @@ const Header = ({ screenWidth }) => {
             </a>
           </Link>
 
-          {currentWidth >= 640 && <SearchBar mobileMode={false} />}
+          {currentWidth >= 640 && <SearchBar />}
 
           <div className="flex space-x-1 mx-3 items-center text-xs">
             {user ? (
@@ -110,9 +110,9 @@ const Header = ({ screenWidth }) => {
           </div>
         </div>
 
-        {currentWidth < 640 && (
+        {currentWidth < 640 && currentWidth > 0 && (
           <div className="mx-3">
-            <SearchBar mobileMode={true} />
+            <SearchBar />
           </div>
         )}
       </div>
