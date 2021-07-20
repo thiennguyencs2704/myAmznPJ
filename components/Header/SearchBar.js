@@ -23,7 +23,6 @@ const SearchBar = ({ mobileMode }) => {
 
   //Change searchInput if go back/forward Note: it happens twice because there are 2 inputBar(1 for Mobile)
   useEffect(() => {
-    console.log("Check mobileMode");
     if (search !== keyword) {
       setSearch(keyword);
       dispatch(searchProducts(keyword));

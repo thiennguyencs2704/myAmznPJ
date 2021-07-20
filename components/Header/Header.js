@@ -10,12 +10,12 @@ import { getLastCart } from "../../store/cartSlice";
 import Menu from "../Modals/Menu";
 import useWindowWidth from "../../hooks/useWindowWidth";
 
-const Header = () => {
-  const currentWidth = useWindowWidth();
+const Header = ({ screenWidth }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
   const cart = useSelector((state) => state.cart);
 
+  const currentWidth = useWindowWidth(screenWidth);
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   const handlerCloseMenu = () => {
