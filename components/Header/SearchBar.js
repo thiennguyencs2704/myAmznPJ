@@ -12,18 +12,18 @@ const SearchBar = () => {
   const router = useRouter();
   //For changing search state if going back/forward
   const keyword = router.query?.slug?.length > 0 ? router.query.slug[1] : "";
-
+  console.log("router", router.pathname);
   const dispatch = useDispatch();
   const productSlice = useSelector((state) => state.products);
   const productSuggestion = productSlice.productSuggestion;
 
-  const [search, setSearch] = useState(keyword);
+  const [search, setSearch] = useState("");
   const [searchSuggestion, setSearchSuggestion] = useState(false);
   const searchInput = useRef();
 
   //Change searchInput if go back/forward Note: it happens twice because there are 2 inputBar(1 for Mobile)
   useEffect(() => {
-    if (search !== keyword) {
+    if (search !== keyword && router.pathname === "/searchresults/[...slug]") {
       setSearch(keyword);
       dispatch(searchProducts(keyword));
     }
@@ -64,7 +64,7 @@ const SearchBar = () => {
     <div
       className={"flex flex-grow items-center h-10 bg-yellow-500 rounded-md"}
     >
-      <select className="h-full items-center pl-2 rounded-l-md text-gray-500 text-sm bg-gray-300 hover:cursor-pointer rounded-r-none">
+      <select className="items-center h-full pl-2 text-sm text-gray-500 bg-gray-300 rounded-r-none rounded-l-md hover:cursor-pointer">
         <option>All</option>
       </select>
 
@@ -76,7 +76,7 @@ const SearchBar = () => {
           value={search}
           ref={searchInput}
           type="text"
-          className="w-full p-3 h-full text-black removeInputWebkit"
+          className="w-full h-full p-3 text-black removeInputWebkit"
           onBlur={() => setSearchSuggestion(false)}
           onMouseDown={() => setSearchSuggestion(true)}
           id="searchInput"
@@ -84,7 +84,7 @@ const SearchBar = () => {
         />
 
         {searchSuggestion && (
-          <div className="absolute bg-white text-black text-sm w-full rounded-b-sm shadow-md border-b border-l border-r border-gray-200">
+          <div className="absolute w-full text-sm text-black bg-white border-b border-l border-r border-gray-200 rounded-b-sm shadow-md">
             {productSuggestion
               .map((product) => (
                 <Link
@@ -102,7 +102,7 @@ const SearchBar = () => {
                       handlerBlurInput();
                     }}
                     key={product.id}
-                    className="line-clamp-1 py-1 px-3 hover:bg-gray-100"
+                    className="px-3 py-1 line-clamp-1 hover:bg-gray-100"
                   >
                     {product.title}
                   </a>
@@ -117,7 +117,7 @@ const SearchBar = () => {
           href="/searchresults/[...slug]"
           as={`/searchresults/keyword/${search}`}
         >
-          <SearchIcon className="h-10 w-10 p-2 hover:cursor-pointer hover:bg-yellow-600 active:bg-yellow-700 rounded-r-md" />
+          <SearchIcon className="w-10 h-10 p-2 hover:cursor-pointer hover:bg-yellow-600 active:bg-yellow-700 rounded-r-md" />
         </Link>
       </div>
     </div>
