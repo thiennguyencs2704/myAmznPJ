@@ -67,8 +67,8 @@ export default function Home({ myProducts, categories, browse }) {
 
   return (
     <HeadLayout title="Amazon | Home">
-      <div className="flex flex-col bg-gray-100 min-h-screen pb-10 mx-auto items-center">
-        <main className="max-w-screen-2xl mx-auto md:mx-10">
+      <div className="flex flex-col items-center min-h-screen pb-10 mx-auto bg-gray-100">
+        <main className="mx-auto max-w-screen-2xl md:mx-10">
           <Banner />
           <CategoryList categoryData={categories} browseData={browse} />
           <ProductList amaProducts={myProducts} />

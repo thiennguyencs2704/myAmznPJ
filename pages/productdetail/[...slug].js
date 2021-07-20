@@ -28,7 +28,6 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async (context) => {
-  // console.log("Props", context.params.slug[0]);
   const productId = Number(context.params.slug[0]) - 1;
   const res = await axios(`/products/${productId}.json`);
   const productObj = res.data;
@@ -50,7 +49,6 @@ export const getStaticProps = async (context) => {
 };
 
 const ProductDetailPage = ({ productDetail }) => {
-  // console.log("check ID", id);
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading product ... Wait for a second!</div>;

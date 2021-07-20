@@ -6,10 +6,12 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import HeadLayout from "../../components/Layout/HeadLayout";
 import { fetchUserProfile } from "../../store/userActions";
+import classNames from "classnames";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const dispatch = useDispatch();
   const router = useRouter();
@@ -25,12 +27,12 @@ const Signin = () => {
           dispatch(fetchUserProfile(userAuth.user.uid));
         }
       })
-      .catch((err) => alert(err.message));
+      .catch((err) => setError(err.message));
   };
 
   return (
     <HeadLayout title="Amazon | Sign-In">
-      <div className="min-h-screen bg-white flex flex-col items-center z-10 justify-between pt-3">
+      <div className="z-10 flex flex-col items-center justify-between min-h-screen pt-3 bg-white">
         <Link href="/">
           <a className="my-2">
             <Image
@@ -42,45 +44,48 @@ const Signin = () => {
           </a>
         </Link>
 
-        <div className="flex flex-col border border-gray-300 p-5 w-80 pt-3 sm:h-full">
-          <p className="text-2xl sm:text-3xl sm:mt-2 font-semibold mb-3">
+        <div className="flex flex-col p-5 pt-3 border border-gray-300 w-80 sm:h-full">
+          <p className="mb-3 text-2xl font-semibold sm:text-3xl sm:mt-2">
             Sign-In
           </p>
 
           <form
             onSubmit={handlerSignin}
-            className="flex flex-col text-xs font-medium  mb-4 sm:mb-5"
+            className="flex flex-col mb-4 text-xs font-medium sm:mb-5"
           >
             <div className="flex flex-col space-y-1">
               <label htmlFor="email">Email or mobile phone number</label>
               <input
                 type="text"
-                className="input"
+                className={classNames("input", { "border-red-600": error })}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
               />
 
               <label htmlFor="password">Password</label>
               <input
                 type="password"
-                className="input"
+                className={classNames("input", { "border-red-600": error })}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
               />
             </div>
+            <div className="mt-2">
+              <small className="text-xs text-red-600">{error}</small>
 
-            <span className="span mt-3 h-7 rounded-sm">
-              <button className="flex items-center justify-center button h-full">
+              <button className="flex items-center justify-center span button">
                 Sign-in
               </button>
-            </span>
+            </div>
 
             {/* <Link href="/"> */}
-            <p className="text-xs flex justify-end">Forgot password</p>
+            <p className="flex justify-end text-xs">Forgot password</p>
             {/* </Link> */}
           </form>
 
-          <div className="flex flex-col justify-between text-xs pb-2">
+          <div className="flex flex-col justify-between pb-2 text-xs">
             <p>
               By Continuing, you agree to Amazon's{" "}
               <span className="text-blue-700">Conditions of Use</span> and{" "}
@@ -88,7 +93,7 @@ const Signin = () => {
             </p>
 
             {/* <Link href="/"> */}
-            <p className="text-blue-700 mt-3 sm:mt-5">Need help?</p>
+            <p className="mt-3 text-blue-700 sm:mt-5">Need help?</p>
             {/* </Link> */}
           </div>
         </div>
@@ -98,7 +103,7 @@ const Signin = () => {
             <p className="flex-grow inline-block border-b border-gray-200">
               &nbsp;
             </p>
-            <p className="flex-grow-0 inline-block pt-4 -mb-2 px-2 text-gray-500 text-xs">
+            <p className="flex-grow-0 inline-block px-2 pt-4 -mb-2 text-xs text-gray-500">
               New to Amazon?
             </p>
             <p className="flex-grow inline-block border-b border-gray-200">
@@ -108,22 +113,22 @@ const Signin = () => {
 
           <div className="mt-4 mb-5 ">
             <Link href="/auth/signup">
-              <button className="bg-amazon_gray-light hover:bg-gray-400 active:bg-gray-500 border border-gray-400 w-full text-xs rounded-sm py-1 h-7 focus:outline-none">
+              <button className="w-full py-1 text-xs border border-gray-400 rounded-sm bg-amazon_gray-light hover:bg-gray-400 active:bg-gray-500 h-7 focus:outline-none">
                 Create your Amazon account
               </button>
             </Link>
           </div>
         </div>
 
-        <footer className="relative flex flex-col items-center border-t border-gray-100 w-full text-xs mt-10 pb-10">
-          <div className="absolute w-full h-full bg-gradient-to-b from-gray-100 to-white top-0" />
+        <footer className="relative flex flex-col items-center w-full pb-10 mt-10 text-xs border-t border-gray-100">
+          <div className="absolute top-0 w-full h-full bg-gradient-to-b from-gray-100 to-white" />
 
-          <div className="flex flex-col space-y-1 sm:space-y-0 sm:flex-row max-w-xs justify-center text-blue-700 w-1/2 mt-8 z-10 sm:space-x-3">
+          <div className="z-10 flex flex-col justify-center w-1/2 max-w-xs mt-8 space-y-1 text-blue-700 sm:space-y-0 sm:flex-row sm:space-x-3">
             <p className="text-center">Conditions of User</p>
             <p className="text-center">Privacy Notice</p>
             <p className="text-center">Help</p>
           </div>
-          <p className="mt-3 z-50">
+          <p className="z-50 mt-3">
             © 1996-2021, Amazon.com, Inc. or its affiliates
           </p>
         </footer>

@@ -11,24 +11,24 @@ const Checkout = () => {
     <HeadLayout title="Amazon | Checkout">
       <div className="bg-gray-100">
         <div className="flex min-h-screen mx-auto max-w-screen-2xl ">
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 px-4 pb-10  w-full bg-gray-100">
-            <div className="md:col-span-2 md:mr-3 lg:col-span-3 lg:mr-4 flex flex-col bg-white mt-6 p-4">
-              <div className="relative border-b border-gray-200 pb-5">
-                <h1 className="text-xl sm:text-2xl font-medium">
+          <div className="grid w-full grid-cols-1 px-4 pb-10 bg-gray-100 md:grid-cols-3 lg:grid-cols-4">
+            <div className="flex flex-col p-4 mt-6 bg-white md:col-span-2 md:mr-3 lg:col-span-3 lg:mr-4">
+              <div className="relative pb-5 border-b border-gray-200">
+                <h1 className="text-xl font-medium sm:text-2xl">
                   Shopping Cart
                 </h1>
-                <p className="text-xs sm:text-sm text-blue-700">
+                <p className="text-xs text-blue-700 sm:text-sm">
                   Deselect all items
                 </p>
-                <p className="absolute right-0 text-xs sm:text-sm text-gray-600">
+                <p className="absolute right-0 text-xs text-gray-600 sm:text-sm">
                   Price
                 </p>
               </div>
 
-              <div className="border-b border-gray-200 my-4 ">
+              <div className="my-4 border-b border-gray-200 ">
                 {totalQty === 0 ? (
                   <div className="mb-4">
-                    <ShoppingCartIcon className="h-12 w-12" />
+                    <ShoppingCartIcon className="w-12 h-12" />
                     <p>Your Amazon Cart is empty</p>
                     <Link href="/">
                       <a className="text-xs text-blue-800">
@@ -47,7 +47,7 @@ const Checkout = () => {
                     Subtotal (
                     {totalQty === 1 ? `${totalQty} item` : `${totalQty} items`}
                     ):{"  "}
-                    <span className="text-sm sm:text-lg font-medium">
+                    <span className="text-sm font-medium sm:text-lg">
                       ${totalAmt}
                     </span>
                   </p>
@@ -55,12 +55,12 @@ const Checkout = () => {
               </div>
             </div>
 
-            <div className="h-36 flex flex-col bg-white p-3 mt-3 whitespace-nowrap">
-              <p className="text-base sm:text-base md:text-base mr-12">
+            <div className="flex flex-col p-3 mt-3 bg-white h-36 whitespace-nowrap">
+              <p className="mr-12 text-base sm:text-base md:text-base">
                 Subtotal (
                 {totalQty === 1 ? `${totalQty} item` : `${totalQty} items`}
                 ):{" "}
-                <span className="text-sm sm:text-base font-medium">
+                <span className="text-sm font-medium sm:text-base">
                   ${totalAmt}
                 </span>
               </p>
@@ -70,8 +70,8 @@ const Checkout = () => {
                 <p className="ml-1">This order contains a gift</p>
               </div>
 
-              <span className="span my-auto mx-5 h-8">
-                <button className="button flex items-center justify-center text-xs sm:text-sm lg:text-base h-full">
+              <span className="h-8 mx-5 my-auto span">
+                <button className="flex items-center justify-center h-full text-xs button sm:text-sm lg:text-base">
                   Proceed to checkout
                 </button>
               </span>

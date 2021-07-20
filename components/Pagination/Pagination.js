@@ -55,7 +55,7 @@ const Pagination = ({
     ));
 
   return (
-    <div className="hidden sm:flex justify-center items-center my-5 text-xs text-gray-700">
+    <div className="items-center justify-center hidden my-5 text-xs text-gray-700 sm:flex">
       <button
         className={`${
           firstPage ? "disabledPaginationBtn" : "paginationBtn"
