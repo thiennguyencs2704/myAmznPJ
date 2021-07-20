@@ -5,11 +5,12 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import HeadLayout from "../../components/Layout/HeadLayout";
 import { realtimeDB } from "../../firebase";
+import classNames from "classnames";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
 
   const router = useRouter();
 
@@ -33,12 +34,12 @@ const SignUp = () => {
           router.push("/");
         }
       })
-      .catch((err) => alert(err.message));
+      .catch((err) => setError(err.message));
   };
 
   return (
     <HeadLayout title="Amazon | Sign-Up">
-      <div className="min-h-screen bg-white flex flex-col items-center z-10 pt-3">
+      <div className="z-10 flex flex-col items-center min-h-screen pt-3 bg-white">
         <Link href="/">
           <a className="my-2">
             <Image
@@ -50,8 +51,8 @@ const SignUp = () => {
           </a>
         </Link>
 
-        <div className="flex flex-col border border-gray-300 p-5 pt-2 w-80 h-full">
-          <p className="text-2xl sm:text-3xl sm:mt-2 font-semibold mb-3">
+        <div className="flex flex-col h-full p-5 pt-2 border border-gray-300 w-80">
+          <p className="mb-3 text-2xl font-semibold sm:text-3xl sm:mt-2">
             Create account
           </p>
 
@@ -60,48 +61,48 @@ const SignUp = () => {
             className="flex flex-col text-xs font-medium "
           >
             <div className="flex flex-col space-y-2">
-              {/* <label htmlFor="name">Your name</label>
-              <input className="input" type="text" /> */}
-
               <label htmlFor="mobile-email">Mobile number or email</label>
               <input
-                className="input"
+                className={classNames("input", { "border-red-600": error })}
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
               />
 
               <label htmlFor="password">Password</label>
               <input
-                className="input"
+                className={classNames("input", { "border-red-600": error })}
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
               />
               <div>
-                <p className="font-normal -mt-2 italic">
+                <p className="-mt-2 italic font-normal">
                   Passwords must be at least 6 characters
                 </p>
               </div>
 
               {/* <label htmlFor="confirm-password">Re-enter Password</label>
               <input
-                className="input"
+                className={classNames("input", {"border-red-600": error})}
                 type="password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
               /> */}
             </div>
 
-            <span className="span mt-4 mb-5 h-7 text-center rounded-sm ">
-              <button className="flex items-center justify-center button h-full">
+            <div className="mt-2">
+              <small className="text-xs text-red-600">{error}</small>
+              <button className="flex items-center justify-center button span">
                 Create your Amazon account
               </button>
-            </span>
+            </div>
           </form>
 
           <div className="text-xs">
-            <div className="flex flex-col border-b pb-4">
+            <div className="flex flex-col pb-4 mt-1 border-b">
               <p>By creating an account, you agree to Amazon's</p>
               <div className="">
                 <p>
@@ -121,7 +122,7 @@ const SignUp = () => {
                 <p>
                   Already have an account?
                   <Link href="/auth/signin">
-                    <a className="text-blue-600 text-sm font-semibold">
+                    <a className="text-sm font-semibold text-blue-600">
                       {" "}
                       Sign-In
                     </a>
@@ -139,15 +140,15 @@ const SignUp = () => {
           </div>
         </div>
 
-        <footer className="relative flex flex-col items-center border-t border-gray-100 w-full text-xs mt-auto pb-10">
-          <div className="absolute w-full h-full bg-gradient-to-b from-gray-100 to-white top-0" />
+        <footer className="relative flex flex-col items-center w-full pb-10 mt-auto text-xs border-t border-gray-100">
+          <div className="absolute top-0 w-full h-full bg-gradient-to-b from-gray-100 to-white" />
 
-          <div className="flex flex-col sm:flex-row space-y-1 sm:space-y-0 max-w-xs justify-center text-blue-700 w-1/2 mt-8 z-10 sm:space-x-3">
+          <div className="z-10 flex flex-col justify-center w-1/2 max-w-xs mt-8 space-y-1 text-blue-700 sm:flex-row sm:space-y-0 sm:space-x-3">
             <p className="text-center">Conditions of User</p>
             <p className="text-center">Privacy Notice</p>
             <p className="text-center">Help</p>
           </div>
-          <p className="mt-3 z-50">
+          <p className="z-50 mt-3">
             © 1996-2021, Amazon.com, Inc. or its affiliates
           </p>
         </footer>

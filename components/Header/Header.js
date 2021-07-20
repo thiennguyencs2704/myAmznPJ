@@ -47,7 +47,7 @@ const Header = ({ screenWidth }) => {
       <Menu isOpenMenu={isOpenMenu} handlerCloseMenu={handlerCloseMenu} />
 
       <div className="flex flex-col bg-amazon_blue">
-        <div className="justify-between pr-3 flex flex-grow h-16 items-center text-white w-full">
+        <div className="flex items-center justify-between flex-grow w-full h-16 pr-3 text-white">
           <Link href="/">
             <a>
               <div className="mt-3 ml-1">
@@ -63,7 +63,7 @@ const Header = ({ screenWidth }) => {
 
           {currentWidth >= 640 && <SearchBar />}
 
-          <div className="flex space-x-1 mx-3 items-center text-xs">
+          <div className="flex items-center mx-3 space-x-1 text-xs">
             {user ? (
               <div onClick={handlerSignout} className="link-search">
                 <p>Hello, {user.email}</p>
@@ -96,12 +96,12 @@ const Header = ({ screenWidth }) => {
                 <div className="link-search relative flex h-[46px] w-18 justify-between items-center">
                   <ShoppingCartIcon className="h-9 w-9" />
                   <div className="absolute -top-1 -right-2 sm:right-5">
-                    <p className="bg-yellow-500 rounded-full px-2 p-1 items-center justify-center text-xs font-medium">
+                    <p className="items-center justify-center p-1 px-2 text-xs font-medium bg-yellow-500 rounded-full">
                       {cart.totalQty}
                     </p>
                   </div>
 
-                  <p className="hidden sm:inline text-base font-semibold mt-4">
+                  <p className="hidden mt-4 text-base font-semibold sm:inline">
                     Cart
                   </p>
                 </div>
@@ -126,7 +126,7 @@ const Header = ({ screenWidth }) => {
           <p>All</p>
         </div>
 
-        <div className="flex items-center text-xs sm:text-sm text-white font-medium">
+        <div className="flex items-center text-xs font-medium text-white sm:text-sm">
           <Link href="/nav/bestsellers">
             <a className="link-nav">Best Sellers</a>
           </Link>

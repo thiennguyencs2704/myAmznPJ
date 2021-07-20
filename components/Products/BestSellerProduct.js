@@ -6,20 +6,20 @@ const BestSellerProduct = ({ bestSellerProduct }) => {
 
   return (
     <div className="flex flex-col p-5 pt-0 border-b border-gray-200 sm:border-l-0 sm:border-t-0 sm:border">
-      <div className="flex -ml-5 overflow-hidden h-6 items-center">
-        <p className="bg-amazon_orange py-1 text-white pl-1 text-sm font-medium w-6 z-20">
+      <div className="flex items-center h-6 -ml-5 overflow-hidden">
+        <p className="z-20 w-6 py-1 pl-1 text-sm font-medium text-white bg-amazon_orange">
           #{rank}
         </p>
-        <p className="bg-amazon_orange rotate-12 h-20 transform origin-top-right w-6 z-10"></p>
+        <p className="z-10 w-6 h-20 origin-top-right transform bg-amazon_orange rotate-12"></p>
       </div>
 
-      <div className="text-center pt-5 my-3">
+      <div className="pt-5 my-3 text-center">
         <Image src={image} width={200} height={200} objectFit="contain" />
       </div>
 
       <div className="pb-5">
-        <h1 className="text-blue-700 text-sm line-clamp-2">{title}</h1>
-        <p className="text-red-700 text-sm">${price}</p>
+        <h1 className="text-sm text-blue-700 line-clamp-2">{title}</h1>
+        <p className="text-sm text-red-700">${price}</p>
       </div>
     </div>
   );

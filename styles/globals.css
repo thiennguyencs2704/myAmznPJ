@@ -4,23 +4,23 @@
 
 @layer components {
   .span {
-    @apply bg-gradient-to-b from-amazon_button-light to-amazon_button rounded-md focus:outline-none focus:bg-yellow-600;
+    @apply bg-gradient-to-b from-amazon_button-light to-amazon_button focus:bg-yellow-600;
   }
 
   .button {
-    @apply w-full p-2 text-xs md:text-sm h-9 hover:bg-yellow-400 active:bg-yellow-500 focus:outline-none rounded-md;
+    @apply w-full h-8 p-2 text-xs rounded-[4px] md:text-sm hover:from-yellow-400 hover:to-yellow-400 active:from-yellow-500 focus:outline-none;
   }
 
   .input {
-    @apply border border-gray-400 rounded-sm p-2 h-8 focus:outline-none focus:border focus:border-red-400 shadow-sm;
+    @apply h-8 p-2 border border-gray-400 rounded-sm shadow-sm focus:outline-none focus:border focus:border-red-400;
   }
 
   .link-search {
-    @apply p-1 px-2 border border-amazon_blue hover:border-white cursor-pointer;
+    @apply p-1 px-2 border cursor-pointer border-amazon_blue hover:border-white;
   }
 
   .link-nav {
-    @apply p-1 px-2 border border-amazon_blue-light hover:border-white cursor-pointer;
+    @apply p-1 px-2 border cursor-pointer border-amazon_blue-light hover:border-white;
   }
 
   .link-disable {
@@ -28,14 +28,14 @@
   }
 
   .removeInputWebkit {
-    @apply appearance-none rounded-none;
+    @apply rounded-none appearance-none;
   }
 
   .paginationBtn {
-    @apply h-9 rounded-sm border border-gray-300 bg-gradient-to-b from-gray-50 to-gray-200 focus:outline-none font-medium hover:from-gray-200 hover:to-gray-200;
+    @apply font-medium border border-gray-300 rounded-sm h-9 bg-gradient-to-b from-gray-50 to-gray-200 focus:outline-none hover:from-gray-200 hover:to-gray-200;
   }
 
   .disabledPaginationBtn {
-    @apply h-9 pointer-events-none;
+    @apply pointer-events-none h-9;
   }
 }
