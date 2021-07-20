@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-const SearchBar = ({ mobileMode }) => {
+const SearchBar = () => {
   const router = useRouter();
   //For changing search state if going back/forward
   const keyword = router.query?.slug?.length > 0 ? router.query.slug[1] : "";
@@ -23,7 +23,6 @@ const SearchBar = ({ mobileMode }) => {
 
   //Change searchInput if go back/forward Note: it happens twice because there are 2 inputBar(1 for Mobile)
   useEffect(() => {
-    console.log("Check mobileMode");
     if (search !== keyword) {
       setSearch(keyword);
       dispatch(searchProducts(keyword));
@@ -61,13 +60,9 @@ const SearchBar = ({ mobileMode }) => {
     searchInput.current.blur();
   };
 
-  const displayMobileMode = mobileMode
-    ? "md:hidden flex flex-grow"
-    : "hidden md:flex flex-grow";
-
   return (
     <div
-      className={`flex flex-grow items-center h-10 bg-yellow-500 rounded-md`}
+      className={"flex flex-grow items-center h-10 bg-yellow-500 rounded-md"}
     >
       <select className="h-full items-center pl-2 rounded-l-md text-gray-500 text-sm bg-gray-300 hover:cursor-pointer rounded-r-none">
         <option>All</option>
@@ -84,7 +79,7 @@ const SearchBar = ({ mobileMode }) => {
           className="w-full p-3 h-full text-black removeInputWebkit"
           onBlur={() => setSearchSuggestion(false)}
           onMouseDown={() => setSearchSuggestion(true)}
-          id={mobileMode ? "searchInputMobile" : "searchInput"}
+          id="searchInput"
           autoComplete="off"
         />
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-const useWindowWidth = () => {
-  const [windowWidth, setWindowWidth] = useState("");
+const useWindowWidth = (screenWidth) => {
+  const [windowWidth, setWindowWidth] = useState(0);
 
   useEffect(() => {
     const handlerResize = () => {
@@ -13,7 +13,8 @@ const useWindowWidth = () => {
     };
   }, []);
 
-  return windowWidth;
+  if (windowWidth) return windowWidth;
+  if (!windowWidth) return screenWidth;
 };
 
 export default useWindowWidth;

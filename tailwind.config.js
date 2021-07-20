@@ -50,15 +50,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [
-    require("@tailwindcss/line-clamp"),
-    plugin(function ({ addVariant, e }) {
-      addVariant("disabled", ({ modifySelectors, separator }) => {
-        modifySelectors(({ className }) => {
-          return `.${e(`disabled${separator}${className}`)}:disabled`;
-        });
-      });
-    }),
-  ],
-  // important: true,
+  plugins: [require("@tailwindcss/line-clamp")],
 };
