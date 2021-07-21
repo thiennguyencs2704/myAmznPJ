@@ -51,7 +51,7 @@ const SignUp = () => {
           </a>
         </Link>
 
-        <div className="flex flex-col h-full p-5 pt-2 border border-gray-300 w-80">
+        <div className="flex flex-col h-full p-5 pt-2 mt-10 mb-5 border border-gray-300 w-80">
           <p className="mb-3 text-2xl font-semibold sm:text-3xl sm:mt-2">
             Create account
           </p>
@@ -93,16 +93,16 @@ const SignUp = () => {
               /> */}
             </div>
 
-            <div className="mt-2">
+            <div className="mt-3">
               <small className="text-xs text-red-600">{error}</small>
-              <button className="flex items-center justify-center button span">
+              <button className="flex items-center justify-center text-[13px] button span">
                 Create your Amazon account
               </button>
             </div>
           </form>
 
           <div className="text-xs">
-            <div className="flex flex-col pb-4 mt-1 border-b">
+            <div className="flex flex-col pb-4 mt-5 border-b">
               <p>By creating an account, you agree to Amazon's</p>
               <div className="">
                 <p>

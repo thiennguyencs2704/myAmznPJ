@@ -44,7 +44,7 @@ const Signin = () => {
           </a>
         </Link>
 
-        <div className="flex flex-col p-5 pt-3 border border-gray-300 w-80 sm:h-full">
+        <div className="flex flex-col h-full p-5 pt-3 border border-gray-300 w-80">
           <p className="mb-3 text-2xl font-semibold sm:text-3xl sm:mt-2">
             Sign-In
           </p>
@@ -72,10 +72,10 @@ const Signin = () => {
                 placeholder="Password"
               />
             </div>
-            <div className="mt-2">
+            <div className="mt-3">
               <small className="text-xs text-red-600">{error}</small>
 
-              <button className="flex items-center justify-center span button">
+              <button className="flex items-center justify-center text-[13px] span button">
                 Sign-in
               </button>
             </div>
