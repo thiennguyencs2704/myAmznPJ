@@ -42,19 +42,19 @@ const CheckoutProduct = ({ product }) => {
   };
 
   return (
-    <div className="flex border-b border-gray-200 py-5 -mt-2 justify-between">
+    <div className="flex justify-between py-5 -mt-2 border-b border-gray-200">
       <div className="flex w-9/12">
         <div className="flex-shrink-0">
           <Image src={image} width={120} height={120} objectFit="contain" />
         </div>
 
-        <div className="ml-2 w-max text-xs sm:text-sm">
-          <p className="text-sm font-medium sm:text-base line-clamp-3 mb-2">
+        <div className="ml-2 text-xs w-max sm:text-sm">
+          <p className="mb-2 text-sm font-medium sm:text-base line-clamp-3">
             {title}
           </p>
           <p className="text-green-600">In Stock</p>
 
-          <div className="sm:flex items-center">
+          <div className="items-center sm:flex">
             <div className="flex items-center">
               <input type="checkbox" />
               <p className="mx-1">This is a gift</p>
@@ -62,7 +62,7 @@ const CheckoutProduct = ({ product }) => {
             <p className="text-blue-700">Learn more</p>
           </div>
 
-          <div className="flex justify-start appearance-none mt-1">
+          <div className="flex justify-start mt-1 appearance-none">
             <button
               onClick={handlerRemoveCart}
               className="bg-gray-300 h-7 w-7 rounded-l-md"
@@ -87,7 +87,7 @@ const CheckoutProduct = ({ product }) => {
         </div>
       </div>
 
-      <div className="text-right text-sm sm:text-base font-medium w-3/12">
+      <div className="w-3/12 text-sm font-medium text-right sm:text-base">
         {price}
       </div>
     </div>

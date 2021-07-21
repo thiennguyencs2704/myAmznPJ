@@ -39,8 +39,8 @@ const Browse = ({ browseData }) => {
   };
 
   return (
-    <div className="flex flex-col bg-white py-2 px-0 sm:px-5 sm:p-5">
-      <h1 className="text-xl font-semibold mb-2 pl-3 sm:pl-0">
+    <div className="flex flex-col px-0 py-2 bg-white sm:px-5 sm:p-5">
+      <h1 className="pl-3 mb-2 text-xl font-semibold sm:pl-0">
         Browse by category
       </h1>
       <div className="flex">

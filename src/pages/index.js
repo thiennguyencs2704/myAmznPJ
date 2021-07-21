@@ -1,7 +1,7 @@
 import Banner from "../components/Home/Banner";
 import ProductList from "../components/Home/ProductList";
 import { useEffect } from "react";
-import { auth } from "../firebase";
+import { auth } from "../../firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { getInitialProducts } from "../store/productSlice";
 import HeadLayout from "../components/Layout/HeadLayout";

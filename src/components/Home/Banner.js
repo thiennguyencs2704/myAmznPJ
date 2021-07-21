@@ -13,7 +13,7 @@ const Banner = () => {
 
   return (
     <div className="relative z-0">
-      <div className="absolute w-full h-32 bg-gradient-to-t from-gray-100 to-transparent bottom-0 z-10" />
+      <div className="absolute bottom-0 z-10 w-full h-32 bg-gradient-to-t from-gray-100 to-transparent" />
 
       <Carousel
         autoPlay

@@ -59,7 +59,7 @@ const SearchResults = ({ searchKeyword, myProducts }) => {
 
   return (
     <HeadLayout title={`Amazon | ${searchKeyword}`}>
-      <div className="min-h-screen max-w-screen-2xl mx-auto">
+      <div className="min-h-screen mx-auto max-w-screen-2xl">
         <FilteredProductList productResult={productResult} />
       </div>
     </HeadLayout>

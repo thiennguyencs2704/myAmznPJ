@@ -44,7 +44,7 @@ const BestSellers = () => {
       <div className="flex flex-col sm:flex-row max-w-screen-2xl">
         <ShortCategoryList categories={categories} />
 
-        <div className="min-h-screen mx-auto flex-1">
+        <div className="flex-1 min-h-screen mx-auto">
           <BestSellerList productsCurrentPage={productsCurrentPage} />
 
           <Pagination
