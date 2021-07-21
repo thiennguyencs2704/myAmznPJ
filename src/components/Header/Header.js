@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { signout } from "../../store/userSlice";
 import { useEffect, useState } from "react";
-import { auth } from "../../firebase";
+import { auth } from "../../../firebase";
 import { ShoppingCartIcon, MenuIcon } from "@heroicons/react/outline";
 import SearchBar from "./SearchBar";
 import { getLastCart } from "../../store/cartSlice";

@@ -65,14 +65,16 @@ const Pagination = ({
       >
         Previous
       </button>
-      <button
-        className={`
+      {totalProduct && (
+        <button
+          className={`
           ${currentPage === 1 ? currentPageBtn : "paginationBtn"} 
           w-9 mx-[2px] `}
-        onClick={() => setCurrentPage(1)}
-      >
-        1
-      </button>
+          onClick={() => setCurrentPage(1)}
+        >
+          1
+        </button>
+      )}
 
       {currentPage > 3 ? (
         <button className="paginationBtn pointer-events-none w-9 mx-[2px]">
@@ -89,16 +91,18 @@ const Pagination = ({
         </button>
       ) : null}
 
-      <button
-        className={`
+      {totalProduct && (
+        <button
+          className={`
           ${
             currentPage === pageIndex.length ? currentPageBtn : "paginationBtn"
           } 
           w-9 mx-[2px] `}
-        onClick={() => setCurrentPage(pageIndex.length)}
-      >
-        {pageIndex.length}
-      </button>
+          onClick={() => setCurrentPage(pageIndex.length)}
+        >
+          {pageIndex.length}
+        </button>
+      )}
 
       <button
         className={`${

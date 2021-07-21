@@ -4,15 +4,15 @@ const CategoryDetail = ({ categoryDetail }) => {
   const { title, img } = categoryDetail;
 
   return (
-    <div className="mx-auto sm:mx-3 m-3">
-      <div className="flex flex-col bg-white mx-auto p-5 xl:pt-7">
-        <h1 className="flex text-xl sm-text-base md:text-lg lg:text-xl font-bold white h-14">
+    <div className="m-3 mx-auto sm:mx-3">
+      <div className="flex flex-col p-5 mx-auto bg-white xl:pt-7">
+        <h1 className="flex text-xl font-bold sm-text-base md:text-lg lg:text-xl white h-14">
           {title}
         </h1>
         <div className="md:pt-2 lg:pt-0">
           <Image src={img} width={400} height={350} objectFit="cover" />
         </div>
-        <p className="text-xs text-blue-800 mt-4">Shop now</p>
+        <p className="mt-4 text-xs text-blue-800">Shop now</p>
       </div>
     </div>
   );
