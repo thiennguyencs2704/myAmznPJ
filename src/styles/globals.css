@@ -8,7 +8,7 @@
   }
 
   .button {
-    @apply w-full h-8 p-2 text-xs rounded-[4px] md:text-sm hover:from-yellow-400 hover:to-yellow-400 active:from-yellow-500 focus:outline-none;
+    @apply w-full h-8 p-2 text-xs rounded-md md:text-sm hover:from-yellow-400 hover:to-yellow-400 active:from-yellow-500 focus:outline-none;
   }
 
   .input {

@@ -25,11 +25,11 @@ const CategoryList = ({ categoryData, browseData }) => {
               Sign in for the best experience
             </a>
           </Link>
-          <span className="flex items-center w-4/5 mx-auto span">
-            <button className="w-full text-xs button h-9 ">
+          <div className="flex items-center w-4/5 mx-auto ">
+            <button className="w-full text-xs button h-9 span">
               Sign in securely
             </button>
-          </span>
+          </div>
         </div>
 
         <div className="flex justify-center mt-auto">

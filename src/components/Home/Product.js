@@ -54,11 +54,11 @@ const Product = ({ product }) => {
         )}
       </div>
 
-      <span className="mt-auto text-center span">
-        <button onClick={handlerAddCart} className="button">
+      <div className="flex items-center mt-auto">
+        <button onClick={handlerAddCart} className="text-xs button span">
           Add to Basket
         </button>
-      </span>
+      </div>
     </div>
   );
 };
