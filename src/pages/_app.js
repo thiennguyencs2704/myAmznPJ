@@ -18,7 +18,7 @@ const fetcher = async (...args) => {
 const MyApp = ({ Component, pageProps }) => {
   return (
     <Provider store={store}>
-      <SWRConfig value={{ fetcher }}>
+      <SWRConfig value={{ fetcher, dedupingInterval: 3000 }}>
         <Layout>
           <Component {...pageProps} />
         </Layout>
