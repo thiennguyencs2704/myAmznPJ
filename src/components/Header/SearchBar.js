@@ -20,7 +20,6 @@ const SearchBar = () => {
   const productSuggestion = productSlice.productSuggestion;
 
   const [search, setSearch] = useState("");
-  console.log("search", search);
   const [searchSuggestion, setSearchSuggestion] = useState(false);
   const searchInput = useRef();
 

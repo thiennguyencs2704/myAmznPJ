@@ -15,7 +15,6 @@ const productSlice = createSlice({
     },
 
     searchProducts: (state, action) => {
-      console.log("check redux", action.payload);
       const searchKey = action.payload.trim();
 
       state.productSuggestion =

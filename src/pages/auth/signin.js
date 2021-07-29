@@ -21,7 +21,6 @@ const Signin = () => {
     auth
       .signInWithEmailAndPassword(email, password)
       .then((userAuth) => {
-        console.log(userAuth);
         router.push("/");
         if (userAuth) {
           dispatch(fetchUserProfile(userAuth.user.uid));

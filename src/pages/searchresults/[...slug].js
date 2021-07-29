@@ -11,10 +11,7 @@ import { useEffect } from "react";
 import axios from "axios";
 
 export const getServerSideProps = async (context) => {
-  console.log("check contextr", `-${context.query.slug[8]}-`);
-  console.log("object", context.query.slug[0].slice(8));
   const searchKeyword = context.query.slug[0].slice(8);
-  console.log("searchKey", searchKeyword);
 
   const res = await axios("/products.json");
   const data = res.data;
@@ -44,9 +41,8 @@ export const getServerSideProps = async (context) => {
 const SearchResults = ({ searchKeyword, myProducts }) => {
   const dispatch = useDispatch();
   const productSlice = useSelector((state) => state.products);
-  console.log("check key", searchKeyword);
+
   useEffect(() => {
-    console.log("useeffect", searchKeyword);
     if (productSlice.amznProducts.length === 0) {
       dispatch(getInitialProducts(myProducts));
       dispatch(searchProducts(searchKeyword));

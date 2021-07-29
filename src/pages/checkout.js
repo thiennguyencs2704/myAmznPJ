@@ -70,11 +70,11 @@ const Checkout = () => {
                 <p className="ml-1">This order contains a gift</p>
               </div>
 
-              <span className="h-8 mx-5 my-auto span">
-                <button className="flex items-center justify-center h-full text-xs button sm:text-sm lg:text-base">
+              <div className="flex items-center mt-7 md:mx-3">
+                <button className="flex items-center justify-center h-full text-xs font-medium text-gray-800 button span sm:text-sm">
                   Proceed to checkout
                 </button>
-              </span>
+              </div>
             </div>
           </div>
         </div>
