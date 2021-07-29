@@ -9,10 +9,9 @@ import {
 } from "../../store/productSlice";
 import { useEffect } from "react";
 import axios from "axios";
-import { useRouter } from "next/router";
 
 export const getServerSideProps = async (context) => {
-  const searchKeyword = context.query.slug[1];
+  const searchKeyword = context.query.slug[0].slice(8);
 
   const res = await axios("/products.json");
   const data = res.data;
@@ -40,9 +39,6 @@ export const getServerSideProps = async (context) => {
 };
 
 const SearchResults = ({ searchKeyword, myProducts }) => {
-  // console.log("search", searchKeyword);
-  const router = useRouter();
-
   const dispatch = useDispatch();
   const productSlice = useSelector((state) => state.products);
 

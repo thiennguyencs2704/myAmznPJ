@@ -1,23 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-import axios from "axios";
-import useSWR from "swr";
+// import axios from "axios";
+// import useSWR from "swr";
 
-export const getStaticProps = async () => {
-  const res = await axios.get("/products/1.json");
-  const data = res.data;
+// export const getStaticProps = async () => {
+//   const res = await axios.get("/products/1.json");
+//   const data = res.data;
 
-  console.log("check data", data);
-
-  return {
-    props: {
-      firstProduct: data,
-    },
-  };
-};
-
-const Combination = ({ firstProduct }) => {
-  const [mounted, setMounted] = useState(false);
+//   return {
+//     props: {
+//       firstProduct: data,
+//     },
+//   };
+// };
+// { firstProduct }
+const Combination = () => {
+  // const [mounted, setMounted] = useState(false);
 
   // const [data, setData] = useState([]);
   // useEffect(() => {
@@ -30,20 +28,20 @@ const Combination = ({ firstProduct }) => {
   //   fetchData();
   // }, []);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  // useEffect(() => {
+  //   setMounted(true);
+  // }, []);
 
-  const url = "/products.json";
-  const { data, error } = useSWR(mounted ? url : null);
+  // const url = "/products.json";
+  // const { data, error } = useSWR(mounted ? url : null);
 
-  if (!data) return <p>{firstProduct.title}</p>;
+  // if (!data) return <p>{firstProduct.title}</p>;
 
   return (
     <div>
-      {data.map((item, i) => (
+      {/* {data.map((item, i) => (
         <p key={i}>{item.title}</p>
-      ))}
+      ))} */}
     </div>
   );
 };

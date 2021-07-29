@@ -28,7 +28,6 @@ const SignUp = () => {
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((authUser) => {
-        console.log(authUser.user.uid);
         createProfileUser(authUser.user.uid, authUser.user.email);
         if (authUser) {
           router.push("/");

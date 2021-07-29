@@ -7,7 +7,7 @@ module.exports = {
       "images-fe.ssl-images-amazon.com",
     ],
   },
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+  webpack: (config) => {
     // Important: return the modified config
     return config;
   },

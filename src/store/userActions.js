@@ -6,10 +6,8 @@ export const fetchUserProfile = createAsyncThunk(
   async (uid) => {
     try {
       const res = await axios(`/userprofiles/${uid}.json`);
-
       const data = res.data;
-      console.log("Get user called");
-      console.log("Profile", data);
+
       return data;
     } catch (err) {
       throw Error(err);
