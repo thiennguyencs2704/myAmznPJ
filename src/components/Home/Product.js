@@ -20,7 +20,7 @@ const Product = ({ product }) => {
 
   return (
     <div className="relative flex flex-col max-h-full p-10 mx-5 text-base bg-white rounded-lg">
-      <div className="mb-5 space-y-3">
+      <div className="mb-5 space-y-3 bg-">
         <p className="absolute text-sm italic text-gray-400 top-2 right-2">
           {category}
         </p>

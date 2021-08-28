@@ -26,11 +26,10 @@ const Banner = () => {
         {bannerURLs.map((url, i) => (
           <div key={i}>
             <Image
-              // loading="lazy"
               width={1500}
               height={600}
-              layout="responsive"
               src={url}
+              objectFit="cover"
               alt=""
             />
           </div>

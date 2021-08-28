@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { signout } from "../../store/userSlice";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { auth } from "../../../firebase";
 import { ShoppingCartIcon, MenuIcon } from "@heroicons/react/outline";
 import SearchBar from "./SearchBar";

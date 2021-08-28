@@ -2,8 +2,7 @@ import Banner from "../components/Home/Banner";
 import ProductList from "../components/Home/ProductList";
 import { useEffect } from "react";
 import { auth } from "../../firebase";
-import { useDispatch, useSelector } from "react-redux";
-import { getInitialProducts } from "../store/productSlice";
+import { useDispatch } from "react-redux";
 import HeadLayout from "../components/Layout/HeadLayout";
 import { fetchUserProfile } from "../store/userActions";
 import CategoryList from "../components/Home/CategoryList";
@@ -49,13 +48,6 @@ export const getStaticProps = async () => {
 
 export default function Home({ myProducts, categories, browse }) {
   const dispatch = useDispatch();
-  const checkInitialProduct = useSelector((state) => state.products);
-
-  useEffect(() => {
-    if (checkInitialProduct.amznProducts.length === 0) {
-      dispatch(getInitialProducts(myProducts));
-    }
-  }, []);
 
   useEffect(() => {
     auth.onAuthStateChanged((userAuth) => {
