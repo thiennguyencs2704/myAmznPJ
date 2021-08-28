@@ -5,7 +5,6 @@ import { auth } from "../../../firebase";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import HeadLayout from "../../components/Layout/HeadLayout";
-import { fetchUserProfile } from "../../store/userActions";
 import classNames from "classnames";
 
 const Signin = () => {
@@ -20,11 +19,8 @@ const Signin = () => {
     e.preventDefault();
     auth
       .signInWithEmailAndPassword(email, password)
-      .then((userAuth) => {
+      .then(() => {
         router.push("/");
-        if (userAuth) {
-          dispatch(fetchUserProfile(userAuth.user.uid));
-        }
       })
       .catch((err) => setError(err.message));
   };

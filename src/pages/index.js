@@ -1,10 +1,6 @@
 import Banner from "../components/Home/Banner";
 import ProductList from "../components/Home/ProductList";
-import { useEffect } from "react";
-import { auth } from "../../firebase";
-import { useDispatch } from "react-redux";
 import HeadLayout from "../components/Layout/HeadLayout";
-import { fetchUserProfile } from "../store/userActions";
 import CategoryList from "../components/Home/CategoryList";
 import axios from "axios";
 
@@ -47,16 +43,6 @@ export const getStaticProps = async () => {
 };
 
 export default function Home({ myProducts, categories, browse }) {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    auth.onAuthStateChanged((userAuth) => {
-      if (userAuth) {
-        dispatch(fetchUserProfile(userAuth.uid));
-      }
-    });
-  }, []);
-
   return (
     <HeadLayout title="Amazon | Home">
       <div className="flex flex-col items-center min-h-screen pb-10 mx-auto bg-gray-100">

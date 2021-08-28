@@ -8,6 +8,8 @@ import { Provider } from "react-redux";
 import axios from "axios";
 import { useEffect } from "react";
 import { fetchInitialProducts } from "../store/productActions";
+import { fetchUserProfile } from "../store/userActions";
+import { auth } from "../../firebase";
 
 axios.defaults.baseURL = "https://my-amzn-web-default-rtdb.firebaseio.com";
 
@@ -20,7 +22,13 @@ const MyApp = ({ Component, pageProps }) => {
   // fetch initialData to redux store
   useEffect(() => {
     store.dispatch(fetchInitialProducts());
+    auth.onAuthStateChanged((userAuth) => {
+      if (userAuth) {
+        store.dispatch(fetchUserProfile(userAuth.uid));
+      }
+    });
   }, []);
+
   return (
     <Provider store={store}>
       <SWRConfig value={{ fetcher, dedupingInterval: 600000 }}>
