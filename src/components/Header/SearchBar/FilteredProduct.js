@@ -2,7 +2,7 @@ import Image from "next/image";
 import { StarIcon } from "@heroicons/react/solid";
 import React from "react";
 
-import DetailProductLink from "../Link/DetailProductLink";
+import DetailProductLink from "../../Link/DetailProductLink";
 
 const FilteredProduct = ({ filteredProduct }) => {
   const { id, image, title, price, star } = filteredProduct;

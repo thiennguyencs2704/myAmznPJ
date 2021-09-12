@@ -11,7 +11,7 @@ import { useEffect } from "react";
 import axios from "axios";
 
 export const getServerSideProps = async (context) => {
-  const searchKeyword = context.query.slug[0].slice(8);
+  const searchKeyword = context.query.slug[0].slice(15);
 
   const res = await axios("/products.json");
   const data = res.data;

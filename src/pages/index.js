@@ -3,6 +3,8 @@ import ProductList from "../components/Home/ProductList";
 import HeadLayout from "../components/Layout/HeadLayout";
 import CategoryList from "../components/Home/CategoryList";
 import axios from "axios";
+import { applyMiddleware } from "redux";
+import { PrinterIcon } from "@heroicons/react/solid";
 
 export const getStaticProps = async () => {
   const URLs = ["/products.json", "/categories.json", "/browse.json"];

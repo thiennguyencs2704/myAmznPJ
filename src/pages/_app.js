@@ -1,7 +1,6 @@
 import "tailwindcss/tailwind.css";
 import "../styles/globals.css";
 import { SWRConfig } from "swr";
-
 import { store } from "../store/index";
 import Layout from "../components/Layout/Layout";
 import { Provider } from "react-redux";

@@ -1,7 +1,7 @@
 import {
   searchProducts,
   clearProductSuggestion,
-} from "../../store/productSlice";
+} from "../../../store/productSlice";
 import { SearchIcon } from "@heroicons/react/outline";
 import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -97,7 +97,7 @@ const SearchBar = () => {
       <div className="">
         <Link
           href="/searchresults/[...slug]"
-          as={`/searchresults/keyword=${search}`}
+          as={`/searchresults/search?keyword=${search}`}
         >
           <SearchIcon className="w-10 h-10 p-2 hover:cursor-pointer hover:bg-yellow-600 active:bg-yellow-700 rounded-r-md" />
         </Link>

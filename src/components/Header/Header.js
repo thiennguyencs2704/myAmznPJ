@@ -2,13 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { signout } from "../../store/userSlice";
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import { auth } from "../../../firebase";
-import { ShoppingCartIcon, MenuIcon } from "@heroicons/react/outline";
-import SearchBar from "./SearchBar";
+import { ShoppingCartIcon } from "@heroicons/react/outline";
+import SearchBar from "./SearchBar/SearchBar";
 import { getLastCart } from "../../store/cartSlice";
-import Menu from "../Modals/Menu";
 import useWindowWidth from "../../hooks/useWindowWidth";
+import Nav from "./Nav";
 
 const Header = ({ screenWidth }) => {
   const dispatch = useDispatch();
@@ -16,13 +16,6 @@ const Header = ({ screenWidth }) => {
   const cart = useSelector((state) => state.cart);
 
   const currentWidth = useWindowWidth(screenWidth);
-  const [isOpenMenu, setIsOpenMenu] = useState(false);
-
-  const handlerCloseMenu = () => {
-    setIsOpenMenu(false);
-    document.documentElement.style.overflow = "auto";
-    document.body.scroll = "yes";
-  };
 
   const handlerSignout = () => {
     auth.signOut();
@@ -44,8 +37,6 @@ const Header = ({ screenWidth }) => {
 
   return (
     <header className="sticky top-0 z-30">
-      <Menu isOpenMenu={isOpenMenu} handlerCloseMenu={handlerCloseMenu} />
-
       <div className="flex flex-col bg-amazon_blue">
         <div className="flex items-center justify-between flex-grow w-full h-16 pr-3 text-white">
           <Link href="/">
@@ -117,33 +108,7 @@ const Header = ({ screenWidth }) => {
         )}
       </div>
 
-      <nav className="flex items-center h-9 bg-amazon_blue-light">
-        <div
-          onClick={() => setIsOpenMenu(true)}
-          className="link-nav items-center flex ml-4 text-white font-medium h-[30px]"
-        >
-          <MenuIcon className="w-6 h-6 mr-1" />
-          <p>All</p>
-        </div>
-
-        <div className="flex items-center text-xs font-medium text-white sm:text-sm">
-          <Link href="/nav/bestsellers">
-            <a className="link-nav">Best Sellers</a>
-          </Link>
-
-          {/* <Link href="/nav/combination">
-            <a className="link-nav">Combination</a>
-          </Link> */}
-          <p className="link-disable">Apple</p>
-          <p className="link-disable">Customer Service</p>
-          <p className="hidden sm:inline link-disable">Gift Cards</p>
-          <p className="hidden md:inline link-disable">Registry</p>
-          <p className="hidden md:inline link-disable">Sell</p>
-          <p className="hidden lg:inline link-disable">
-            Health & Personal Care
-          </p>
-        </div>
-      </nav>
+      <Nav />
     </header>
   );
 };
