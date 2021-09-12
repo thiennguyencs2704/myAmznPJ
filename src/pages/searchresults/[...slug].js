@@ -1,5 +1,5 @@
 import HeadLayout from "../../components/Layout/HeadLayout";
-import FilteredProductList from "../../components/Header/FilteredProductList";
+import FilteredProductList from "../../components/Header/SearchBar/FilteredProductList";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
