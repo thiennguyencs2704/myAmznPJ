@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const HeadLayout = ({ children, title }) => {
   const [metaTags, setMetaTags] = useState({
-    "og:image": `https://cdn-images.earthtoday.com/eyJrZXkiOiIvdXNlcnMvMTk0MTE4NjAxNzc1NTI3MTE2OC9saW5rcy8xOTMwOTU1NDk1NzQ4MTk0MzA0LzRlYWEyMGQ1LTRiZDQtNDMyYi1iZjU2LWU0ZTgzMDgyMTM4MS11b24tbTItMS5wbmciLCJidWNrZXQiOiJlYXJ0aHRvZGF5LXByb2QtaW1hZ2VzIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo4NDB9fX0=`,
+    "og:image": `https://stage-images.earthtoday.com/eyJrZXkiOiIvdXNlcnMvMzY4MDM1ODQ0ODU0MTIyNDk2MC9jYW1wYWlnbnMvMzY4MDM1ODQ1MDM3NDEzNTgyNy8xMDQzY2FlMC1jMjc2LTQzOGYtOTNlMy05ZDhlOWY4MmY0MWUtaW5mb19mYWNlYm9vay5wbmciLCJidWNrZXQiOiJlYXJ0aHRvZGF5LXN0YWdlLWltYWdlcyJ9`,
     "fb:app_id": "356721174733993",
     "og:type": "website",
     "og:site_name": "EarthToday",
