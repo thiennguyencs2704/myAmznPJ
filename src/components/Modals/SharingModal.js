@@ -18,7 +18,7 @@ export const SharingModal = () => {
       </FacebookShareButton>
       <TwitterShareButton
         url={"https://myamznsite.vercel.app/"}
-        // title={"Hey subcribe earthtoday! Twitter"}
+        title={"Hey subcribe earthtoday! Twitter"}
       >
         <TwitterIcon logoFillColor="white" round={true}></TwitterIcon>
       </TwitterShareButton>
