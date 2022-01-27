@@ -1,17 +1,7 @@
 import Head from "next/head";
 import { useState } from "react";
 
-const HeadLayout = ({ children, title }) => {
-  const [metaTags, setMetaTags] = useState({
-    "og:image": `https://cdn-images.earthtoday.com/eyJrZXkiOiIvdXNlcnMvMTkwMzcwODY2NjU4OTY2MzIzMi9saW5rcy8xOTMwOTQ2NDQ2MTk4MzcwMzA0LzhmMzMyMjA3LWI3NTMtNDJlYy04NGMwLWJlNjIwODE5MGExZC1maW5hbmNpYWwtc3RhdGVtZW50LnBuZyIsImJ1Y2tldCI6ImVhcnRodG9kYXktcHJvZC1pbWFnZXMiLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjg0MH19fQ==`,
-    "fb:app_id": "356721174733993",
-    "og:type": "website",
-    "og:site_name": "EarthToday",
-    "og:title": "EarthToday",
-    "og:url": "https://myamznsite.vercel.app/",
-    "og:description": "What’s happening on EarthToday",
-  });
-
+const HeadLayout = ({ children, title, metaTags }) => {
   const metaTagsArray = (metaTags) => {
     if (!metaTags) {
       return [];
