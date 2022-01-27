@@ -1,15 +1,16 @@
 import Head from "next/head";
+import { useState } from "react";
 
 const HeadLayout = ({ children, title }) => {
-  const metaTags = {
-    "og:image": `https://stage-images.earthtoday.com/eyJrZXkiOiIvdXNlcnMvMzY4MDM1ODQ0ODU0MTIyNDk2MC9jYW1wYWlnbnMvMzY4MDM1ODQ1MDM3NDEzNTgyNy8xMDQzY2FlMC1jMjc2LTQzOGYtOTNlMy05ZDhlOWY4MmY0MWUtaW5mb19mYWNlYm9vay5wbmciLCJidWNrZXQiOiJlYXJ0aHRvZGF5LXN0YWdlLWltYWdlcyJ9`,
+  const [metaTags, setMetaTags] = useState({
+    "og:image": `https://cdn-images.earthtoday.com/eyJrZXkiOiIvdXNlcnMvMTk0MTE4NjAxNzc1NTI3MTE2OC9saW5rcy8xOTMwOTU1NDk1NzQ4MTk0MzA0LzRlYWEyMGQ1LTRiZDQtNDMyYi1iZjU2LWU0ZTgzMDgyMTM4MS11b24tbTItMS5wbmciLCJidWNrZXQiOiJlYXJ0aHRvZGF5LXByb2QtaW1hZ2VzIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo4NDB9fX0=`,
     "fb:app_id": "356721174733993",
     "og:type": "website",
     "og:site_name": "EarthToday",
     "og:title": "EarthToday",
     "og:url": "https://earthtoday.com/",
     "og:description": "What’s happening on EarthToday",
-  };
+  });
 
   const metaTagsArray = (metaTags) => {
     if (!metaTags) {
@@ -24,7 +25,22 @@ const HeadLayout = ({ children, title }) => {
     });
   };
 
+  const metaTagsTwitterArray = (metaTags) => {
+    if (!this.metaTags) {
+      return [];
+    }
+
+    return Object.keys(this.metaTags).map((key) => {
+      return {
+        key: key.replace("og", "twitter"),
+        content: this.metaTags ? this.metaTags[key] : "",
+      };
+    });
+  };
+
   const metaData = metaTagsArray(metaTags);
+  const metaTwitterData = metaTagsTwitterArray(metaTags);
+  metaTags;
 
   return (
     <>
@@ -32,6 +48,9 @@ const HeadLayout = ({ children, title }) => {
         <title>{title}</title>
         <link rel="icon" href="/8364-amazon_102478.png" />
         {metaData.map((meta) => (
+          <meta name={meta.key} content={meta.content} key={meta.key} />
+        ))}
+        {metaTwitterData.map((meta) => (
           <meta name={meta.key} content={meta.content} key={meta.key} />
         ))}
         <meta property="og:image:width" content="720" />

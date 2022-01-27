@@ -3,6 +3,7 @@ import ProductList from "../components/Home/ProductList";
 import HeadLayout from "../components/Layout/HeadLayout";
 import CategoryList from "../components/Home/CategoryList";
 import axios from "axios";
+import { SharingModal } from "../components/Modals/SharingModal";
 
 export const getStaticProps = async () => {
   const URLs = ["/products.json", "/categories.json", "/browse.json"];
@@ -85,6 +86,8 @@ export default function Home({ myProducts, categories, browse }) {
           <Banner />
           <CategoryList categoryData={categories} browseData={browse} />
           <ProductList amaProducts={myProducts} />
+          <SharingModal />
+          {/* <button className="w-10 h-10 bg-yellow-300"> Share </button> */}
         </main>
       </div>
     </HeadLayout>
