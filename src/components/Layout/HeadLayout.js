@@ -26,14 +26,14 @@ const HeadLayout = ({ children, title }) => {
   };
 
   const metaTagsTwitterArray = (metaTags) => {
-    if (!this.metaTags) {
+    if (!metaTags) {
       return [];
     }
 
-    return Object.keys(this.metaTags).map((key) => {
+    return Object.keys(metaTags).map((key) => {
       return {
         key: key.replace("og", "twitter"),
-        content: this.metaTags ? this.metaTags[key] : "",
+        content: metaTags ? metaTags[key] : "",
       };
     });
   };
