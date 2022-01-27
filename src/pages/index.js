@@ -3,8 +3,6 @@ import ProductList from "../components/Home/ProductList";
 import HeadLayout from "../components/Layout/HeadLayout";
 import CategoryList from "../components/Home/CategoryList";
 import axios from "axios";
-import { applyMiddleware } from "redux";
-import { PrinterIcon } from "@heroicons/react/solid";
 
 export const getStaticProps = async () => {
   const URLs = ["/products.json", "/categories.json", "/browse.json"];
@@ -45,6 +43,41 @@ export const getStaticProps = async () => {
 };
 
 export default function Home({ myProducts, categories, browse }) {
+  // const getResult = (x, time) => {
+  //   return function () {
+  //     return new Promise((resolve, reject) => {
+  //       if (x >= 0) {
+  //         setTimeout(() => {
+  //           resolve(x);
+  //         }, time);
+  //       } else {
+  //         reject("Failed");
+  //       }
+  //     });
+  //   };
+  // };
+
+  // const api = getResult(1, 1000);
+  // const api2 = getResult(2, 1000);
+
+  // const api3 = getResult(3, 1000);
+
+  // const printResults = async () => {
+  //   try {
+  //     const result = await api();
+  //     console.log("result: ", result);
+
+  //     const result2 = await api2();
+  //     console.log("result2: ", result2);
+
+  //     const result3 = await api3();
+  //     console.log("result3: ", result3);
+  //   } catch (err) {
+  //     console.log("error: ", err);
+  //   }
+  // };
+
+  // printResults();
   return (
     <HeadLayout title="Amazon | Home">
       <div className="flex flex-col items-center min-h-screen pb-10 mx-auto bg-gray-100">
