@@ -7,20 +7,24 @@ import {
   TwitterIcon,
 } from "react-share";
 
-export const SharingModal = ({ handleFacebookMeta, handleTwitterMeta }) => {
+export const SharingModal = () => {
   return (
     <div className="h-auto w-auto">
       <FacebookShareButton
-        url={"https://myamznsite-9o7k5k4ey-thiennguyencs2704.vercel.app/"}
+        url={
+          "https://myamznsite.vercel.app/searchresults/search?keyword=acer&channel=facebook"
+        }
         quote={"Hey subcribe earthtoday!"}
-        onClick={handleFacebookMeta}
+        // onClick={handleFacebookMeta}
       >
         <FacebookIcon logoFillColor="white" round={true}></FacebookIcon>
       </FacebookShareButton>
       <TwitterShareButton
-        url={"https://myamznsite-8f8afavsg-thiennguyencs2704.vercel.app/"}
+        url={
+          "https://myamznsite.vercel.app/searchresults/search?keyword=acer&channel=twitter"
+        }
         title={"Hey subcribe earthtoday! Twitter"}
-        onClick={handleTwitterMeta}
+        // onClick={handleTwitterMeta}
       >
         <TwitterIcon logoFillColor="white" round={true}></TwitterIcon>
       </TwitterShareButton>
