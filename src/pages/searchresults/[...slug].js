@@ -31,9 +31,16 @@ export const getServerSideProps = async (context) => {
 
   if (context.query.channel === "twitter") {
     metaTags = {
-      "twitter:image":
+      "og:image":
         "https://cdn-images.earthtoday.com/eyJrZXkiOiIvdXNlcnMvMTk0MTE4NjAxNzc1NTI3MTE2OC9saW5rcy8xOTMwOTU1NDk1NzQ4MTk0MzA0LzRlYWEyMGQ1LTRiZDQtNDMyYi1iZjU2LWU0ZTgzMDgyMTM4MS11b24tbTItMS5wbmciLCJidWNrZXQiOiJlYXJ0aHRvZGF5LXByb2QtaW1hZ2VzIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo4NDB9fX0=",
       "fb:app_id": "356721174733993",
+      "og:type": "website",
+      "og:site_name": "EarthToday",
+      "og:title": "FACEBOOKKKKKKK",
+      "og:url": `${"https://www.google.com/"} `,
+      "og:description": "What’s happening on EarthToday",
+      "twitter:image":
+        "https://cdn-images.earthtoday.com/eyJrZXkiOiIvdXNlcnMvMTk0MTE4NjAxNzc1NTI3MTE2OC9saW5rcy8xOTMwOTU1NDk1NzQ4MTk0MzA0LzRlYWEyMGQ1LTRiZDQtNDMyYi1iZjU2LWU0ZTgzMDgyMTM4MS11b24tbTItMS5wbmciLCJidWNrZXQiOiJlYXJ0aHRvZGF5LXByb2QtaW1hZ2VzIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo4NDB9fX0=",
       "twitter:type": "website",
       "twitter:site_name": "EarthToday",
       "twitter:title": "TWITTERRRRRRRR",
