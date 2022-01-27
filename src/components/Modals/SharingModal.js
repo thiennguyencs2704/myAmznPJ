@@ -11,14 +11,14 @@ export const SharingModal = ({ handleFacebookMeta, handleTwitterMeta }) => {
   return (
     <div className="h-auto w-auto">
       <FacebookShareButton
-        url={"https://myamznsite.vercel.app/"}
+        url={"https://myamznsite-9o7k5k4ey-thiennguyencs2704.vercel.app/"}
         quote={"Hey subcribe earthtoday!"}
         onClick={handleFacebookMeta}
       >
         <FacebookIcon logoFillColor="white" round={true}></FacebookIcon>
       </FacebookShareButton>
       <TwitterShareButton
-        url={"https://myamznsite.vercel.app/"}
+        url={"https://myamznsite-8f8afavsg-thiennguyencs2704.vercel.app/"}
         title={"Hey subcribe earthtoday! Twitter"}
         onClick={handleTwitterMeta}
       >
