@@ -8,7 +8,7 @@ const HeadLayout = ({ children, title }) => {
     "og:type": "website",
     "og:site_name": "EarthToday",
     "og:title": "EarthToday",
-    "og:url": "https://earthtoday.com/",
+    "og:url": "https://myamznsite.vercel.app/",
     "og:description": "What’s happening on EarthToday",
   });
 
