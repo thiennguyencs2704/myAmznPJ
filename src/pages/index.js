@@ -4,6 +4,7 @@ import HeadLayout from "../components/Layout/HeadLayout";
 import CategoryList from "../components/Home/CategoryList";
 import axios from "axios";
 import { SharingModal } from "../components/Modals/SharingModal";
+import { useEffect, useState } from "react";
 
 export const getStaticProps = async () => {
   const URLs = ["/products.json", "/categories.json", "/browse.json"];
@@ -79,14 +80,50 @@ export default function Home({ myProducts, categories, browse }) {
   // };
 
   // printResults();
+
+  const [metaTags, setMetaTags] = useState({});
+  console.log("check URL", process.env.NEXT_PREVIEW_URL);
+  const handleFacebookMeta = () => {
+    setMetaTags({
+      "og:image":
+        "https://cdn-images.earthtoday.com/eyJrZXkiOiIvdXNlcnMvMjAzNDE4ODc5NTQ3NzI1NDE0NC9saW5rcy8xOTMwOTU3MDQ2NjI4MDU3MDg4LzQwMDYxZDJmLTllOTEtNDU5OS04OTQ5LWYxNjlkNTFjZTM2Ny1hYm91dGVhcnRodG9kYXkucG5nIiwiYnVja2V0IjoiZWFydGh0b2RheS1wcm9kLWltYWdlcyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODQwfX19",
+      "fb:app_id": "356721174733993",
+      "og:type": "website",
+      "og:site_name": "EarthToday",
+      "og:title": "FACEBOOKKKKKKK",
+      "og:url": `${"https://www.google.com/"} `,
+      "og:description": "What’s happening on EarthToday",
+    });
+  };
+
+  const handleTwitterMeta = () => {
+    setMetaTags({
+      "og:image":
+        "https://cdn-images.earthtoday.com/eyJrZXkiOiIvdXNlcnMvMTk0MTE4NjAxNzc1NTI3MTE2OC9saW5rcy8xOTMwOTU1NDk1NzQ4MTk0MzA0LzRlYWEyMGQ1LTRiZDQtNDMyYi1iZjU2LWU0ZTgzMDgyMTM4MS11b24tbTItMS5wbmciLCJidWNrZXQiOiJlYXJ0aHRvZGF5LXByb2QtaW1hZ2VzIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo4NDB9fX0=",
+      "fb:app_id": "356721174733993",
+      "og:type": "website",
+      "og:site_name": "EarthToday",
+      "og:title": "TWITTERRRRRRRR",
+      "og:url": `${"https://myamznsite.vercel.app/"}`,
+      "og:description": "What’s happening on EarthToday",
+    });
+  };
+
+  useEffect(() => {
+    console.log("META TAGGGGGGGGG", metaTags);
+  }, metaTags);
+
   return (
-    <HeadLayout title="Amazon | Home">
+    <HeadLayout title="Amazon | Home" metaTags={metaTags}>
       <div className="flex flex-col items-center min-h-screen pb-10 mx-auto bg-gray-100">
         <main className="mx-auto max-w-screen-2xl md:mx-10">
           <Banner />
           <CategoryList categoryData={categories} browseData={browse} />
           <ProductList amaProducts={myProducts} />
-          <SharingModal />
+          <SharingModal
+            handleFacebookMeta={handleFacebookMeta}
+            handleTwitterMeta={handleTwitterMeta}
+          />
           {/* <button className="w-10 h-10 bg-yellow-300"> Share </button> */}
         </main>
       </div>
